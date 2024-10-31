@@ -10,7 +10,7 @@
 | did-crypto-sdk-server            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-crypto-sdk-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-crypto-sdk-server/releases) |
 | did-datamodel-server            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-datamodel-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-datamodel-server/releases) |
 | did-wallet-sdk-server            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-wallet-sdk-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-wallet-sdk-server/releases) |
-| did-release            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-release/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-release/releases) |
+| did-doc-architecture            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-doc-architecture/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-doc-architecture/releases) |
 | did-common-sdk-server            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-common-sdk-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-common-sdk-server/releases) |
 | did-ca-aos            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-ca-aos/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-ca-aos/releases) |
 | did-ca-ios            | V1.0.0         | [Changelog](https://github.com/OmniOneID/did-ca-ios/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-ca-ios/releases) |
