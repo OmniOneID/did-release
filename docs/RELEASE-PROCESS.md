@@ -84,3 +84,24 @@ Use GitHub Actions or Shell scripts to automate the following tasks:
    - The integrated release version follows the "W.X.Y.Z" format, based on the most significant changes.
 
 This process enables efficient management of individual module versions and the overall integrated project release.
+
+## 5. Guidelines for Hotfixes
+### Versioning
+
+Hotfixes apply only to cases where logic is modified for features or bug fixes, which requires a release version update.
+
+If a module’s functionality changes or if both functionality and documentation are updated, the module version should be incremented. However, if only the documentation is modified, only the documentation version changes, while the release remains unchanged.
+
+### Example
+| **State**                        | **Documentation Version** | **Module Version** | **Release Version** |
+|----------------------------------|---------------------------|--------------------|----------------------|
+| **Current Release Version**        | v1.0.0                    | v1.0.0             | v1.0.0.0            |
+| **After Documentation-only Hotfix** | v1.0.1                    | v1.0.0             | v1.0.0.0            |
+| **After Functionality or Bug-fix Hotfix** | v1.0.0                    | v1.0.1             | v1.0.1.0            |
+
+### Hotfixes Procedure
+
+1. Create a hotfix branch from the main branch.
+2. Apply the necessary changes for the hotfix and update the version according to the above hotfix versioning policy.
+3. After completing the hotfix, merge the changes into both main and develop branches.
+4. If the module version has changed, tag the updated module version and update the corresponding version in the did-release for publication.
