@@ -18,13 +18,12 @@ puppeteer:
 Open DID Installation Guide
 ==
 
-- Date: 2024-09-07
+- Date: 2025-04-01
 - Version: v1.0.0
 
 목차
 ==
-- [Open DID Installation Guide](#open-did-installation-guide)
-- [목차](#목차)
+
 - [1. Overview](#1-overview)
 - [2. Installation Overview](#2-installation-overview)
   - [2.1. Orchestrator를 활용한 빠른 설치](#21-orchestrator를-활용한-빠른-설치)

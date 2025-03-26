@@ -23,8 +23,7 @@ Open DID Installation Guide
 
 Table of Contents
 ==
-- [Open DID Installation Guide](#open-did-installation-guide)
-- [Table of Contents](#table-of-contents)
+
 - [1. Overview](#1-overview)
 - [2. Installation Overview](#2-installation-overview)
   - [2.1. Quick Installation with Orchestrator](#21-quick-installation-with-orchestrator)
