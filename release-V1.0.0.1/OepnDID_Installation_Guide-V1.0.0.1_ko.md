@@ -31,6 +31,7 @@ Open DID Installation Guide
     - [2.1.1. Orchestrator 설치](#211-orchestrator-설치)
     - [2.1.2. Orchestrator에서 서버 설치 및 실행하기](#212-orchestrator에서-서버-설치-및-실행하기)
     - [2.1.3. 설치된 서버의 Open DID 시스템 등록 절차](#213-설치된-서버의-open-did-시스템-등록-절차)
+    - [2.1.4. App 설치하기](#214-app-설치하기)
 - [3. System Requirements](#3-system-requirements)
   - [3.1. Server](#31-server)
   - [3.2. App](#32-app)
@@ -63,27 +64,15 @@ Open DID Installation Guide
   - [5.2. Step 2: TA Server Installation and Registration](#52-step-2-ta-server-installation-and-registration)
     - [5.2.1. TA Server 설치 후 구동](#521-ta-server-설치-후-구동)
     - [5.2.2. TA 서버 등록](#522-ta-서버-등록)
+    - [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용)
   - [5.3. Step 3: API Gateway Installation](#53-step-3-api-gateway-installation)
     - [5.3.1. API Gateway Server 설치 후 구동](#531-api-gateway-server-설치-후-구동)
-  - [5.4. Step 4: Entity Servers Installation and Registration](#54-step-4-entity-servers-installation-and-registration)
-    - [5.4.1. Issuer Server Installation and Registration](#541-issuer-server-installation-and-registration)
-      - [5.4.1.1. Issuer Server 설치 후 구동](#5411-issuer-server-설치-후-구동)
-      - [5.4.1.2. Issuer Server의 DID Document 등록](#5412-issuer-server의-did-document-등록)
-      - [5.4.1.3. Issuer Server의 가입증명서 발급](#5413-issuer-server의-가입증명서-발급)
-    - [5.4.2. Verifier Server Installation and Registration](#542-verifier-server-installation-and-registration)
-      - [5.4.2.1. Verifier Server 설치 후 구동](#5421-verifier-server-설치-후-구동)
-      - [5.4.2.2. Verifier Server의 DID Document 등록](#5422-verifier-server의-did-document-등록)
-      - [5.4.2.3. Verifier Server의 가입증명서 발급](#5423-verifier-server의-가입증명서-발급)
-    - [5.4.3. CA Server Installation and Registration](#543-ca-server-installation-and-registration)
-      - [5.4.3.1. CA Server 설치 후 구동](#5431-ca-server-설치-후-구동)
-      - [5.4.3.2. CA Server의 DID Document 등록](#5432-ca-server의-did-document-등록)
-      - [5.4.3.3. CA Server의 가입증명서 발급](#5433-ca-server의-가입증명서-발급)
-    - [5.4.4. Wallet Server Installation and Registration](#544-wallet-server-installation-and-registration)
-      - [5.4.4.1. Wallet Server 설치 후 구동](#5441-wallet-server-설치-후-구동)
-      - [5.4.4.2. Wallet Server의 DID Document 등록](#5442-wallet-server의-did-document-등록)
-      - [5.4.4.3. Wallet Server의 가입증명서 발급](#5443-wallet-server의-가입증명서-발급)
+  - [5.4. Step 4: Entity Servers 설치 및 등록](#54-step-4-entity-servers-설치-및-등록)
+    - [5.4.1. Issuer Server 설치 및 등록](#541-issuer-server-설치-및-등록)
+    - [5.4.2. Verifier Server 설치 및 등록](#542-verifier-server-설치-및-등록)
+    - [5.4.3. CA Server 설치 및 등록](#543-ca-server-설치-및-등록)
+    - [5.4.4. Wallet Server 설치 및 등록](#544-wallet-server-설치-및-등록)
   - [5.5. Step 5: Demo Server Installation](#55-step-5-demo-server-installation)
-      - [5.5.1. Demo Server 설치 후 구동](#551-demo-server-설치-후-구동)
   - [5.6. Step 6: App Installation](#56-step-6-app-installation)
     - [5.6.1. Android App Installation](#561-android-app-installation)
     - [5.6.2. iOS App Installation](#562-ios-app-installation)
@@ -151,6 +140,11 @@ Open DID 플랫폼을 설치한 후에는 어떤 기능을 확인할 수 있을�
 
 
 # 2. Installation Overview
+
+> ⚠️ 주의  
+> 현재 Open DID의 서버는 **Orchestrator 기반의 설치 방식만을 공식 지원**합니다.  
+> 서버 수동 설치 및 Open DID 등록 기능은 **2024년 6월 중 정식 지원될 예정**입니다.  
+> 그 전까지는 [2.1. Orchestrator를 활용한 빠른 설치](#21-orchestrator를-활용한-빠른-설치) 절차를 따라 주세요.
 
 이 장에서는 Open DID 프로젝트를 구성요소와 설치 순서를 안내합니다.
 
@@ -244,9 +238,6 @@ Open DID 플랫폼은 반드시 정해진 순서를 따라서 설치해야만 �
 
 ## 2.1. Orchestrator를 활용한 빠른 설치
 
-> ⚠️ **현재 Orchestrator를 사용한 설치만 지원됩니다.**  
-> 구성요소를 수동으로 설치하는 방식은 2024년 6월 이후 공식 지원될 예정입니다.
-
 Open DID의 설치는 다양한 구성요소와 설정을 포함하고 있어, 처음 접하는 사용자나 빠르게 테스트 환경을 구축하려는 경우 다소 복잡하게 느껴질 수 있습니다.
 
 이를 돕기 위해 Open DID는 **Orchestrator**라는 통합 설치 도구를 제공합니다.  
@@ -273,31 +264,48 @@ Orchestrator의 설치 방법은 별도의 설치 가이드 문서에 자세히 
 ### 2.1.2. Orchestrator에서 서버 설치 및 실행하기
 
 Orchestrator 설치가 완료되면 웹 UI를 통해 각 구성요소를 개별적으로 설치 및 실행할 수 있습니다.  
-아래의 순서로 설치를 진행하세요.
+아래 화면은 Orchestrator의 초기 실행 화면이며, 주요 기능별 버튼 위치를 나타냅니다.
 
-1. **블록체인 설치**
-   - **Repositories** 테이블에서 `Hyperledger Fabric` 항목의 **Actions** 열에 있는 **Start** 버튼을 클릭합니다.
+<img src="./images/2-1.orchestrator-main.png" width="800"/>
 
-2. **PostgreSQL 설치**
-   - **Repositories** 테이블에서 `PostgreSQL` 항목의 **Actions** 열에 있는 **Start** 버튼을 클릭합니다.
+---
 
-3. **Wallet 및 DID Document 자동 생성**
-   - **Quick Start** 테이블에서 `All Entities` 항목의 **Generators** 열에 있는 **Generate All** 버튼을 클릭합니다.
+다음은 Orchestrator에서 서버를 설치하고 실행하는 절차입니다:
 
-4. **서버 설치 및 구동**
-   - **Servers** 테이블에서 각 서버 항목의 **Actions** 열에 있는 **Start** 버튼을 클릭합니다.
-     - `TAS`
-     - `Issuer`
-     - `Verifier`
-     - `CAS`
-     - `WalletService`
-     - `API`
+1. **블록체인 설치**  
+   - `Repositories` 테이블의 **Hyperledger Fabric** 항목에서 **Start** 버튼(①)을 클릭합니다.  
+   - 블록체인이 설치되고 실행되며, Status가 녹색 원으로 변경됩니다.
 
-Orchestrator를 통해 서버 설치와 구동은 완료되었으며, 이제는 설치된 각 서버를 Open DID 시스템에 등록할 차례입니다.  
-이 과정은 각 서버의 Admin 페이지에서 진행되며, 본 문서에서는 이 등록 절차까지만 안내합니다.  
-서버가 Open DID 플랫폼 내에서 정상적으로 동작하려면, 각 서버의 Admin 페이지에서 필요한 설정을 완료해야 합니다.  
+2. **PostgreSQL 설치**  
+   - `Repositories` 테이블의 **PostgreSQL** 항목에서 **Start** 버튼(②)을 클릭합니다.  
+   - Database가 설치되고 실행되며, Status가 녹색 원으로 변경됩니다.
 
+3. **Wallet 및 DID Document 자동 생성**  
+   - `Quick Start` 테이블의 **All Entities** 항목에서 **Generate All** 버튼(③)을 클릭합니다.  
+   - 모든 서버에 필요한 Wallet 파일 및 DID Document가 자동으로 생성됩니다.
+
+4. **서버 설치 및 구동**  
+   - `Servers` 테이블에서 각 서버 항목의 **Start** 버튼(④~⑨)을 클릭합니다.  
+     - (④) `TAS (8090)`
+     - (⑤) `Issuer (8091)`
+     - (⑥) `Verifier (8092)`
+     - (⑦) `CAS (8094)`
+     - (⑧) `WalletService (8095)`
+     - (⑨) `API (8093)`
+   - 각 서버가 설치되고 실행되며, Status가 녹색 원으로 변경됩니다.
+
+> **참고:**  
+> 일부 서버는 설치 또는 초기 실행에 다소 시간이 소요될 수 있습니다.  
+> 설치가 완료되었음에도 불구하고 **Status가 빨간 원으로 표시될 경우**, 화면을 새로고침(F5)하여 상태를 다시 확인해 주세요.
+
+> 각 서버 항목의 오른쪽에는 **[Settings]**, **[Swagger]** 버튼이 제공되며,  
+> 이를 통해 해당 서버의 Admin 페이지 및 Swagger 문서 페이지로 바로 이동할 수 있습니다.
+
+---
+
+이제 각 서버가 구동된 상태이며, 다음 단계에서는 서버별 Admin Console을 통해 Open DID 시스템에 등록하는 절차를 진행합니다.  
 자세한 내용은 [2.1.3 Orchestrator 설치 후 서버별 Admin 설정 항목](#213-orchestrator-설치-후-서버별-admin-설정-항목) 섹션을 참고해 주세요.
+
 
 <br/>
 
@@ -305,25 +313,44 @@ Orchestrator를 통해 서버 설치와 구동은 완료되었으며, 이제는 
 
 Orchestrator를 통해 서버의 설치와 구동은 완료되었지만,  
 각 서버가 Open DID 시스템 내에서 실제로 동작하기 위해서는 **Open DID 시스템 등록 작업**이 필요합니다.  
-해당 과정은 각 서버의 Admin 페이지에서 수동으로 진행됩니다.
+해당 과정은 각 서버의 Admin 페이지에서 진행됩니다.
 
 본 문서에서는 설치된 서버를 Open DID 시스템에 등록하는 절차까지만 안내하며,  
 등록 이후의 세부 설정이나 운영은 각 서버의 Admin 설정 가이드를 참고해 주세요.
 
+---
+
 Open DID 시스템 등록은 반드시 **정해진 순서에 따라 진행**해야 하며,  
 아래 표는 각 서버에서 수행해야 할 등록 작업을 순서대로 정리한 것입니다.
 
-> ⚠️ 참고  
-> 현재 테스트 편의성을 위해 **TA Admin 페이지에서 모든 Entity 서버를 대신 등록하는 기능**이 제공됩니다.  
+| 순서 | 구성 요소 | 설정 항목        | 문서 위치    | 설명                                   |
+| ---- | --------- | ---------------- | ------------ | -------------------------------------- |
+| 1    | TA        | TA 서버 등록     | 5.2.2절 참조 | TA 서버 등록                           |
+| 2    | TA        | Entity 일괄 등록 | 5.2.3절 참조 | Issuer, Verifier, CA, Wallet 서버 등록 |
+
+
+> ⚠️ 주의사항  
+> 현재 테스트 편의성을 위해 **TA Admin 페이지에서 모든 Entity 서버를 일괄 등록하는 기능**이 제공됩니다.  
 > 이 방식은 임시로 제공되는 기능이며, **2024년 6월 이후에는 Entity 서버가 직접 등록 요청을 보내는 방식으로 전환될 예정입니다.**
 
-| 순서 | 구성 요소 | 설정 항목             | 문서 위치    | 설명                                   |
-| ---- | --------- | --------------------- | ------------ | -------------------------------------- |
-| 1    | TA        | TA 서버 등록          | 5.2.2절 참조 | TA 서버 등록                           |
-| 2    | TA        | 모든 Entity 서버 등록 | 5.2.2절 참조 | Issuer, Verifier, CA, Wallet 서버 등록 |
+<br/>
+
+### 2.1.4. App 설치하기
+
+2.1.3 절까지의 과정을 완료하면, Open DID 시스템에 등록이 필요한 모든 서버의 설정이 완료됩니다.  
+이제 사용자가 Open DID 시스템과 상호작용할 수 있도록 **모바일 App을 설치**해야 합니다.
+
+Open DID App은 **Android**와 **iOS** 두 가지 플랫폼을 지원하며,  
+각 플랫폼에 맞는 개발 환경 설정과 설치 절차를 따라야 합니다.
+
+설치 방법은 아래 문서를 참고해 주세요:
+
+- [5.6.1. Android App Installation](#561-android-app-installation)
+- [5.6.2. iOS App Installation](#562-ios-app-installation)
 
 
 <br/>
+
 
 # 3. System Requirements
 이 장에서는 Open DID 플랫폼을 설치하기 위해 필요한 요구사항을 설명합니다. 서버와 앱을 실행하기 위해서는 각 항목에서 요구하는 환경을 충족해야 합니다.
@@ -787,23 +814,66 @@ TA 서버의 DID Document를 블록체인에 등록하고, **가입 증명서 VC
    - 주소: `http://192.168.1.1:8090`
 
 2. 로그인 페이지에서 아래 계정으로 로그인합니다.  
-   - ID: `admin@opendid.omnione.net`  
-   - Password: `omnioneopendid12!@`
+   - ① Email: `admin@opendid.omnione.net`  
+   - ② Password: `omnioneopendid12!@` 
+   - ③ **[SIGN IN]** 버튼을 클릭하여 로그인합니다.  
+<img src="./images/5-1.ta-login.png" width="400"/>
 
-3. 메인 화면에서 **Trust Agent 등록** 메뉴로 이동한 것을 확인합니다.
+3. 메인 화면에서 **TA Registration** 메뉴로 이동한 것을 확인합니다.
 
-4. Server URL 항목에 다음 주소를 입력합니다.  
-   - `http://192.168.1.1:8090/tas`  
+4. **Trust Agent Quick Registration** 화면에서 다음 항목을 입력합니다.  
+   - ① **Server URL**: `http://192.168.1.1:8090/tas`  
+   - ② **[QUICK REGISTER]** 버튼을 클릭합니다.  
+  <img src="./images/5-2.ta-registration.png" width="800"/>
 
-5. **Quick Register** 버튼을 클릭하여 등록을 진행합니다.  
 > ⚠️ ***Quick Register*** *는 임시 기능입니다.*  
 > *실제 TA 등록은 여러 단계를 거쳐야 하며, 해당 기능은 6월 중 정식 반영될 예정입니다.*
 
-6. 등록 성공 팝업이 나타나면 **확인** 버튼을 클릭합니다.
+5. 등록 성공 팝업이 나타나면 **확인** 버튼을 클릭합니다.
 
-7. **TA Management** 메뉴로 이동하여, 등록된 TA 정보가 표시되었는지 확인합니다.
+6. **TA Management** 메뉴로 이동하여, 등록된 TA 정보가 표시되었는지 확인합니다.
+   <img src="./images/5-3.ta-management.png" width="600"/>
 
+<br/>
 
+### 5.2.3. Entity 일괄 등록 (테스트용)
+
+> **주의:**  
+> 본 절차는 **Orchestrator 환경을 전제로** 합니다.  
+> Entity 일괄 등록 기능을 사용하려면, Orchestrator를 통해 **모든 서버를 설치 및 구동**한 후,  
+> `Generate All` 기능을 사용하여 각 서버의 DID Document와 Wallet 파일을 미리 생성해야 합니다.  
+> 자세한 내용은 [2.1. Orchestrator를 활용한 빠른 설치](#21-orchestrator를-활용한-빠른-설치) 절차를 참고해 주세요.
+
+--- 
+
+대부분의 Entity 서버는 TA 서버를 통해 Open DID 시스템에 등록됩니다.  
+운영 환경에서는 다음과 같은 **정식 등록 절차**를 따릅니다:
+
+1. **Entity 관리자**가 Entity Admin 페이지에서 **DID Document를 생성**합니다.  
+2. 생성된 DID Document를 **TA Admin에 전달하여 블록체인 등록을 요청**합니다.  
+3. **TA 관리자**는 TA Admin 페이지에서 요청을 승인하고, DID Document를 **블록체인에 등록**합니다.  
+4. Entity 관리자는 **가입 증명서(VC) 발급을 요청**하여 Open DID 시스템에 등록을 완료합니다.
+
+--- 
+테스트 환경에서는, TA Admin이 제공하는 **[Entity 일괄 등록]** 기능을 사용할 수 있습니다.  
+이 기능은 모든 Entity 서버에 대해 다음 작업을 자동으로 수행합니다:
+- 각 Entity의 DID Document를 블록체인에 등록
+- 가입 증명서 발급까지 완료
+- 가입 증명서를 각 Entity 서버에 전달
+
+--- 
+Entity 일괄 등록 절차는 아래와 같습니다:
+
+1. 웹 브라우저에서 TA Admin Console에 접속합니다. 
+2. 로그인 화면에서 계정 정보를 입력하여 로그인합니다.  
+3. 사이드 메뉴에서 **Entity Management** 메뉴를 클릭합니다.
+4. **[QUICK REGISTER]** 버튼을 클릭합니다.  
+   <img src="./images/5-4.entity-management.png" width="600"/>
+5. 등록이 완료되면 테이블에 Issuer, Verifier, Wallet, CA 정보가 추가된 것을 확인합니다.  
+  <img src="./images/5-5.entity-management-after-quick.png" width="600"/>
+
+> ⚠️ **Entity 일괄 등록**기능은 테스트 목적으로만 사용해 주세요.  
+> 운영 환경에서는 반드시 정식 등록 절차를 따라야 합니다.
 
 <br/>
 
@@ -822,11 +892,11 @@ API Gateway Server의 리포지토리를 사용자의 로컬 컴퓨터로 복사
 
 <br/>
 
-## 5.4. Step 4: Entity Servers Installation and Registration
+## 5.4. Step 4: Entity Servers 설치 및 등록
 
 Entity는 Open DID 시스템에서 특정 역할을 수행하는 구성 요소를 말합니다. Open DID의 구성 요소는 Issuer, Verifier, CA, Wallet, API Gateway 등이 있습니다. API Gateway Server를 제외한 Entity 서버들은 TA 서버와 동일한 등록 과정을 거쳐야 합니다.
 
-### 5.4.1. Issuer Server Installation and Registration
+### 5.4.1. Issuer Server 설치 및 등록
 
 Issuer 서버는 발급 기관 서버로, 사용자에게 VC(Verifiable Credential)를 발급하는 역할을 합니다.
 Issuer 서버의 설치 및 Open DID 시스템 등록 방법은 다음과 같습니다.
@@ -845,41 +915,18 @@ Issuer 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 �
 
 #### 5.4.1.2. Issuer Server의 DID Document 등록
 
-Issuer 서버의 DID Document을 블록체인에 등록하는 과정으로, 등록 과정은 다음과 같습니다.
-
-1. TA Server의 DID Document 등록 페이지(http://192.168.1.1:8090/diddoc.html)로 접속합니다. 
-2. Entity DIDDoc 탭메뉴를 선택합니다.
-
-<img src="./images/tas_diddoc_register_issuer.png" width="800"/>
-
-1. 'Register Entity DIDDoc 영역'에서 '파일 선택' 버튼을 클릭합니다. 파일 선택 창이 나타나면 [4.6.2. Issuer Server의 DID Document 파일 생성](#462-issuer-server의-did-document-생성)에서 생성한 Issuer 서버의 DID Document 파일을 선택합니다.
-2. Role SelectBox에서 Issuer를 선택합니다.
-3. Name에 Issuer의 이름을 입력합니다. (예: RaonSecureIssuer) 
-4. Server URL에 Issuer Server의 API URL 'http://192.168.1.1:8091/issuer' 로 입력합니다.
-   > **참고**: Issuer Server의 API URL은 [Issuer 서버 주소]/issuer 입니다. 
-5. Certificate URL에 Issuer Server의 '가입증명서 조회 API URL'을 'http://192.168.1.1:8091/issuer/api/v1/certificate-vc' 로 입력합니다.
-    > **참고**: '가입증명서 조회 API URL'은 [Issuer 서버 주소]/issuer/api/v1/certificate-vc 입니다.
-6. 'Register' 버튼을 클릭합니다.
-7.  화면 하단의 'API Results'에 '{}'가 출력된 것을 확인합니다.
-
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 Issuer 서버를 등록 해주세요.
 <br/>
 
 #### 5.4.1.3. Issuer Server의 가입증명서 발급
 
-대부분의 Entity 서버들은 DID Document를 블록체인에 등록한 후, TA 서버로부터 가입 증명서(VC)를 발급받야 합니다. 이 과정은 Open DID에서 "Entity 등록 프로토콜"이라고 하며, [TAS API]에서 P120으로 명명되어 있습니다.
-
-Issuer 서버의 가입증명서 발급 과정은 다음과 같습니다.
-
-1. 웹 브라우저에서 Issuer 서버의 Swagger UI에 접속합니다. (http://192.168.1.1:8091/swagger-ui/index.html)
-2. enroll-entity-controller 영역의 `[POST] /issuer/api/v1/certificate-vc`에서 펼치기 버튼을 클릭한 후, `Try it out` 버튼을 클릭합니다. `Execute` 버튼이 나타나면 클릭합니다.
-
-<img src="./images/issuer_swagger_certificateVc.png" width="800"/>
-
-3. Responses 영역에서 HTTP 상태 코드가 200으로 출력되었는지 확인합니다.
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 Issuer 서버를 등록 해주세요.
 
 <br/>
 
-### 5.4.2. Verifier Server Installation and Registration
+### 5.4.2. Verifier Server 설치 및 등록
 
 Verifier Server는 검증 기관 서버로, 사용자가 제출한 VP(Verifiable Presentation)를 검증하는 역할을 합니다.
 Verifier Server의 설치 및 Open DID 시스템 등록 방법은 다음과 같습니다.
@@ -899,41 +946,19 @@ Verifier 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한
 
 #### 5.4.2.2. Verifier Server의 DID Document 등록
 
-Verifier 서버의 DID Document을 블록체인에 등록하는 과정으로, 등록 과정은 다음과 같습니다.
-
-1. TA Server의 DID Document 등록 페이지(http://192.168.1.1:8090/diddoc.html)로 접속합니다. 
-2. Entity DIDDoc 탭메뉴를 선택합니다.
-
-<img src="./images/tas_diddoc_register_verifier.png" width="800"/>
-
-1. 'Register Entity DIDDoc 영역'에서 '파일 선택' 버튼을 클릭합니다. 파일 선택 창이 나타나면 [4.6.3. Verifier Server의 DID Document 파일 생성](#463-verifier-server의-did-document-생성)에서 생성한 Verifier 서버의 DID Document 파일을 선택합니다.
-2. Role SelectBox에서 Verifier를 선택합니다.
-3. Name에 Verifier 이름을 입력합니다. (예: RaonSecureVerifier) 
-4. Server URL에 Verifier Server의 API URL 'http://192.168.1.1:8092/verifier' 로 입력합니다.
-   > **참고**: Verifier Server의 API URL은 [Verifier 서버 주소]/verifier 입니다. 
-5. Certificate URL에 Verifier Server의 '가입증명서 조회 API URL'을 'http://192.168.1.1:8092/verifier/api/v1/certificate-vc' 로 입력합니다.
-    > **참고**: '가입증명서 조회 API URL'은 [Verifier 서버 주소]/verifier/api/v1/certificate-vc 입니다.
-6. 'Register' 버튼을 클릭합니다.
-7.  화면 하단의 'API Results'에 '{}'가 출력된 것을 확인합니다.
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 Verifier 서버를 등록 해주세요.
 
 <br/>
 
 #### 5.4.2.3. Verifier Server의 가입증명서 발급
 
-대부분의 Entity 서버들은 DID Document를 블록체인에 등록한 후, TA 서버로부터 가입 증명서(VC)를 발급받야 합니다. 이 과정은 Open DID에서 "Entity 등록 프로토콜"이라고 하며, [TAS API]에서 P120으로 명명되어 있습니다.
-
-Verifier 서버의 가입증명서 발급 과정은 다음과 같습니다.
-
-1. 웹 브라우저에서 Verifier 서버의 Swagger UI에 접속합니다. (http://192.168.1.1:8092/swagger-ui/index.html)
-2. enroll-entity-controller 영역의 `[POST] /verifier/api/v1/certificate-vc`에서 펼치기 버튼을 클릭한 후, `Try it out` 버튼을 클릭합니다. `Execute` 버튼이 나타나면 클릭합니다.
-
-<img src="./images/verifier_swagger_certificateVc.png" width="800"/>
-
-3. Responses 영역에서 HTTP 상태 코드가 200으로 출력되었는지 확인합니다.
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 Verifier 서버를 등록 해주세요.
 
 <br/>
 
-### 5.4.3. CA Server Installation and Registration
+### 5.4.3. CA Server 설치 및 등록
 
 CA 서버는 인가 앱 서버로, 인가 앱을 Open DID 내에서 사용할 수 있도록 보증하는 역할을 합니다.
 CA 서버의 설치 및 Open DID 시스템 등록 방법은 다음과 같습니다.
@@ -952,41 +977,19 @@ CA 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, 
 
 #### 5.4.3.2. CA Server의 DID Document 등록
 
-CA 서버의 DID Document을 블록체인에 등록하는 과정으로, 등록 과정은 다음과 같습니다.
-
-1. TA Server의 DID Document 등록 페이지(http://192.168.1.1:8090/diddoc.html)로 접속합니다. 
-2. Entity DIDDoc 탭메뉴를 선택합니다.
-
-<img src="./images/tas_diddoc_register_cas.png" width="800"/>
-
-1. 'Register Entity DIDDoc 영역'에서 '파일 선택' 버튼을 클릭합니다. 파일 선택 창이 나타나면 [4.6.4. CA Server의 DID Document 파일 생성](#464-ca-server의-did-document-생성)에서 생성한 CA 서버의 DID Document 파일을 선택합니다.
-2. Role SelectBox에서 AppProvider를 선택합니다.
-3. Name에 CA 이름을 입력합니다. (예: RaonSecureCas) 
-4. Server URL에 CA Server의 API URL 'http://192.168.1.1:8094/cas' 로 입력합니다.
-   > **참고**: CA Server의 API URL은 [CA 서버 주소]/cas 입니다. 
-5. Certificate URL에 CA Server의 '가입증명서 조회 API URL'을 'http://192.168.1.1:8094/cas/api/v1/certificate-vc' 로 입력합니다.
-    > **참고**: '가입증명서 조회 API URL'은 [CA 서버 주소]/cas/api/v1/certificate-vc 입니다.
-6. 'Register' 버튼을 클릭합니다.
-7.  화면 하단의 'API Results'에 '{}'가 출력된 것을 확인합니다.
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 CA 서버를 등록 해주세요.
 
 <br/>
 
 #### 5.4.3.3. CA Server의 가입증명서 발급
 
-대부분의 Entity 서버들은 DID Document를 블록체인에 등록한 후, TA 서버로부터 가입 증명서(VC)를 발급받야 합니다. 이 과정은 Open DID에서 "Entity 등록 프로토콜"이라고 하며, [TAS API]에서 P120으로 명명되어 있습니다.
-
-CA 서버의 가입증명서 발급 과정은 다음과 같습니다.
-
-1. 웹 브라우저에서 CA 서버의 Swagger UI에 접속합니다. (http://192.168.1.1:8094/swagger-ui/index.html)
-2. enroll-entity-controller 영역의 `[POST] /cas/api/v1/certificate-vc`에서 펼치기 버튼을 클릭한 후, `Try it out` 버튼을 클릭합니다. `Execute` 버튼이 나타나면 클릭합니다.
-
-<img src="./images/cas_swagger_certificateVc.png" width="800"/>
-
-3. Responses 영역에서 HTTP 상태 코드가 200으로 출력되었는지 확인합니다.
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 CA 서버를 등록 해주세요.
 
 <br/>
 
-### 5.4.4. Wallet Server Installation and Registration
+### 5.4.4. Wallet Server 설치 및 등록
 
 Wallet 서버는 사용자의 Wallet을 Open DID 내에서 사용할 수 있도록 보증하는 역할을 합니다.
 Wallet 서버의 설치 및 Open DID 시스템 등록 방법은 다음과 같습니다.
@@ -1005,37 +1008,15 @@ Wallet 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 �
 
 #### 5.4.4.2. Wallet Server의 DID Document 등록
 
-Wallet 서버의 DID Document을 블록체인에 등록하는 과정으로, 등록 과정은 다음과 같습니다.
-
-1. TA Server의 DID Document 등록 페이지(http://192.168.1.1:8090/diddoc.html)로 접속합니다. 
-2. Entity DIDDoc 탭메뉴를 선택합니다.
-
-<img src="./images/tas_diddoc_register_wallet.png" width="800"/>
-
-3. 'Register Entity DIDDoc 영역'에서 '파일 선택' 버튼을 클릭합니다. 파일 선택 창이 나타나면 '4.5.5. Wallet Server의 DID Document 파일 생성'에서 생성한 Wallet 서버의 DID Document 파일을 선택합니다.
-4. Role SelectBox에서 WalletProvider를 선택합니다.
-5. Name에 Wallet 이름을 입력합니다. (예: RaonSecureWallet) 
-6. Server URL에 Wallet Server의 API URL 'http://192.168.1.1:8095/wallet' 로 입력합니다.
-   > **참고**: Wallet Server의 API URL은 [Wallet 서버 주소]/wallet 입니다. 
-7. Certificate URL에 CA Server의 '가입증명서 조회 API URL'을 'http://192.168.1.1:8095/wallet/api/v1/certificate-vc' 로 입력합니다.
-    > **참고**: '가입증명서 조회 API URL'은 [Wallet 서버 주소]/wallet/api/v1/certificate-vc 입니다.
-8. 'Register' 버튼을 클릭합니다.
-9.  화면 하단의 'API Results'에 '{}'가 출력된 것을 확인합니다.
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 Wallet 서버를 등록 해주세요.
 
 <br/>
 
 #### 5.4.4.3. Wallet Server의 가입증명서 발급
 
-대부분의 Entity 서버들은 DID Document를 블록체인에 등록한 후, TA 서버로부터 가입 증명서(VC)를 발급받야 합니다. 이 과정은 Open DID에서 "Entity 등록 프로토콜"이라고 하며, [TAS API]에서 P120으로 명명되어 있습니다.
-
-Wallet 서버의 가입증명서 발급 과정은 다음과 같습니다.
-
-1. 웹 브라우저에서 Wallet 서버의 Swagger UI에 접속합니다. (http://192.168.1.1:8095/swagger-ui/index.html)
-2. enroll-entity-controller 영역의 `[POST] /wallet/api/v1/certificate-vc`에서 펼치기 버튼을 클릭한 후, `Try it out` 버튼을 클릭합니다.
-
-<img src="./images/wallet_swagger_certificateVc.png" width="800"/>
-
-3. Responses 영역에서 HTTP 상태 코드가 200으로 출력되었는지 확인합니다.
+해당 기능은 현재 준비 중이며, **2025년 6월 중 업데이트될 예정**입니다.  
+기능이 정식 배포되기 전까지는 [5.2.3. Entity 일괄 등록 (테스트용)](#523-entity-일괄-등록-테스트용) 절차를 따라 Wallet 서버를 등록 해주세요.
 
 <br/>
 

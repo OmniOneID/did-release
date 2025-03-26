@@ -23,8 +23,13 @@ Open DID Installation Guide
 
 Table of Contents
 ==
+- [Open DID Installation Guide](#open-did-installation-guide)
+- [Table of Contents](#table-of-contents)
 - [1. Overview](#1-overview)
 - [2. Installation Overview](#2-installation-overview)
+  - [2.1. Quick Installation with Orchestrator](#21-quick-installation-with-orchestrator)
+    - [2.1.1. Installing Orchestrator](#211-installing-orchestrator)
+    - [2.1.2. Installing and Running Servers with Orchestrator](#212-installing-and-running-servers-with-orchestrator)
 - [3. System Requirements](#3-system-requirements)
   - [3.1. Server](#31-server)
   - [3.2. App](#32-app)
@@ -56,8 +61,8 @@ Table of Contents
     - [5.1.2. Deploying the Open DID Chaincode](#512-deploying-the-open-did-chaincode)
   - [5.2. Step 2: TA Server Installation and Registration](#52-step-2-ta-server-installation-and-registration)
     - [5.2.1. TA Server Installation and Launch](#521-ta-server-installation-and-launch)
-    - [5.2.2. Registering the DID Document of the TA Server](#522-registering-the-did-document-of-the-ta-server)
-    - [5.2.3. Issuing the Joining Certificate for the TA Server](#523-issuing-the-joining-certificate-for-the-ta-server)
+    - [5.2.2. Registering the TA Server](#522-registering-the-ta-server)
+    - [5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing)
   - [5.3. Step 3: API Gateway Installation](#53-step-3-api-gateway-installation)
     - [5.3.1. API Gateway Server Installation and Launch](#531-api-gateway-server-installation-and-launch)
   - [5.4. Step 4: Entity Servers Installation and Registration](#54-step-4-entity-servers-installation-and-registration)
@@ -133,6 +138,12 @@ Below are the main contents covered in each chapter:
 
 
 # 2. Installation Overview
+
+> ⚠️ Note  
+> Currently, Open DID servers **officially support only the Orchestrator-based installation method**.  
+> Manual server installation and Open DID registration features are **scheduled to be officially supported in June 2024**.  
+> Until then, please follow the steps in [2.1. Quick Installation Using Orchestrator](#21-quick-installation-using-orchestrator).
+
 
 This chapter guides you through the components and installation sequence of the Open DID project.
 
@@ -224,6 +235,78 @@ The above process is illustrated as follows:
 |    +-----------------------------+                            |
 +---------------------------------------------------------------+
 ```
+
+<br/>
+
+## 2.1. Quick Installation with Orchestrator
+
+Installing Open DID can be complex due to its various components and configurations. For first-time users or those who want to quickly build a test environment, it might feel overwhelming.
+
+To address this, Open DID provides an integrated installation tool called **Orchestrator**.  
+Orchestrator allows you to easily install and configure all components through a single web interface.
+
+Orchestrator offers the following features:
+
+- Installation and deployment of the Hyperledger Fabric blockchain
+- Installation and initialization of PostgreSQL
+- Start / Stop / Status check of each server
+- Automatic generation of Wallet files and DID Documents for each server
+- Direct access to each server’s Admin page and Swagger UI
+
+### 2.1.1. Installing Orchestrator
+
+Detailed installation instructions for Orchestrator can be found in the separate installation guide.  
+Please refer to the document below to proceed with the installation:
+
+> **Reference**
+> - [Orchestrator Installation and Operation Guide](https://github.com/OmniOneID/did-orchestrator-server/blob/develop/docs/installation/OpenDID_orchestrator_InstallationAndOperation_Guide_ko.md)
+
+<br/>
+
+### 2.1.2. Installing and Running Servers with Orchestrator
+
+Once Orchestrator is installed, you can use its web UI to install and run each component individually.  
+The image below shows the initial Orchestrator screen with the location of key features:
+
+<img src="./images/2-1.orchestrator-main.png" width="800"/>
+
+---
+
+Follow the steps below to install and run servers through Orchestrator:
+
+1. **Install the Blockchain**  
+   - In the `Repositories` table, click the **Start** button (①) for the **Hyperledger Fabric** item.  
+   - The blockchain will be installed and launched, and the status indicator will turn green.
+
+2. **Install PostgreSQL**  
+   - In the `Repositories` table, click the **Start** button (②) for the **PostgreSQL** item.  
+   - The database will be installed and launched, and the status indicator will turn green.
+
+3. **Automatically Generate Wallets and DID Documents**  
+   - In the `Quick Start` table, click the **Generate All** button (③) for the **All Entities** item.  
+   - Wallet files and DID Documents required by each server will be automatically generated.
+
+4. **Install and Start Servers**  
+   - In the `Servers` table, click the **Start** button (④~⑨) for each server:
+     - (④) `TAS (8090)`
+     - (⑤) `Issuer (8091)`
+     - (⑥) `Verifier (8092)`
+     - (⑦) `CAS (8094)`
+     - (⑧) `WalletService (8095)`
+     - (⑨) `API (8093)`
+   - Each server will be installed and launched, and the status indicator will turn green.
+
+> **Note:**  
+> Some servers may take a while during installation or initial launch.  
+> If a server's status remains red even after installation, try refreshing the page (F5).
+
+> You can also use the **[Settings]** and **[Swagger]** buttons on the right side of each server entry  
+> to directly access the server's Admin console or Swagger documentation.
+
+---
+
+Once all servers are running, the next step is to register each server in the Open DID system using the Admin Console.  
+For detailed instructions, refer to [2.1.3 Registering Servers after Orchestrator Installation](#213
 
 <br/>
 
@@ -686,34 +769,78 @@ In this guide, we assume the TA server's access address is 'http://192.168.1.1:8
 
 <br/>
 
-### 5.2.2. Registering the DID Document of the TA Server
+### 5.2.2. Registering the TA Server
 
-This section covers the process of registering the TA server's DID Document on the blockchain. The registration steps are as follows:
+This section covers how to register the TA server's DID Document on the blockchain and **self-issue the joining certificate VC**.  
+Please follow the steps below:
 
-1. Access the DID Document registration page in your web browser at http://192.168.1.1:8090/diddoc.html.
-   <img src="./images/tas_diddoc_register_tas.png" height="400"/>
-2. Select the "TAS DIDDoc" tab menu.
-3. In the "Register TAS DIDDoc" area, click the "Choose File" button. When the file selection window appears, select the TA server's DID Document file generated in [4.6.1. Creating the DID Document for the TA Server](#461-creating-the-did-document-for-the-ta-server).
-4. Click the "Register" button.
-5. Verify that '{}' is displayed in the "API Results" section at the bottom of the screen.
+1. Open a web browser and access the TA Admin Console.  
+   - URL: `http://192.168.1.1:8090`
+
+2. On the login page, log in with the following credentials:  
+   - ① Email: `admin@opendid.omnione.net`  
+   - ② Password: `omnioneopendid12!@`  
+   - ③ Click the **[SIGN IN]** button to log in.  
+   <img src="./images/5-1.ta-login.png" width="400"/>
+
+3. On the main screen, confirm that you have navigated to the **TA Registration** menu.
+
+4. On the **Trust Agent Quick Registration** screen, enter the following information:  
+   - ① **Server URL**: `http://192.168.1.1:8090/tas`  
+   - ② Click the **[QUICK REGISTER]** button.  
+   <img src="./images/5-2.ta-registration.png" width="800"/>
+
+> ⚠️ ***Quick Register*** is a temporary feature.  
+> Full TA registration involves multiple steps and is planned to be officially released in June.
+
+5. When the success popup appears, click the **OK** button.
+
+6. Navigate to the **TA Management** menu and verify that the registered TA information is displayed.  
+   <img src="./images/5-3.ta-management.png" width="600"/>
 
 <br/>
 
+### 5.2.3. Bulk Entity Registration (For Testing)
 
-### 5.2.3. Issuing the Joining Certificate for the TA Server
+> **Note:**  
+> This procedure assumes you are using the **Orchestrator environment**.  
+> To use the bulk entity registration feature, you must first **install and run all servers using Orchestrator**  
+> and use the `Generate All` feature to pre-generate DID Documents and Wallet files for each server.  
+> For details, refer to the [2.1. Quick Installation with Orchestrator](#21-quick-installation-with-orchestrator) section.
 
-After registering its DID Document on the blockchain, the TA server must issue a joining certificate VC for itself. This process is referred to as the "TAS Registration Protocol" in Open DID and is designated as P110 in the [TAS API](TAS API).
+---
 
-The steps for issuing the joining certificate for the TA server are as follows:
+Most Entity servers are registered in the Open DID system through the TA server.  
+In a production environment, the following **formal registration process** should be followed:
 
-1. Access the Swagger UI of the TA server in your web browser. (http://192.168.1.1:8090/swagger-ui/index.html)
-   <img src="./images/tas_swagger_main.png" height="400"/>
+1. The **Entity administrator** creates the DID Document from the Entity Admin page.  
+2. The DID Document is **sent to the TA Admin for blockchain registration**.  
+3. The **TA administrator** approves the request and **registers the DID Document on the blockchain**.  
+4. The Entity administrator **requests issuance of the joining certificate (VC)** to complete the registration in Open DID.
 
-2. In the `tas-controller` section, click the expand button for `[POST] /tas/api/v1/request-enroll-tas`, then click the `Try it out` button.
-3. In the JSON of the request body, change the value of `password` to 'VoOyEuOyal' and click the `Execute` button.
-   <img src="./images/tas_swagger_certificateVc.png" height="400"/>
+---
 
-4. Check if the HTTP status code in the "Responses" section shows 200.
+In a test environment, you can use the **[Bulk Register Entities]** feature provided by the TA Admin.  
+This feature automatically performs the following actions for all Entity servers:
+- Registers each Entity’s DID Document on the blockchain
+- Issues the joining certificate
+- Delivers the certificate to each Entity server
+
+---
+
+Follow the steps below to perform bulk entity registration:
+
+1. Open a web browser and access the TA Admin Console.  
+2. Log in using the admin credentials.  
+3. Click on the **Entity Management** menu in the sidebar.  
+4. Click the **[QUICK REGISTER]** button.  
+   <img src="./images/5-4.entity-management.png" width="600"/>
+
+5. Once registration is complete, verify that Issuer, Verifier, Wallet, and CA information has been added to the table.  
+   <img src="./images/5-5.entity-management-after-quick.png" width="600"/>
+
+> ⚠️ Please note: The **Bulk Entity Registration** feature is for testing purposes only.  
+> In a production environment, you must follow the official registration process.
 
 <br/>
 
@@ -753,37 +880,17 @@ In this guide, we assume the Issuer server's access address is 'http://192.168.1
 
 #### 5.4.1.2. Registering the DID Document of the Issuer Server
 
-The process of registering the Issuer server's DID Document on the blockchain is as follows:
-
-1. Access the DID Document registration page on the TA Server (http://192.168.1.1:8090/diddoc.html).
-2. Select the "Entity DIDDoc" tab menu.
-
-   <img src="./images/tas_diddoc_register_issuer.png" width="800"/>
-
-3. In the "Register Entity DIDDoc" area, click the "Choose File" button. When the file selection window appears, select the DID Document file for the Issuer server that was created in [4.6.2. Creating the DID Document for the Issuer Server](#462-creating-the-did-document-for-the-issuer-server).
-4. In the Role SelectBox, choose "Issuer."
-5. Enter the name of the Issuer in the "Name" field (e.g., RaonSecureIssuer).
-6. In the "Server URL" field, enter the API URL for the Issuer Server: 'http://192.168.1.1:8091/issuer'.
-   > **Note**: The API URL of the Issuer Server is [Issuer server address]/issuer.
-7. In the "Certificate URL" field, enter the "Certificate Retrieval API URL" of the Issuer Server: 'http://192.168.1.1:8091/issuer/api/v1/certificate-vc'.
-   > **Note**: The "Certificate Retrieval API URL" is [Issuer server address]/issuer/api/v1/certificate-vc.
-8. Click the "Register" button.
-9. Verify that '{}' is displayed in the "API Results" section at the bottom of the screen.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the Issuer server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
 #### 5.4.1.3. Issuing the Joining Certificate for the Issuer Server
 
-Most Entity servers must obtain a joining certificate (VC) from the TA server after registering their DID Document on the blockchain. This process is called the "Entity Registration Protocol" in Open DID and is designated as P120 in the [TAS API].
-
-The steps for issuing the joining certificate for the Issuer server are as follows:
-
-1. Access the Swagger UI of the Issuer server in your web browser. (http://192.168.1.1:8091/swagger-ui/index.html)
-2. In the `enroll-entity-controller` section, click the expand button for `[POST] /issuer/api/v1/certificate-vc`, then click the `Try it out` button. When the `Execute` button appears, click it.
-
-   <img src="./images/issuer_swagger_certificateVc.png" width="800"/>
-
-3. Verify that the HTTP status code in the "Responses" section shows 200.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the Issuer server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
@@ -804,38 +911,17 @@ In this guide, we assume the Verifier server's access address is 'http://192.168
 
 #### 5.4.2.2. Registering the DID Document of the Verifier Server
 
-The process of registering the Verifier server's DID Document on the blockchain is as follows:
-
-1. Access the DID Document registration page on the TA Server (http://192.168.1.1:8090/diddoc.html).
-2. Select the "Entity DIDDoc" tab menu.
-
-   <img src="./images/tas_diddoc_register_verifier.png" width="800"/>
-
-3. In the "Register Entity DIDDoc" area, click the "Choose File" button. When the file selection window appears, select the DID Document file for the Verifier server that was created in [4.6.3. Creating the DID Document for the Verifier Server](#463-creating-the-did-document-for-the-verifier-server).
-4. In the Role SelectBox, choose "Verifier."
-5. Enter the name of the Verifier in the "Name" field (e.g., RaonSecureVerifier).
-6. In the "Server URL" field, enter the API URL for the Verifier Server: 'http://192.168.1.1:8092/verifier'.
-   > **Note**: The API URL of the Verifier Server is [Verifier server address]/verifier.
-7. In the "Certificate URL" field, enter the "Certificate Retrieval API URL" of the Verifier Server: 'http://192.168.1.1:8092/verifier/api/v1/certificate-vc'.
-   > **Note**: The "Certificate Retrieval API URL" is [Verifier server address]/verifier/api/v1/certificate-vc.
-8. Click the "Register" button.
-9. Verify that '{}' is displayed in the "API Results" section at the bottom of the screen.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the Verifier server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
-
 #### 5.4.2.3. Issuing the Joining Certificate for the Verifier Server
 
-Most Entity servers must obtain a joining certificate (VC) from the TA server after registering their DID Document on the blockchain. This process is called the "Entity Registration Protocol" in Open DID and is designated as P120 in the [TAS API].
-
-The steps for issuing the joining certificate for the Verifier server are as follows:
-
-1. Access the Swagger UI of the Verifier server in your web browser. (http://192.168.1.1:8092/swagger-ui/index.html)
-2. In the `enroll-entity-controller` section, click the expand button for `[POST] /verifier/api/v1/certificate-vc`, then click the `Try it out` button. When the `Execute` button appears, click it.
-
-   <img src="./images/verifier_swagger_certificateVc.png" width="800"/>
-
-3. Verify that the HTTP status code in the "Responses" section shows 200.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the Verifier server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
@@ -857,37 +943,17 @@ In this guide, we assume the CA server's access address is 'http://192.168.1.1:8
 
 #### 5.4.3.2. Registering the DID Document of the CA Server
 
-The process of registering the CA server's DID Document on the blockchain is as follows:
-
-1. Access the DID Document registration page on the TA Server (http://192.168.1.1:8090/diddoc.html).
-2. Select the "Entity DIDDoc" tab menu.
-
-   <img src="./images/tas_diddoc_register_cas.png" width="800"/>
-
-3. In the "Register Entity DIDDoc" area, click the "Choose File" button. When the file selection window appears, select the DID Document file for the CA server that was created in [4.6.4. Creating the DID Document for the CA Server](#464-creating-the-did-document-for-the-ca-server).
-4. In the Role SelectBox, choose "AppProvider."
-5. Enter the name of the CA in the "Name" field (e.g., RaonSecureCas).
-6. In the "Server URL" field, enter the API URL for the CA Server: 'http://192.168.1.1:8094/cas'.
-   > **Note**: The API URL of the CA Server is [CA server address]/cas.
-7. In the "Certificate URL" field, enter the "Certificate Retrieval API URL" of the CA Server: 'http://192.168.1.1:8094/cas/api/v1/certificate-vc'.
-   > **Note**: The "Certificate Retrieval API URL" is [CA server address]/cas/api/v1/certificate-vc.
-8. Click the "Register" button.
-9. Verify that '{}' is displayed in the "API Results" section at the bottom of the screen.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the CA server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
 #### 5.4.3.3. Issuing the Joining Certificate for the CA Server
 
-Most Entity servers must obtain a joining certificate (VC) from the TA server after registering their DID Document on the blockchain. This process is called the "Entity Registration Protocol" in Open DID and is designated as P120 in the [TAS API].
-
-The steps for issuing the joining certificate for the CA server are as follows:
-
-1. Access the Swagger UI of the CA server in your web browser. (http://192.168.1.1:8094/swagger-ui/index.html)
-2. In the `enroll-entity-controller` section, click the expand button for `[POST] /cas/api/v1/certificate-vc`, then click the `Try it out` button. When the `Execute` button appears, click it.
-
-   <img src="./images/cas_swagger_certificateVc.png" width="800"/>
-
-3. Verify that the HTTP status code in the "Responses" section shows 200.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the CA server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
@@ -909,37 +975,17 @@ In this guide, we assume the Wallet server's access address is 'http://192.168.1
 
 #### 5.4.4.2. Registering the DID Document of the Wallet Server
 
-The process of registering the Wallet server's DID Document on the blockchain is as follows:
-
-1. Access the DID Document registration page on the TA Server (http://192.168.1.1:8090/diddoc.html).
-2. Select the "Entity DIDDoc" tab menu.
-
-   <img src="./images/tas_diddoc_register_wallet.png" width="800"/>
-
-3. In the "Register Entity DIDDoc" area, click the "Choose File" button. When the file selection window appears, select the DID Document file for the Wallet server created in '4.5.5. Creating the DID Document for the Wallet Server.'
-4. In the Role SelectBox, choose "WalletProvider."
-5. Enter the name of the Wallet in the "Name" field (e.g., RaonSecureWallet).
-6. In the "Server URL" field, enter the API URL for the Wallet Server: 'http://192.168.1.1:8095/wallet'.
-   > **Note**: The API URL of the Wallet Server is [Wallet server address]/wallet.
-7. In the "Certificate URL" field, enter the "Certificate Retrieval API URL" of the Wallet Server: 'http://192.168.1.1:8095/wallet/api/v1/certificate-vc'.
-   > **Note**: The "Certificate Retrieval API URL" is [Wallet server address]/wallet/api/v1/certificate-vc.
-8. Click the "Register" button.
-9. Verify that '{}' is displayed in the "API Results" section at the bottom of the screen.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the Wallet server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
 #### 5.4.4.3. Issuing the Joining Certificate for the Wallet Server
 
-Most Entity servers must obtain a joining certificate (VC) from the TA server after registering their DID Document on the blockchain. This process is called the "Entity Registration Protocol" in Open DID and is designated as P120 in the [TAS API].
-
-The steps for issuing the joining certificate for the Wallet server are as follows:
-
-1. Access the Swagger UI of the Wallet server in your web browser. (http://192.168.1.1:8095/swagger-ui/index.html)
-2. In the `enroll-entity-controller` section, click the expand button for `[POST] /wallet/api/v1/certificate-vc`, then click the `Try it out` button.
-
-   <img src="./images/wallet_swagger_certificateVc.png" width="800"/>
-
-3. Verify that the HTTP status code in the "Responses" section shows 200.
+This feature is currently under development and is **scheduled to be updated in June 2025**.  
+Until the official release, please register the Wallet server using the procedure described in  
+[5.2.3. Bulk Entity Registration (For Testing)](#523-bulk-entity-registration-for-testing).
 
 <br/>
 
