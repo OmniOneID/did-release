@@ -18,7 +18,7 @@ puppeteer:
 Open DID Installation Guide
 ==
 
-- Date: 2025-04-01
+- Date: 2025-03-31
 - Version: v1.0.0
 
 목차
@@ -275,15 +275,27 @@ Orchestrator 설치가 완료되면 웹 UI를 통해 각 구성요소를 개별�
    - `Repositories` 테이블의 **Hyperledger Fabric** 항목에서 **Start** 버튼(①)을 클릭합니다.  
    - 블록체인이 설치되고 실행되며, Status가 녹색 원으로 변경됩니다.
 
-2. **PostgreSQL 설치**  
+---
+> ⚠️ 주의사항  
+> 로컬 환경에서 테스트할 경우, 블록체인 노드의 도메인 주소(`peer0.org1.example.com` 등)는 실제 존재하지 않기 때문에  
+> `hosts` 파일에 아래와 같이 수동으로 IP 매핑을 추가해야 합니다.  
+> 
+> ```text
+> 127.0.0.1 peer0.org1.example.com  
+> 127.0.0.1 peer0.org2.example.com  
+> 127.0.0.1 orderer.example.com
+> ```
+---
+
+1. **PostgreSQL 설치**  
    - `Repositories` 테이블의 **PostgreSQL** 항목에서 **Start** 버튼(②)을 클릭합니다.  
    - Database가 설치되고 실행되며, Status가 녹색 원으로 변경됩니다.
 
-3. **Wallet 및 DID Document 자동 생성**  
+2. **Wallet 및 DID Document 자동 생성**  
    - `Quick Start` 테이블의 **All Entities** 항목에서 **Generate All** 버튼(③)을 클릭합니다.  
    - 모든 서버에 필요한 Wallet 파일 및 DID Document가 자동으로 생성됩니다.
 
-4. **서버 설치 및 구동**  
+3. **서버 설치 및 구동**  
    - `Servers` 테이블에서 각 서버 항목의 **Start** 버튼(④~⑨)을 클릭합니다.  
      - (④) `TAS (8090)`
      - (⑤) `Issuer (8091)`
@@ -293,13 +305,13 @@ Orchestrator 설치가 완료되면 웹 UI를 통해 각 구성요소를 개별�
      - (⑨) `API (8093)`
    - 각 서버가 설치되고 실행되며, Status가 녹색 원으로 변경됩니다.
 
+---
 > **참고:**  
 > 일부 서버는 설치 또는 초기 실행에 다소 시간이 소요될 수 있습니다.  
 > 설치가 완료되었음에도 불구하고 **Status가 빨간 원으로 표시될 경우**, 화면을 새로고침(F5)하여 상태를 다시 확인해 주세요.
 
 > 각 서버 항목의 오른쪽에는 **[Settings]**, **[Swagger]** 버튼이 제공되며,  
 > 이를 통해 해당 서버의 Admin 페이지 및 Swagger 문서 페이지로 바로 이동할 수 있습니다.
-
 ---
 
 이제 각 서버가 구동된 상태이며, 다음 단계에서는 서버별 Admin Console을 통해 Open DID 시스템에 등록하는 절차를 진행합니다.  
@@ -327,10 +339,11 @@ Open DID 시스템 등록은 반드시 **정해진 순서에 따라 진행**해�
 | 1    | TA        | TA 서버 등록     | 5.2.2절 참조 | TA 서버 등록                           |
 | 2    | TA        | Entity 일괄 등록 | 5.2.3절 참조 | Issuer, Verifier, CA, Wallet 서버 등록 |
 
-
+---
 > ⚠️ 주의사항  
 > 현재 테스트 편의성을 위해 **TA Admin 페이지에서 모든 Entity 서버를 일괄 등록하는 기능**이 제공됩니다.  
 > 이 방식은 임시로 제공되는 기능이며, **2024년 6월 이후에는 Entity 서버가 직접 등록 요청을 보내는 방식으로 전환될 예정입니다.**
+---
 
 <br/>
 
@@ -756,6 +769,18 @@ Open DID는 블록체인 기술로 Hyperledger Fabric을 지원합니다. Hyperl
 1. Hyperledger Fabric 테스트 네트워크 설치
 2. Open DID 체인코드 배포
 
+---
+> ⚠️ 주의사항  
+> 로컬 환경에서 테스트할 경우, 블록체인 노드의 도메인 주소(`peer0.org1.example.com` 등)는 실제 존재하지 않기 때문에  
+> `hosts` 파일에 아래와 같이 수동으로 IP 매핑을 추가해야 합니다.  
+> 
+> ```text
+> 127.0.0.1 peer0.org1.example.com  
+> 127.0.0.1 peer0.org2.example.com  
+> 127.0.0.1 orderer.example.com
+> ```
+---
+
 <br/>
 
 ### 5.1.1. Hyperledger Fabric 테스트 네트워크 설치
@@ -824,10 +849,10 @@ TA 서버의 DID Document를 블록체인에 등록하고, **가입 증명서 VC
    - ① **Server URL**: `http://192.168.1.1:8090/tas`  
    - ② **[QUICK REGISTER]** 버튼을 클릭합니다.  
   <img src="./images/5-2.ta-registration.png" width="800"/>
-
+---
 > ⚠️ ***Quick Register*** *는 임시 기능입니다.*  
 > *실제 TA 등록은 여러 단계를 거쳐야 하며, 해당 기능은 6월 중 정식 반영될 예정입니다.*
-
+---
 5. 등록 성공 팝업이 나타나면 **확인** 버튼을 클릭합니다.
 
 6. **TA Management** 메뉴로 이동하여, 등록된 TA 정보가 표시되었는지 확인합니다.
@@ -871,8 +896,10 @@ Entity 일괄 등록 절차는 아래와 같습니다:
 5. 등록이 완료되면 테이블에 Issuer, Verifier, Wallet, CA 정보가 추가된 것을 확인합니다.  
   <img src="./images/5-5.entity-management-after-quick.png" width="600"/>
 
+---
 > ⚠️ **Entity 일괄 등록**기능은 테스트 목적으로만 사용해 주세요.  
 > 운영 환경에서는 반드시 정식 등록 절차를 따라야 합니다.
+---
 
 <br/>
 

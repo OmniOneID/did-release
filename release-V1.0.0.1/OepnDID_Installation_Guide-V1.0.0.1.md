@@ -18,7 +18,7 @@ puppeteer:
 Open DID Installation Guide
 ==
 
-- Date: 2024-09-07
+- Date: 2025-03-31
 - Version: v1.0.0
 
 Table of Contents
@@ -29,6 +29,8 @@ Table of Contents
   - [2.1. Quick Installation with Orchestrator](#21-quick-installation-with-orchestrator)
     - [2.1.1. Installing Orchestrator](#211-installing-orchestrator)
     - [2.1.2. Installing and Running Servers with Orchestrator](#212-installing-and-running-servers-with-orchestrator)
+    - [2.1.3. Registering Installed Servers to the Open DID System](#213-registering-installed-servers-to-the-open-did-system)
+    - [2.1.4. Installing the App](#214-installing-the-app)
 - [3. System Requirements](#3-system-requirements)
   - [3.1. Server](#31-server)
   - [3.2. App](#32-app)
@@ -277,6 +279,19 @@ Follow the steps below to install and run servers through Orchestrator:
    - In the `Repositories` table, click the **Start** button (①) for the **Hyperledger Fabric** item.  
    - The blockchain will be installed and launched, and the status indicator will turn green.
 
+---
+> ⚠️ **Note**  
+> When testing in a local environment, the domain names of the blockchain nodes (e.g., `peer0.org1.example.com`) do not actually exist.  
+> Therefore, you must manually add the following IP mappings to your system’s `hosts` file.  
+> Otherwise, the blockchain containers may not be able to communicate properly.
+>
+> ```text
+> 127.0.0.1 peer0.org1.example.com  
+> 127.0.0.1 peer0.org2.example.com  
+> 127.0.0.1 orderer.example.com
+> ```
+---
+
 2. **Install PostgreSQL**  
    - In the `Repositories` table, click the **Start** button (②) for the **PostgreSQL** item.  
    - The database will be installed and launched, and the status indicator will turn green.
@@ -295,19 +310,65 @@ Follow the steps below to install and run servers through Orchestrator:
      - (⑨) `API (8093)`
    - Each server will be installed and launched, and the status indicator will turn green.
 
+---
 > **Note:**  
 > Some servers may take a while during installation or initial launch.  
 > If a server's status remains red even after installation, try refreshing the page (F5).
 
 > You can also use the **[Settings]** and **[Swagger]** buttons on the right side of each server entry  
 > to directly access the server's Admin console or Swagger documentation.
-
 ---
+
 
 Once all servers are running, the next step is to register each server in the Open DID system using the Admin Console.  
 For detailed instructions, refer to [2.1.3 Registering Servers after Orchestrator Installation](#213
 
 <br/>
+
+### 2.1.3. Registering Installed Servers to the Open DID System
+
+Although the servers have been installed and launched via Orchestrator,  
+**registration to the Open DID system** is required for each server to operate properly within the system.  
+This registration process is performed through each server's Admin page.
+
+This document covers the steps required to register the installed servers to the Open DID system.  
+For detailed configuration and operational instructions after registration, please refer to each server’s Admin setup guide.
+
+---
+
+The registration process **must be performed in a specific order**.  
+The table below outlines the registration steps for each component in the correct sequence:
+
+| Order | Component | Configuration Item     | Section Reference | Description                                 |
+|-------|-----------|------------------------|-------------------|---------------------------------------------|
+| 1     | TA        | Register TA Server     | See Section 5.2.2 | Register the TA Server                      |
+| 2     | TA        | Batch Register Entities| See Section 5.2.3 | Register Issuer, Verifier, CA, and Wallet servers |
+
+---
+> ⚠️ **Note**  
+> For convenience during testing, the **TA Admin page currently provides a batch registration feature**  
+> that allows all Entity servers to be registered at once.  
+> This is a temporary feature and is expected to be replaced after **June 2024**  
+> by a method where each Entity server independently sends a registration request.
+---
+
+<br/>
+
+### 2.1.4. Installing the App
+
+Once the steps in Section 2.1.3 are completed, all server configurations required for registration in the Open DID system are finished.  
+Now, to allow users to interact with the Open DID system, the **mobile App must be installed**.
+
+The Open DID App supports both **Android** and **iOS** platforms.  
+Follow the appropriate environment setup and installation process for each platform.
+
+Please refer to the following documentation for installation instructions:
+
+- [5.6.1. Android App Installation](#561-android-app-installation)
+- [5.6.2. iOS App Installation](#562-ios-app-installation)
+
+<br/>
+
 
 # 3. System Requirements
 This chapter explains the requirements needed to install the Open DID platform. To run the servers and apps, the environment must meet the requirements specified in each section.
@@ -720,6 +781,19 @@ Open DID supports Hyperledger Fabric as its blockchain technology. To install Hy
 1. Install the Hyperledger Fabric test network
 2. Deploy the Open DID chaincode
 
+---
+> ⚠️ **Note**  
+> When testing in a local environment, the domain names of the blockchain nodes (e.g., `peer0.org1.example.com`) do not actually exist.  
+> Therefore, you must manually add the following IP mappings to your system’s `hosts` file.  
+> Otherwise, the blockchain containers may not be able to communicate properly.
+>
+> ```text
+> 127.0.0.1 peer0.org1.example.com  
+> 127.0.0.1 peer0.org2.example.com  
+> 127.0.0.1 orderer.example.com
+> ```
+---
+
 <br/>
 
 ### 5.1.1. Installing the Hyperledger Fabric Test Network
@@ -789,8 +863,10 @@ Please follow the steps below:
    - ② Click the **[QUICK REGISTER]** button.  
    <img src="./images/5-2.ta-registration.png" width="800"/>
 
+---
 > ⚠️ ***Quick Register*** is a temporary feature.  
 > Full TA registration involves multiple steps and is planned to be officially released in June.
+---
 
 5. When the success popup appears, click the **OK** button.
 
@@ -838,8 +914,10 @@ Follow the steps below to perform bulk entity registration:
 5. Once registration is complete, verify that Issuer, Verifier, Wallet, and CA information has been added to the table.  
    <img src="./images/5-5.entity-management-after-quick.png" width="600"/>
 
+---
 > ⚠️ Please note: The **Bulk Entity Registration** feature is for testing purposes only.  
 > In a production environment, you must follow the official registration process.
+---
 
 <br/>
 
