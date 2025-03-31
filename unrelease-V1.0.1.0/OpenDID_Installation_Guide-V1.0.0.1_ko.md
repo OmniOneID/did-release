@@ -287,15 +287,15 @@ Orchestrator 설치가 완료되면 웹 UI를 통해 각 구성요소를 개별�
 > ```
 ---
 
-1. **PostgreSQL 설치**  
+2. **PostgreSQL 설치**  
    - `Repositories` 테이블의 **PostgreSQL** 항목에서 **Start** 버튼(②)을 클릭합니다.  
    - Database가 설치되고 실행되며, Status가 녹색 원으로 변경됩니다.
 
-2. **Wallet 및 DID Document 자동 생성**  
+3. **Wallet 및 DID Document 자동 생성**  
    - `Quick Start` 테이블의 **All Entities** 항목에서 **Generate All** 버튼(③)을 클릭합니다.  
    - 모든 서버에 필요한 Wallet 파일 및 DID Document가 자동으로 생성됩니다.
 
-3. **서버 설치 및 구동**  
+4. **서버 설치 및 구동**  
    - `Servers` 테이블에서 각 서버 항목의 **Start** 버튼(④~⑨)을 클릭합니다.  
      - (④) `TAS (8090)`
      - (⑤) `Issuer (8091)`
@@ -823,7 +823,7 @@ TA 서버의 저장소를 로컬 환경에 복제한 후, 필요한 설정을 �
 자세한 설치 방법은 아래 문서를 참고하세요.
 
 > **참고 링크**
-> - [Open DID TA Server Installation And Operation Guide](https://github.com/OmniOneID/did-ta-server/blob/main/docs/installation/OpenDID_TASServer_InstallationAndOperation_Guide.md)
+> - [Open DID TA Server Installation Guide](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/installation/OpenDID_TAServer_Installation_Guide.md)
 
 ※ 본 가이드에서는 TA 서버의 주소를 `http://192.168.1.1:8090`으로 가정하여 설명합니다.
 
@@ -914,7 +914,7 @@ API Gateway Server의 리포지토리를 사용자의 로컬 컴퓨터로 복사
 보다 더 자세한 설치 방법은 아래 링크를 참고해 주세요.
 
 > **참고 링크**
-> - [Open API Gateway Server Installation And Operation Guide](https://github.com/OmniOneID/did-api-server/blob/main/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide.md)
+> - [Open API Gateway Server Installation And Operation Guide](https://github.com/OmniOneID/did-api-server/blob/develop/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide_ko.md)
 
 <br/>
 
@@ -935,7 +935,7 @@ Issuer 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 �
 이 가이드에서는 Issuer 서버의 접속 주소를 'http://192.168.1.1:8091' 으로 가정하여 설명하겠습니다.
 
 > **참고 링크**
-> - [Open DID Issuer Server Installation And Operation Guide](https://github.com/OmniOneID/did-issuer-server/blob/main/docs/installation/OpenDID_IssuerServer_InstallationAndOperation_Guide.md)
+> - [Open DID Issuer Server Installation Guide](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/installation/OpenDID_IssuerServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -966,7 +966,7 @@ Verifier 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한
 여기에서는 Verifier 서버의 접속 주소를 'http://192.168.1.1:8092' 으로 가정하겠습니다.
 
 > **참고 링크**
-> - [Open DID Verifier Server Installation And Operation Guide](https://github.com/OmniOneID/did-verifier-server/blob/main/docs/installation/OpenDID_VerifierServer_InstallationAndOperation_Guide.md)
+> - [Open DID Verifier Server Installation Guide](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/installation/OpenDID_VerifierServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -997,7 +997,7 @@ CA 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, 
 여기에서는 CA 서버의 접속 주소를 'http://192.168.1.1:8094' 으로 가정하겠습니다.
 
 > **참고 링크**
-> - [Open DID CA Server Installation And Operation Guide](https://github.com/OmniOneID/did-ca-server/blob/main/docs/installation/OpenDID_CAServer_InstallationAndOperation_Guide.md)
+> - [Open DID CA Server Installation Guide](https://github.com/OmniOneID/did-ca-server/blob/develop/docs/installation/OpenDID_CAServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -1028,7 +1028,7 @@ Wallet 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 �
 여기에서는 Wallet 서버의 접속 주소를 'http://192.168.1.1:8095' 으로 가정하겠습니다.
 
 > **참고 링크**
-> - [Open DID Wallet Server Installation And Operation Guide](https://github.com/OmniOneID/did-wallet-server/blob/main/docs/installation/OpenDID_WalletServer_InstallationAndOperation_Guide.md)
+> - [Open DID Wallet Server Installation Guide](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/installation/OpenDID_WalletServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -1061,7 +1061,7 @@ CA 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, 
 여기에서는 CA 서버의 접속 주소를 'http://192.168.1.1:8099' 으로 가정하겠습니다.
 
 > **참고 링크**
-> - [Open DID Demo Server Installation And Operation Guide](https://github.com/OmniOneID/did-demo-server/blob/main/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md)
+> - [Open DID Demo Server Installation And Operation Guide](https://github.com/OmniOneID/did-demo-server/blob/develop/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md)
 
 <br/>
 
@@ -1183,6 +1183,13 @@ iOS 앱의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, �
 
 <img src="./images/mdl_vc_issue_2.png" height="400"/>
 
+---
+> ⚠️ 참고  
+> 현재는 VC 정보를 입력해도 값에는 사용되지 않습니다.  
+> 6월 중 VC 정보 입력 시나리오가 변경되어 반영될 예정입니다.  
+> 그 전까지는 입력한 VC 클레임의 key가 value로 동일하게 들어갑니다.
+---
+
 3. `Save` 버튼을 클릭해 사용자 정보를 저장합니다.
    - 저장된 데이터는 MDL VC 발급에 사용되며, 다음번 테스트에는 해당 과정을 생략해도 됩니다.
 
@@ -1249,6 +1256,13 @@ iOS 앱의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, �
 
 6. 'Identification Information' 화면이 나타나며, Natioanl ID VC에 들어갈 데이터를 입력할 수 있습니다. 각각 Buirthdate, Address, License Number, Issue Date를 입력해야 하며 별도의 형식은 없습니다. 모든 VC 데이터를 입력한 후, `Save` 버튼을 클릭합니다.</br>
 <img src="./images/issuer_register_5.jpg" width="200" height="400"/>
+
+---
+> ⚠️ 참고  
+> 현재는 VC 정보를 입력해도 값에는 사용되지 않습니다.  
+> 6월 중 VC 정보 입력 시나리오가 변경되어 반영될 예정입니다.  
+> 그 전까지는 입력한 VC 클레임의 key가 value로 동일하게 들어갑니다.
+---
 
 7. 'Please input a PIN' 문구가 표시되며 PIN 키를 입력하는 화면이 나타납니다. 6자리의 숫자를 입력합니다.</br>
 <img src="./images/issuer_register_6.jpg" width="200" height="400"/>

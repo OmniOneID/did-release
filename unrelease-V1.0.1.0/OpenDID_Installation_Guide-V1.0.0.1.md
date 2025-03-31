@@ -851,7 +851,7 @@ This process involves copying the TA server repository to the user's local compu
 In this guide, we assume the TA server's access address is 'http://192.168.1.1:8090'.
 
 > **Reference Link**
-> - [Open DID TA Server Installation And Operation Guide](https://github.com/OmniOneID/did-ta-server/blob/main/docs/installation/OpenDID_TASServer_InstallationAndOperation_Guide.md)
+> - [Open DID TA Server Installation Guide](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/installation/OpenDID_TAServer_Installation_Guide.md)
 
 <br/>
 
@@ -943,7 +943,7 @@ The API Gateway Server acts as a mediator, allowing the app to retrieve specific
 This involves copying the API Gateway Server repository to the user's local computer, completing the necessary configurations for server operation, and launching the server. For more detailed installation instructions, please refer to the link below.
 
 > **Reference Link**
-> - [Open API Gateway Server Installation And Operation Guide](https://github.com/OmniOneID/did-api-server/blob/main/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide.md)
+> - [Open API Gateway Server Installation And Operation Guide](https://github.com/OmniOneID/did-api-server/blob/develop/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide_ko.md)
 
 <br/>
 
@@ -964,7 +964,7 @@ This process involves copying the Issuer server repository to the user's local c
 In this guide, we assume the Issuer server's access address is 'http://192.168.1.1:8091'.
 
 > **Reference Link**
-> - [Open DID Issuer Server Installation And Operation Guide](https://github.com/OmniOneID/did-issuer-server/blob/main/docs/installation/OpenDID_IssuerServer_InstallationAndOperation_Guide.md)
+> - [Open DID Issuer Server Installation Guide](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/installation/OpenDID_IssuerServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -995,7 +995,7 @@ This process involves copying the Verifier server repository to the user's local
 In this guide, we assume the Verifier server's access address is 'http://192.168.1.1:8092'.
 
 > **Reference Link**
-> - [Open DID Verifier Server Installation And Operation Guide](https://github.com/OmniOneID/did-verifier-server/blob/main/docs/installation/OpenDID_VerifierServer_InstallationAndOperation_Guide.md)
+> - [Open DID Verifier Server Installation Guide](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/installation/OpenDID_VerifierServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -1027,7 +1027,7 @@ This process involves copying the CA server repository to the user's local compu
 In this guide, we assume the CA server's access address is 'http://192.168.1.1:8094'.
 
 > **Reference Link**
-> - [Open DID CA Server Installation And Operation Guide](https://github.com/OmniOneID/did-ca-server/blob/main/docs/installation/OpenDID_CAServer_InstallationAndOperation_Guide.md)
+> - [Open DID CA Server Installation Guide](https://github.com/OmniOneID/did-ca-server/blob/develop/docs/installation/OpenDID_CAServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -1059,7 +1059,7 @@ This process involves copying the Wallet server repository to the user's local c
 In this guide, we assume the Wallet server's access address is 'http://192.168.1.1:8095'.
 
 > **Reference Link**
-> - [Open DID Wallet Server Installation And Operation Guide](https://github.com/OmniOneID/did-wallet-server/blob/main/docs/installation/OpenDID_WalletServer_InstallationAndOperation_Guide.md)
+> - [Open DID Wallet Server Installation Guide](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/installation/OpenDID_WalletServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -1091,7 +1091,7 @@ This process involves copying the Demo server repository to the user's local com
 In this guide, we assume the Demo server's access address is 'http://192.168.1.1:8099'.
 
 > **Reference Link**
-> - [Open DID Demo Server Installation And Operation Guide](https://github.com/OmniOneID/did-demo-server/blob/main/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md)
+> - [Open DID Demo Server Installation And Operation Guide](https://github.com/OmniOneID/did-demo-server/blob/develop/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md)
 
 <br/>
 
@@ -1213,6 +1213,13 @@ This chapter explains how to test the core features using the OpenDID demo envir
 
    <img src="./images/mdl_vc_issue_2.png" height="400"/>
 
+---
+> ⚠️ Note  
+> Currently, the entered VC information is not actually used.  
+> The VC input scenario will be updated and applied in June.  
+> Until then, the key of each VC claim will be used as its value.
+---
+
 3. Click the `Save` button to save the user information.
    - The saved data will be used for MDL VC issuance, and you can skip this step in future tests.
 
@@ -1280,16 +1287,23 @@ This chapter explains how to test the core features using the OpenDID demo envir
 6. The 'Identification Information' screen appears, allowing you to enter the data for the National ID VC. You need to input Birthdate, Address, License Number, and Issue Date. No specific format is required. After entering all VC data, click the `Save` button.<br/>
    <img src="./images/issuer_register_5.jpg" width="200" height="400"/>
 
-7. The message 'Please input a PIN' appears, and a screen prompts you to enter the PIN. Enter the 6-digit number.<br/>
+ ---
+> ⚠️ Note  
+> Currently, the entered VC information is not actually used.  
+> The VC input scenario will be updated and applied in June.  
+> Until then, the key of each VC claim will be used as its value.
+---  
+
+3. The message 'Please input a PIN' appears, and a screen prompts you to enter the PIN. Enter the 6-digit number.<br/>
    <img src="./images/issuer_register_6.jpg" width="200" height="400"/>
 
-8. A 'Success' message appears, confirming that the VC issuance was successful. Click the `OK` button.<br/>
+4. A 'Success' message appears, confirming that the VC issuance was successful. Click the `OK` button.<br/>
    <img src="./images/issuer_register_7.jpg" width="200" height="400"/>
 
-9. Return to the main page and confirm that the issued National ID VC is displayed. Click on the National ID VC.<br/>
+5. Return to the main page and confirm that the issued National ID VC is displayed. Click on the National ID VC.<br/>
    <img src="./images/issuer_register_8.jpg" width="200" height="400"/>
 
-10. Confirm that the detailed claims of the National ID VC are displayed on the screen.<br/>
+6.  Confirm that the detailed claims of the National ID VC are displayed on the screen.<br/>
     <img src="./images/issuer_register_9.jpg" width="200" height="400"/>
 
 <br/>
