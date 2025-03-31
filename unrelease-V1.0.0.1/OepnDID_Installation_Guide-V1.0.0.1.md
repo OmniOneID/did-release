@@ -19,7 +19,7 @@ Open DID Installation Guide
 ==
 
 - Date: 2025-03-31
-- Version: v1.0.0
+- Version: v1.0.1
 
 Table of Contents
 ==
@@ -828,6 +828,19 @@ For more detailed deployment instructions, please refer to the link below.
 ## 5.2. Step 2: TA Server Installation and Registration
 
 The TA server is the Trust Agent Service server and plays a central role in establishing trust relationships between servers and users within Open DID. The installation and registration process of the TA server within the Open DID system is as follows.
+
+---
+> ⚠️ **Note**  
+> When testing in a local environment, the domain names of the blockchain nodes (e.g., `peer0.org1.example.com`) do not actually exist.  
+> Therefore, you must manually add the following IP mappings to your system’s `hosts` file.  
+> Otherwise, the blockchain containers may not be able to communicate properly.
+>
+> ```text
+> 127.0.0.1 peer0.org1.example.com  
+> 127.0.0.1 peer0.org2.example.com  
+> 127.0.0.1 orderer.example.com
+> ```
+---
 
 <br/>
 

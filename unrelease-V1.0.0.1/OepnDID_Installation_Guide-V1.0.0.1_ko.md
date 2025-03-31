@@ -19,7 +19,7 @@ Open DID Installation Guide
 ==
 
 - Date: 2025-03-31
-- Version: v1.0.0
+- Version: v1.0.1
 
 목차
 ==
@@ -769,18 +769,6 @@ Open DID는 블록체인 기술로 Hyperledger Fabric을 지원합니다. Hyperl
 1. Hyperledger Fabric 테스트 네트워크 설치
 2. Open DID 체인코드 배포
 
----
-> ⚠️ 주의사항  
-> 로컬 환경에서 테스트할 경우, 블록체인 노드의 도메인 주소(`peer0.org1.example.com` 등)는 실제 존재하지 않기 때문에  
-> `hosts` 파일에 아래와 같이 수동으로 IP 매핑을 추가해야 합니다.  
-> 
-> ```text
-> 127.0.0.1 peer0.org1.example.com  
-> 127.0.0.1 peer0.org2.example.com  
-> 127.0.0.1 orderer.example.com
-> ```
----
-
 <br/>
 
 ### 5.1.1. Hyperledger Fabric 테스트 네트워크 설치
@@ -793,6 +781,18 @@ Open DID는 Hyperledger Fabric을 기반으로 하여, 블록체인 네트워크
 
 > **참고 링크**
 > - [Hyperledger Fabric Test Network](https://hyperledger-fabric.readthedocs.io/en/latest/getting_started.html)
+
+---
+> ⚠️ 주의사항  
+> 로컬 환경에서 테스트할 경우, 블록체인 노드의 도메인 주소(`peer0.org1.example.com` 등)는 실제 존재하지 않기 때문에  
+> `hosts` 파일에 아래와 같이 수동으로 IP 매핑을 추가해야 합니다.  
+> 
+> ```text
+> 127.0.0.1 peer0.org1.example.com  
+> 127.0.0.1 peer0.org2.example.com  
+> 127.0.0.1 orderer.example.com
+> ```
+---
 
 <br/>
 
