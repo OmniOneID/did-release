@@ -865,7 +865,7 @@ Please follow the steps below:
 
 2. On the login page, log in with the following credentials:  
    - ① Email: `admin@opendid.omnione.net`  
-   - ② Password: `omnioneopendid12!@`  
+   - ② Password: `password`  
    - ③ Click the **[SIGN IN]** button to log in.  
    <img src="./images/5-1.ta-login.png" width="400"/>
 

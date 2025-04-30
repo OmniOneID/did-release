@@ -839,7 +839,7 @@ TA 서버의 DID Document를 블록체인에 등록하고, **가입 증명서 VC
 
 2. 로그인 페이지에서 아래 계정으로 로그인합니다.  
    - ① Email: `admin@opendid.omnione.net`  
-   - ② Password: `omnioneopendid12!@` 
+   - ② Password: `password` 
    - ③ **[SIGN IN]** 버튼을 클릭하여 로그인합니다.  
 <img src="./images/5-1.ta-login.png" width="400"/>
 
