@@ -46,27 +46,26 @@ Open DID Installation Guide with Orchestrator
     - [5.2.1. PostgreSQL 설치](#521-postgresql-설치)
   - [5.3. Step 3: Blockchain 설치](#53-step-3-blockchain-설치)
     - [5.3.1. Hyperledger Besu 설치](#531-hyperledger-besu-설치)
-  - [5.4. Step 4: Wallet 및 DID Document 생성](#54-step-4-wallet-및-did-document-생성)
-  - [5.5. Step 5: TA 설치 및 등록](#55-step-5-ta-설치-및-등록)
-    - [5.5.1. TA Server 설치 후 구동](#551-ta-server-설치-후-구동)
-    - [5.5.2. TA Server 등록](#552-ta-server-등록)
-  - [5.6. Step 6: API Gateway 설치](#56-step-6-api-gateway-설치)
-  - [5.7. Step 7: Issuer Server 설치 및 등록](#57-step-7-issuer-server-설치-및-등록)
-    - [5.7.1. Issuer Server 설치 후 구동](#571-issuer-server-설치-후-구동)
-    - [5.7.2. Issuer Server 등록](#572-issuer-server-등록)
-  - [5.8. Step 8: Verifier Server 설치 및 등록](#58-step-8-verifier-server-설치-및-등록)
-    - [5.8.1. Verifier Server 설치 후 구동](#581-verifier-server-설치-후-구동)
-    - [5.8.2. Verifier Server 등록](#582-verifier-server-등록)
-  - [5.9. Step 9: CA Server 설치 및 등록](#59-step-9-ca-server-설치-및-등록)
-    - [5.9.1. CA Server 설치 후 구동](#591-ca-server-설치-후-구동)
-    - [5.9.2. CA Server 등록](#592-ca-server-등록)
-  - [5.10. Step 10: Wallet Server 설치 및 등록](#510-step-10-wallet-server-설치-및-등록)
-    - [5.10.1. Wallet Server 설치 후 구동](#5101-wallet-server-설치-후-구동)
-    - [5.10.2. Wallet Server 등록](#5102-wallet-server-등록)
-  - [5.11. Step 11: 데모 서버 설치](#511-step-11-데모-서버-설치)
-  - [5.12. App 설치](#512-app-설치)
-    - [5.12.1. Android App 설치](#5121-android-app-설치)
-    - [5.12.2. iOS App 설치](#5122-ios-app-설치)
+  - [5.4. Step 4: TA 설치 및 등록](#54-step-4-ta-설치-및-등록)
+    - [5.4.1. TA Server 설치 후 구동](#541-ta-server-설치-후-구동)
+    - [5.4.2. TA Server 등록](#542-ta-server-등록)
+  - [5.5. Step 5: API Gateway 설치](#55-step-5-api-gateway-설치)
+  - [5.6. Step 6: Issuer Server 설치 및 등록](#56-step-6-issuer-server-설치-및-등록)
+    - [5.6.1. Issuer Server 설치 후 구동](#561-issuer-server-설치-후-구동)
+    - [5.6.2. Issuer Server 등록](#562-issuer-server-등록)
+  - [5.7. Step 7: Verifier Server 설치 및 등록](#57-step-7-verifier-server-설치-및-등록)
+    - [5.7.1. Verifier Server 설치 후 구동](#571-verifier-server-설치-후-구동)
+    - [5.7.2. Verifier Server 등록](#572-verifier-server-등록)
+  - [5.8. Step 8: CA Server 설치 및 등록](#58-step-8-ca-server-설치-및-등록)
+    - [5.8.1. CA Server 설치 후 구동](#581-ca-server-설치-후-구동)
+    - [5.8.2. CA Server 등록](#582-ca-server-등록)
+  - [5.9. Step 9: Wallet Server 설치 및 등록](#59-step-9-wallet-server-설치-및-등록)
+    - [5.9.1. Wallet Server 설치 후 구동](#591-wallet-server-설치-후-구동)
+    - [5.9.2. Wallet Server 등록](#592-wallet-server-등록)
+  - [5.10. Step 10: 데모 서버 설치](#510-step-10-데모-서버-설치)
+  - [5.11. App 설치](#511-app-설치)
+    - [5.11.1. Android App 설치](#5111-android-app-설치)
+    - [5.11.2. iOS App 설치](#5112-ios-app-설치)
   - [6. 어드민 설정](#6-어드민-설정)
     - [6.1. TA 어드민 설정](#61-ta-어드민-설정)
     - [6.2. Issuer 어드민 설정](#62-issuer-어드민-설정)
@@ -340,9 +339,10 @@ OpenDID 2.0부터는 Orchestrator를 통해 대부분의 설치 절차를 자동
 
 ### 5.1.1. Orchestrator 설치
 
-Orchestrator 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, 서버를 구동하는 과정입니다. 보다 더 자세한 설치 방법은 아래 링크를 참고해 주세요. 
+> 본 문서에서는 사용자의 IP 주소를 `192.168.1.1`로 가정하여 설명합니다.  
 
-이 가이드에서는 Orchestrator 서버의 접속 주소를 'http://192.168.1.1:9001' 으로 가정하여 설명하겠습니다.
+Orchestrator 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, 서버를 구동하는 과정입니다.  
+보다 더 자세한 설치 방법은 아래 링크를 참고해 주세요.
 
 > [Orchestrator 설치 가이드](https://github.com/OmniOneID/did-orchestrator-server/tree/feature/develop/docs/installation)
 
@@ -350,10 +350,15 @@ Orchestrator 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복�
 
 ### 5.1.2. Repository 선택
 
-처음 웹 페이지에 접속하면 다음과 같은 **Repository 선택 팝업**이 표시되며, OpenDID에서 사용할 신뢰 저장소를 선택하는 단계가 시작됩니다.
+설치가 완료되면 Orchestrator 웹 페이지에 접속합니다:
+
+```bash
+http://192.168.1.1:9001
+```
+
+처음 접속하면 다음과 같은 **Repository 선택 팝업**이 표시되며, OpenDID에서 사용할 신뢰 저장소를 선택하는 단계가 시작됩니다.
 
 <img src="./images/orchestrator_select_repository_popup.png" width="800"/>
-
 
 - `Hyperledger Besu`  
   - OpenDID 2.0에서 현재 공식적으로 지원하는 퍼블릭 블록체인입니다.  
@@ -422,15 +427,15 @@ OpenDID 2.0은 퍼블릭 블록체인 기반으로 Hyperledger Besu를 사용합
 아래 절차에 따라 Hyperledger Besu를 설치하세요:
 
 1. **Hyperledger Besu 항목 확인**  
-  대시보드의 **Repositories** 영역에서 `Hyperledger Besu` 항목을 찾습니다.  
-  초기 상태에서는 상태 표시등이 회색으로 표시됩니다.
+   - 대시보드의 **Repositories** 영역에서 `Hyperledger Besu` 항목을 찾습니다.  
+   - 초기 상태에서는 상태 표시등이 회색으로 표시됩니다.
 
 2. **Besu 시작**  
-  Hyperledger Besu 행의 `Start` 버튼을 클릭합니다.
+   - Hyperledger Besu 행의 `Start` 버튼을 클릭합니다.
 
 3. **설치 완료 확인**  
-  블록체인 네트워크 구성 및 스마트 계약 배포가 진행되면서 상태 표시등이 **회색에서 녹색**으로 변경됩니다.  
-  녹색 표시등은 Hyperledger Besu가 정상적으로 실행되고 있으며, OpenDID 스마트 계약이 성공적으로 배포되었음을 의미합니다.
+   - 블록체인 네트워크 구성 및 스마트 계약 배포가 진행되면서 상태 표시등이 **회색에서 녹색**으로 변경됩니다.  
+   - 녹색 표시등은 Hyperledger Besu가 정상적으로 실행되고 있으며, OpenDID 스마트 계약이 성공적으로 배포되었음을 의미합니다.
 
 > **참고사항**
 > - 블록체인 네트워크 초기화 및 스마트 계약 배포에는 몇 분 정도 소요될 수 있습니다.
@@ -440,122 +445,173 @@ OpenDID 2.0은 퍼블릭 블록체인 기반으로 Hyperledger Besu를 사용합
 
 <br/><br/>
 
+## 5.4. Step 4: TA 설치 및 등록
 
-## 5.4. Step 4: Wallet 및 DID Document 생성
+TA 서버는 Trust Agent 서버로, Open DID 내에서 **신뢰 체인을 구축**하는 핵심 역할을 수행합니다.  
+TA 서버는 Open DID 시스템의 구성 요소가 제출한 DID Document를 검증하고 블록체인에 등록하며, **가입 증명서**를 발급하는 역할을 담당합니다.
+
+따라서 TA 서버는 **반드시 가장 먼저 설치 및 등록**되어야 하며, 이후 다른 서버들은 TA 서버를 통해 OpenDID 시스템에 신뢰 주체로 등록될 수 있습니다.
+
+설치는 Orchestrator 대시보드를 통해 간단하게 수행할 수 있으며, 이후 시스템 등록 절차도 동일한 콘솔에서 진행됩니다.
+
+### 5.4.1. TA Server 설치 후 구동
+
+아래 절차에 따라 TA 서버를 설치하고 구동합니다:
+
+1. **TA 항목 확인**  
+   - Orchestrator 대시보드의 **Servers** 영역에서 `TA (8090)` 항목을 찾습니다.
+
+2. **TA 서버 시작**  
+   - `Start` 버튼을 클릭합니다.
+   - 서버 구동이 시작되며, 상태 표시등이 **붉은색 → 녹색**으로 변경됩니다.
+
+3. **서버 상태 확인**  
+   - 구동이 완료되면 상태 버튼(`Status`)을 클릭하여 응답 상태를 확인할 수 있습니다.
+   - 필요시 `log` 버튼을 클릭하여 구동 로그를 확인할 수 있습니다.
+
+
+4. **Admin 접속 확인**  
+   - `Settings` 버튼을 클릭하면 TA 서버의 어드민 페이지로 이동합니다.
+    
+5. **Swagger 접속 확인**  
+   - `Swagger` 버튼을 클릭하면 TA 서버의 Swagger 페이지로 이동합니다.
+
+<br/><br/>
+
+### 5.4.2. TA Server 등록
+
+TA 서버가 정상적으로 구동되었다면, 이제 OpenDID 시스템에 TA 서버를 **정식 신뢰 주체(Entity)**로 등록하는 과정을 진행해야 합니다.  
+이 과정을 **"OpenDID 시스템 등록"**이라 하며, 설치된 서버의 DID Document를 생성하여 블록체인에 등록한 후, TA 서버를 통해 가입 증명서를 발급받는 절차를 의미합니다.
+
+등록이 완료되면, 해당 서버는 OpenDID 시스템 내에서 신뢰할 수 있는 엔터티로 간주되며, **보안 통신 및 인증을 위한 전제 조건**이 충족됩니다.  
+특히, 가입 증명서는 TA가 서명하여 발급한 **Verifiable Credential(VC)**로서, 해당 서버의 신뢰성을 증명하는 디지털 증명서 역할을 수행합니다.
+
+> ⚠️ 주의  
+> TA 서버는 다른 구성 요소(Issuer, Verifier 등)의 등록을 위한 전제 조건이므로, **가장 먼저 OpenDID 시스템에 등록**되어야 합니다.
+
+---
+
+TA 서버 등록은 Orchestrator에서 직접 수행하지 않으며, **TA Admin Console**을 통해 다음의 4단계 절차로 진행됩니다.  
+등록 과정은 아래 운영 가이드 문서를 참고하여 수행해야 합니다.
+
+> **운영 가이드**  
+> [OpenDID TA Admin 운영 가이드 - 3.1.1 TA 등록](https://github.com/OmniOneID/did-ta-server/blob/feature/admin-phase2/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#311-ta-%EB%93%B1%EB%A1%9D)
+
+#### 📌 등록 절차 요약
+
+1. **등록용 비밀번호 입력**  
+   - TA 등록 작업을 시작하기 위해, 초기 설정된 등록 비밀번호를 입력합니다.
+   - 이 값은 서버 설정 파일에 미리 정의되어 있어야 하며, 최초 1회만 입력하면 됩니다.
+
+2. **TA 정보 입력**  
+   - TA 서버에 대한 메타 정보를 입력합니다.  
+     예: TA 이름, 설명, 관리자 정보 등
+
+3. **DID Document 생성 및 블록체인 등록**  
+   - TA의 고유 DID Document를 생성한 뒤, 이를 블록체인에 등록합니다.  
+   - 이 과정은 TA 서버가 OpenDID 내에서 식별 가능한 신뢰 주체로 등록되는 핵심 단계입니다.
+
+4. **가입 증명서(VC) 발급**  
+   - 등록된 DID 정보를 기반으로, **TA 스스로에게 가입 증명서를 발급**합니다.
+   - 이 VC는 TA의 신뢰성을 증명하며, 블록체인 기반 인증을 가능하게 합니다.
+
+모든 절차가 완료되면 TA 서버는 OpenDID 시스템 내에서 공식적으로 등록된 신뢰 주체로 간주됩니다.  
+등록이 완료되면 Admin Console 메인 페이지로 이동하여, 이후 Issuer, Verifier 등의 서버 등록 절차를 계속 진행할 수 있습니다.
+
+
+<br/><br/>
+
+
+## 5.5. Step 5: API Gateway 설치
 
 blah blah
 
 <br/><br/>
 
 
-## 5.5. Step 5: TA 설치 및 등록
+## 5.6. Step 6: Issuer Server 설치 및 등록
 
 blah blah
 
-### 5.5.1. TA Server 설치 후 구동
+### 5.6.1. Issuer Server 설치 후 구동
 
 blah blah  
 
 <br/><br/>
 
-
-### 5.5.2. TA Server 등록
-
-blah blah
-
-<br/><br/>
-
-
-## 5.6. Step 6: API Gateway 설치
+### 5.6.2. Issuer Server 등록
 
 blah blah
 
 <br/><br/>
 
 
-## 5.7. Step 7: Issuer Server 설치 및 등록
+## 5.7. Step 7: Verifier Server 설치 및 등록
 
 blah blah
 
-### 5.7.1. Issuer Server 설치 후 구동
+### 5.7.1. Verifier Server 설치 후 구동
 
 blah blah  
 
 <br/><br/>
 
-### 5.7.2. Issuer Server 등록
+### 5.7.2. Verifier Server 등록
 
 blah blah
 
 <br/><br/>
 
 
-## 5.8. Step 8: Verifier Server 설치 및 등록
+## 5.8. Step 8: CA Server 설치 및 등록
 
 blah blah
 
-### 5.8.1. Verifier Server 설치 후 구동
+### 5.8.1. CA Server 설치 후 구동
 
 blah blah  
 
 <br/><br/>
 
-### 5.8.2. Verifier Server 등록
+### 5.8.2. CA Server 등록
 
 blah blah
 
 <br/><br/>
 
 
-## 5.9. Step 9: CA Server 설치 및 등록
+## 5.9. Step 9: Wallet Server 설치 및 등록
 
 blah blah
 
-### 5.9.1. CA Server 설치 후 구동
+### 5.9.1. Wallet Server 설치 후 구동
 
 blah blah  
 
 <br/><br/>
 
-### 5.9.2. CA Server 등록
+### 5.9.2. Wallet Server 등록
 
 blah blah
 
 <br/><br/>
 
 
-## 5.10. Step 10: Wallet Server 설치 및 등록
-
-blah blah
-
-### 5.10.1. Wallet Server 설치 후 구동
-
-blah blah  
-
-<br/><br/>
-
-### 5.10.2. Wallet Server 등록
-
-blah blah
-
-<br/><br/>
-
-
-## 5.11. Step 11: 데모 서버 설치
+## 5.10. Step 10: 데모 서버 설치
 
 blah blah
 <br/><br/>
 
-## 5.12. App 설치
+## 5.11. App 설치
 
 blah blah
 
-### 5.12.1. Android App 설치
+### 5.11.1. Android App 설치
 
 blah blah
 <br/><br/>
 
-### 5.12.2. iOS App 설치
+### 5.11.2. iOS App 설치
 
 blah blah
 <br/><br/>
