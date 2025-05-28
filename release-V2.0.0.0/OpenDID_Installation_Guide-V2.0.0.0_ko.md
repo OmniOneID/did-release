@@ -50,30 +50,40 @@ Open DID Installation Guide with Orchestrator
     - [5.4.1. TA Server 설치 후 구동](#541-ta-server-설치-후-구동)
     - [5.4.2. TA Server 등록](#542-ta-server-등록)
   - [5.5. Step 5: API Gateway 설치](#55-step-5-api-gateway-설치)
-  - [5.6. Step 6: Issuer Server 설치 및 등록](#56-step-6-issuer-server-설치-및-등록)
-    - [5.6.1. Issuer Server 설치 후 구동](#561-issuer-server-설치-후-구동)
-    - [5.6.2. Issuer Server 등록](#562-issuer-server-등록)
-  - [5.7. Step 7: Verifier Server 설치 및 등록](#57-step-7-verifier-server-설치-및-등록)
-    - [5.7.1. Verifier Server 설치 후 구동](#571-verifier-server-설치-후-구동)
-    - [5.7.2. Verifier Server 등록](#572-verifier-server-등록)
-  - [5.8. Step 8: CA Server 설치 및 등록](#58-step-8-ca-server-설치-및-등록)
-    - [5.8.1. CA Server 설치 후 구동](#581-ca-server-설치-후-구동)
-    - [5.8.2. CA Server 등록](#582-ca-server-등록)
-  - [5.9. Step 9: Wallet Server 설치 및 등록](#59-step-9-wallet-server-설치-및-등록)
-    - [5.9.1. Wallet Server 설치 후 구동](#591-wallet-server-설치-후-구동)
-    - [5.9.2. Wallet Server 등록](#592-wallet-server-등록)
-  - [5.10. Step 10: 데모 서버 설치](#510-step-10-데모-서버-설치)
-  - [5.11. App 설치](#511-app-설치)
-    - [5.11.1. Android App 설치](#5111-android-app-설치)
-    - [5.11.2. iOS App 설치](#5112-ios-app-설치)
-  - [6. 어드민 설정](#6-어드민-설정)
-    - [6.1. TA 어드민 설정](#61-ta-어드민-설정)
-    - [6.2. Issuer 어드민 설정](#62-issuer-어드민-설정)
-    - [6.3. Verifier 어드민 설정](#63-verifier-어드민-설정)
-  - [7. 테스트](#7-테스트)
-    - [7.1. 사용자 등록 테스트](#71-사용자-등록-테스트)
-    - [7.1. VC 발급 테스트](#71-vc-발급-테스트)
-    - [7.2. VP 발급 테스트](#72-vp-발급-테스트)
+    - [5.5.1. API Gateway Server 설치 후 구동](#551-api-gateway-server-설치-후-구동)
+  - [5.6. Entity 서버 설치 및 구동](#56-entity-서버-설치-및-구동)
+    - [5.6.1. Step 6: Issuer Server 설치 및 등록](#561-step-6-issuer-server-설치-및-등록)
+    - [5.6.2. Step 7: Verifier Server 설치 및 등록](#562-step-7-verifier-server-설치-및-등록)
+    - [5.6.3. Step 8: CA Server 설치 및 등록](#563-step-8-ca-server-설치-및-등록)
+    - [5.6.4. Step 9: Wallet Server 설치 및 등록](#564-step-9-wallet-server-설치-및-등록)
+  - [5.7. Step 10: Demo Server 설치](#57-step-10-demo-server-설치)
+    - [5.7.1. Demo Server 설치 후 구동](#571-demo-server-설치-후-구동)
+  - [5.8. Step 11: App 설치](#58-step-11-app-설치)
+    - [5.8.1. Android App 설치](#581-android-app-설치)
+    - [5.8.2. iOS App 설치](#582-ios-app-설치)
+- [6. 어드민 설정](#6-어드민-설정)
+  - [6.1. TA 어드민 설정](#61-ta-어드민-설정)
+    - [6.1.1. KYC 설정](#611-kyc-설정)
+  - [6.2. Issuer 어드민 설정](#62-issuer-어드민-설정)
+    - [6.2.1. ZKP Namespace 등록](#621-zkp-namespace-등록)
+    - [6.2.2. ZKP Credential Schema 등록](#622-zkp-credential-schema-등록)
+    - [6.2.3. ZKP Credential Definition 등록](#623-zkp-credential-definition-등록)
+    - [6.2.4. VC Namespace 등록](#624-vc-namespace-등록)
+    - [6.2.5. VC 스키마 등록](#625-vc-스키마-등록)
+    - [6.2.6. VC 프로파일 등록](#626-vc-프로파일-등록)
+  - [6.3. Verifier 어드민 설정](#63-verifier-어드민-설정)
+    - [6.3.1. 서비스 등록](#631-서비스-등록)
+    - [6.3.2. VP Filter 등록](#632-vp-filter-등록)
+    - [6.3.3. VP Process 등록](#633-vp-process-등록)
+    - [6.3.4. VP Profile 등록](#634-vp-profile-등록)
+    - [6.3.5. VP Policy 등록](#635-vp-policy-등록)
+    - [6.3.6. ZKP Proof Requeset 등록](#636-zkp-proof-requeset-등록)
+    - [6.3.7. ZKP Profile 등록](#637-zkp-profile-등록)
+    - [6.3.8. ZKP Policy 등록 등록](#638-zkp-policy-등록-등록)
+- [7. OpenDID 테스트 가이드](#7-opendid-테스트-가이드)
+  - [7.1. 사용자 등록 테스트](#71-사용자-등록-테스트)
+  - [7.1. VC 발급 테스트](#71-vc-발급-테스트)
+  - [7.2. VP 발급 테스트](#72-vp-발급-테스트)
 
 <!-- /TOC -->
 
@@ -339,7 +349,7 @@ OpenDID 2.0부터는 Orchestrator를 통해 대부분의 설치 절차를 자동
 
 ### 5.1.1. Orchestrator 설치
 
-> 본 문서에서는 사용자의 IP 주소를 `192.168.1.1`로 가정하여 설명합니다.  
+> 본 문서에서는 사용자의 IP 주소를 `10.48.17.123`로 가정하여 설명합니다.  
 
 Orchestrator 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, 서버를 구동하는 과정입니다.  
 보다 더 자세한 설치 방법은 아래 링크를 참고해 주세요.
@@ -368,7 +378,7 @@ http://192.168.1.1:9001
   - 내부 개발용 DB 기반 저장소로, 테스트 환경에서만 사용됩니다. 
   - 추후 지원될 예정이며, 현재는 선택할 수 없습니다.
 
-아래는 Repository 선택 후 기본적으로 표시되는 **Dashboard 화면 예시**입니다.
+아래는 Repository 선택 후 기본적으로 표시되는 **Dashboard 화면**입니다.
 
 <img src="./images/orchestrator_after_select_repository.png" width="500"/>
 
@@ -469,191 +479,764 @@ TA 서버는 Open DID 시스템의 구성 요소가 제출한 DID Document를 �
    - 구동이 완료되면 상태 버튼(`Status`)을 클릭하여 응답 상태를 확인할 수 있습니다.
    - 필요시 `log` 버튼을 클릭하여 구동 로그를 확인할 수 있습니다.
 
-
 4. **Admin 접속 확인**  
    - `Settings` 버튼을 클릭하면 TA 서버의 어드민 페이지로 이동합니다.
     
 5. **Swagger 접속 확인**  
    - `Swagger` 버튼을 클릭하면 TA 서버의 Swagger 페이지로 이동합니다.
 
-<br/><br/>
+<br/>
 
 ### 5.4.2. TA Server 등록
 
-TA 서버가 정상적으로 구동되었다면, 이제 OpenDID 시스템에 TA 서버를 **정식 신뢰 주체(Entity)**로 등록하는 과정을 진행해야 합니다.  
-이 과정을 **"OpenDID 시스템 등록"**이라 하며, 설치된 서버의 DID Document를 생성하여 블록체인에 등록한 후, TA 서버를 통해 가입 증명서를 발급받는 절차를 의미합니다.
+TA 서버가 정상적으로 구동되었다면, 이제 OpenDID 시스템에 TA 서버를 **정식 신뢰 주체**로 등록하는 과정을 진행해야 합니다.  
+이 과정을 **OpenDID 시스템 등록**이라 하며, 설치된 서버의 DID Document를 생성하여 블록체인에 등록한 후, TA 서버를 통해 가입 증명서를 발급받는 절차를 의미합니다.
 
-등록이 완료되면, 해당 서버는 OpenDID 시스템 내에서 신뢰할 수 있는 엔터티로 간주되며, **보안 통신 및 인증을 위한 전제 조건**이 충족됩니다.  
-특히, 가입 증명서는 TA가 서명하여 발급한 **Verifiable Credential(VC)**로서, 해당 서버의 신뢰성을 증명하는 디지털 증명서 역할을 수행합니다.
+등록이 완료되면 해당 서버는 OpenDID 시스템 내에서 신뢰할 수 있는 엔터티로 간주되며, **보안 통신 및 인증을 위한 전제 조건**이 충족됩니다.  
+특히, 가입 증명서는 TA가 서명하여 발급한 **Verifiable Credential**로서, 해당 서버의 신뢰성을 증명하는 디지털 자격 증명입니다.
 
-> ⚠️ 주의  
-> TA 서버는 다른 구성 요소(Issuer, Verifier 등)의 등록을 위한 전제 조건이므로, **가장 먼저 OpenDID 시스템에 등록**되어야 합니다.
+TA 등록은 Orchestrator에서 직접 수행되지 않으며, **TA Admin Console**을 통해 진행됩니다.  
+등록 절차는 아래 운영 가이드에 따라 진행되며, 주요 단계는 다음과 같습니다:
 
----
+- 등록용 비밀번호를 입력하여 등록을 시작합니다. 이 비밀번호는 TA 서버 설정 파일에 사전 정의되어 있어야 합니다.  
+- TA 서버의 이름, 설명, 관리자 정보 등 메타 정보를 입력합니다.  
+- 고유 DID Document를 생성한 후, 이를 블록체인에 등록합니다.  
+- 등록된 DID를 기반으로, TA 스스로에게 가입 증명서(VC)를 발급합니다.
 
-TA 서버 등록은 Orchestrator에서 직접 수행하지 않으며, **TA Admin Console**을 통해 다음의 4단계 절차로 진행됩니다.  
-등록 과정은 아래 운영 가이드 문서를 참고하여 수행해야 합니다.
-
-> **운영 가이드**  
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.** 
 > [OpenDID TA Admin 운영 가이드 - 3.1.1 TA 등록](https://github.com/OmniOneID/did-ta-server/blob/feature/admin-phase2/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#311-ta-%EB%93%B1%EB%A1%9D)
 
-#### 📌 등록 절차 요약
-
-1. **등록용 비밀번호 입력**  
-   - TA 등록 작업을 시작하기 위해, 초기 설정된 등록 비밀번호를 입력합니다.
-   - 이 값은 서버 설정 파일에 미리 정의되어 있어야 하며, 최초 1회만 입력하면 됩니다.
-
-2. **TA 정보 입력**  
-   - TA 서버에 대한 메타 정보를 입력합니다.  
-     예: TA 이름, 설명, 관리자 정보 등
-
-3. **DID Document 생성 및 블록체인 등록**  
-   - TA의 고유 DID Document를 생성한 뒤, 이를 블록체인에 등록합니다.  
-   - 이 과정은 TA 서버가 OpenDID 내에서 식별 가능한 신뢰 주체로 등록되는 핵심 단계입니다.
-
-4. **가입 증명서(VC) 발급**  
-   - 등록된 DID 정보를 기반으로, **TA 스스로에게 가입 증명서를 발급**합니다.
-   - 이 VC는 TA의 신뢰성을 증명하며, 블록체인 기반 인증을 가능하게 합니다.
-
-모든 절차가 완료되면 TA 서버는 OpenDID 시스템 내에서 공식적으로 등록된 신뢰 주체로 간주됩니다.  
-등록이 완료되면 Admin Console 메인 페이지로 이동하여, 이후 Issuer, Verifier 등의 서버 등록 절차를 계속 진행할 수 있습니다.
-
+등록이 완료되면 Admin Console의 메인 페이지로 이동할 수 있으며, 이후 Issuer, Verifier 등의 서버 등록 절차를 계속 진행할 수 있습니다.
 
 <br/><br/>
-
 
 ## 5.5. Step 5: API Gateway 설치
 
-blah blah
+API Gateway Server는 App이 블록체인 서버로부터 특정 데이터를 조회할 수 있도록 중계하는 역할을 하며, Open DID 시스템에 등록할 필요는 없습니다. API Gateway Server의 설치 방법은 다음과 같습니다.
+
+설치는 Orchestrator 대시보드를 통해 간단하게 수행할 수 있으며, 이후 시스템 등록 절차도 동일한 콘솔에서 진행됩니다.
+
+### 5.5.1. API Gateway Server 설치 후 구동
+
+아래 절차에 따라 API Gateway 서버를 설치하고 구동합니다:
+
+1. **API Gateway 항목 확인**  
+   - Orchestrator 대시보드의 **Servers** 영역에서 `API (8093)` 항목을 찾습니다.
+
+2. **API Gateway 서버 시작**  
+   - `Start` 버튼을 클릭하여 서버를 시작합니다.
+   - 서버 구동이 시작되면 상태 표시등이 **붉은색 → 녹색**으로 변경됩니다.
+
+3. **서버 상태 확인**  
+   - 구동이 완료되면 `Status` 버튼을 클릭하여 응답 상태를 확인합니다.
+   - 필요시 `log` 버튼을 클릭하여 서버 구동 로그를 확인할 수 있습니다.
+
+4. **Admin 접속 확인**  
+   - `Settings` 버튼을 클릭하면 API Gateway 서버의 어드민 페이지로 이동합니다.
+    
+5. **Swagger 접속 확인**  
+   - `Swagger` 버튼을 클릭하면 API Gateway 서버의 Swagger 페이지로 이동합니다.
+
+> **참고**  
+> - API Gateway 서버는 TA, Issuer, Verifier 서버와 달리 **OpenDID 시스템 등록 절차가 필요하지 않습니다.**  
+> - 단, 서버가 의존하는 블록체인 서버가 등록되어 있어야 정상적으로 동작합니다.
 
 <br/><br/>
 
 
-## 5.6. Step 6: Issuer Server 설치 및 등록
+## 5.6. Entity 서버 설치 및 구동
 
-blah blah
+OpenDID 시스템에서 Issuer, Verifier, CA, Wallet 서버는 모두 TA 서버를 통해 등록되는 Entity 서버입니다.  
+각 서버는 설치 후 OpenDID 시스템에 등록되어야 하며, 등록 절차는 TA와 Entity 간의 협력 과정을 포함합니다.
 
-### 5.6.1. Issuer Server 설치 후 구동
+### 5.6.1. Step 6: Issuer Server 설치 및 등록
 
-blah blah  
+Issuer 서버는 발급 기관 서버로, 다음과 같은 역할을 수행합니다:
 
-<br/><br/>
+- VC(Verifiable Credential) 발급
+- ZKP(Zero-Knowledge Proof) 기반 Credential 생성 및 발급
 
-### 5.6.2. Issuer Server 등록
+Issuer 서버의 설치 및 Open DID 시스템 등록 방법은 다음과 같습니다.
 
-blah blah
+#### 5.6.1.1. Issuer Server 설치 후 구동
 
-<br/><br/>
+아래 절차에 따라 Issuer 서버를 설치하고 구동합니다:
 
+1. **Issuer 항목 확인**  
+   - Orchestrator 대시보드의 **Servers** 영역에서 `Issuer (8091)` 항목을 찾습니다.
 
-## 5.7. Step 7: Verifier Server 설치 및 등록
+2. **Issuer 서버 시작**  
+   - `Start` 버튼을 클릭하여 서버를 시작합니다.
+   - 서버 구동이 시작되면 상태 표시등이 **붉은색 → 녹색**으로 변경됩니다.
 
-blah blah
+3. **서버 상태 확인**  
+   - 구동이 완료되면 `Status` 버튼을 클릭하여 응답 상태를 확인합니다.
+   - 필요시 `log` 버튼을 클릭하여 서버 구동 로그를 확인할 수 있습니다.
 
-### 5.7.1. Verifier Server 설치 후 구동
-
-blah blah  
-
-<br/><br/>
-
-### 5.7.2. Verifier Server 등록
-
-blah blah
-
-<br/><br/>
-
-
-## 5.8. Step 8: CA Server 설치 및 등록
-
-blah blah
-
-### 5.8.1. CA Server 설치 후 구동
-
-blah blah  
+4. **Admin 접속 확인**  
+   - `Settings` 버튼을 클릭하면 Issuer 서버의 어드민 페이지로 이동합니다.
+    
+5. **Swagger 접속 확인**  
+   - `Swagger` 버튼을 클릭하면 Issuer 서버의 Swagger 페이지로 이동합니다.
 
 <br/><br/>
 
-### 5.8.2. CA Server 등록
+#### 5.6.1.2. Issuer Server 등록
 
-blah blah
+Issuer 서버가 구동된 이후에는, OpenDID 시스템 내에서 **신뢰 주체(Entity)**로 등록해야 합니다.  
+Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 기반 등록 절차**를 따릅니다.
+
+운영 환경에서의 등록 흐름은 다음과 같습니다:
+
+1. **Issuer 관리자**가 Issuer Admin Console에서 DID Document를 생성합니다.
+2. 생성된 DID Document를 **TA 관리자에게 전송하여 등록을 요청**합니다.
+3. **TA 관리자**가 TA Admin Console에서 해당 요청을 승인하고, 블록체인에 DID Document를 등록합니다.
+4. **Issuer 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Issuer Admin 운영 가이드 - 3.1. Issuer Registration](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#31-issuer-registration)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
+> 
+<br/><br/>
+
+
+### 5.6.2. Step 7: Verifier Server 설치 및 등록
+
+Verifier 서버는 검증 기관 서버로, 다음과 같은 역할을 수행합니다:
+
+- 제출된 VP(Verifiable Presentation) 검증
+- ZKP(Zero-Knowledge Proof) 기반 Credential 검증
+
+Verifier 서버의 설치 및 OpenDID 시스템 등록 방법은 다음과 같습니다.
+
+#### 5.6.2.1. Verifier Server 설치 후 구동
+
+아래 절차에 따라 Verifier 서버를 설치하고 구동합니다:
+
+1. **Verifier 항목 확인**  
+   - Orchestrator 대시보드의 **Servers** 영역에서 `Verifier (8092)` 항목을 찾습니다.
+
+2. **Verifier 서버 시작**  
+   - `Start` 버튼을 클릭하여 서버를 시작합니다.
+   - 서버 구동이 시작되면 상태 표시등이 **붉은색 → 녹색**으로 변경됩니다.
+
+3. **서버 상태 확인**  
+   - 구동이 완료되면 `Status` 버튼을 클릭하여 응답 상태를 확인합니다.
+   - 필요시 `log` 버튼을 클릭하여 서버 구동 로그를 확인할 수 있습니다.
+
+4. **Admin 접속 확인**  
+   - `Settings` 버튼을 클릭하면 Verifier 서버의 어드민 페이지로 이동합니다.
+
+5. **Swagger 접속 확인**  
+   - `Swagger` 버튼을 클릭하면 Verifier 서버의 Swagger 페이지로 이동합니다.
+
+<br/><br/>
+
+#### 5.6.2.2. Verifier Server 등록
+
+Verifier 서버가 구동된 이후에는, OpenDID 시스템 내에서 **신뢰 주체(Entity)**로 등록해야 합니다.  
+Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 기반 등록 절차**를 따릅니다.
+
+운영 환경에서의 등록 흐름은 다음과 같습니다:
+
+1. **Verifier 관리자**가 Verifier Admin Console에서 DID Document를 생성합니다.
+2. 생성된 DID Document를 **TA 관리자에게 전송하여 등록을 요청**합니다.
+3. **TA 관리자**가 TA Admin Console에서 해당 요청을 승인하고, 블록체인에 DID Document를 등록합니다.
+4. **Verifier 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#311-verifier-%EB%93%B1%EB%A1%9D)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
+
+<br/><br/>
+
+### 5.6.3. Step 8: CA Server 설치 및 등록
+
+CA 서버는 인가 앱 서버로, 인가 앱을 Open DID 내에서 사용할 수 있도록 보증하는 역할을 합니다.
+
+CA 서버의 설치 및 OpenDID 시스템 등록 방법은 다음과 같습니다.
+
+#### 5.6.3.1. CA Server 설치 후 구동
+
+아래 절차에 따라 CA 서버를 설치하고 구동합니다:
+
+1. **CA 항목 확인**  
+   - Orchestrator 대시보드의 **Servers** 영역에서 `CA (8094)` 항목을 찾습니다.
+
+2. **CA 서버 시작**  
+   - `Start` 버튼을 클릭하여 서버를 시작합니다.
+   - 서버 구동이 시작되면 상태 표시등이 **붉은색 → 녹색**으로 변경됩니다.
+
+3. **서버 상태 확인**  
+   - 구동이 완료되면 `Status` 버튼을 클릭하여 응답 상태를 확인합니다.
+   - 필요시 `log` 버튼을 클릭하여 서버 구동 로그를 확인할 수 있습니다.
+
+4. **Admin 접속 확인**  
+   - `Settings` 버튼을 클릭하면 CA 서버의 어드민 페이지로 이동합니다.
+
+5. **Swagger 접속 확인**  
+   - `Swagger` 버튼을 클릭하면 CA 서버의 Swagger 페이지로 이동합니다.
+
+<br/><br/>
+
+#### 5.6.3.2. CA Server 등록
+
+CA 서버가 구동된 이후에는, OpenDID 시스템 내에서 **신뢰 주체(Entity)**로 등록해야 합니다.  
+Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 기반 등록 절차**를 따릅니다.
+
+운영 환경에서의 등록 흐름은 다음과 같습니다:
+
+1. **CA 관리자**가 CA Admin Console에서 DID Document를 생성합니다.
+2. 생성된 DID Document를 **TA 관리자에게 전송하여 등록을 요청**합니다.
+3. **TA 관리자**가 TA Admin Console에서 해당 요청을 승인하고, 블록체인에 DID Document를 등록합니다.
+4. **CA 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [CA Admin 운영 가이드 - 3.1. CA 등록](https://github.com/OmniOneID/did-ca-server/blob/develop/docs/admin/OpenDID_CAAdmin_Operation_Guide_ko.md#311-ca-%EB%93%B1%EB%A1%9D)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
 
 <br/><br/>
 
 
-## 5.9. Step 9: Wallet Server 설치 및 등록
+### 5.6.4. Step 9: Wallet Server 설치 및 등록 
 
-blah blah
+Wallet 서버는 사용자의 Wallet을 OpenDID 내에서 사용할 수 있도록 **신뢰를 보증**하는 역할을 합니다.  
+Wallet 서버는 앱에서 사용하는 Wallet의 DID Document를 **서명하여 보증**하며, 이를 통해 해당 Wallet이 신뢰 가능한 주체로서 블록체인에 등록될 수 있도록 지원합니다.
 
-### 5.9.1. Wallet Server 설치 후 구동
+Wallet 서버의 설치 및 OpenDID 시스템 등록 방법은 다음과 같습니다.
 
-blah blah  
+#### 5.6.4.1. Wallet Server 설치 후 구동
 
-<br/><br/>
+아래 절차에 따라 Wallet 서버를 설치하고 구동합니다:
 
-### 5.9.2. Wallet Server 등록
+1. **Wallet 항목 확인**  
+   - Orchestrator 대시보드의 **Servers** 영역에서 `Wallet (8095)` 항목을 찾습니다.
 
-blah blah
+2. **Wallet 서버 시작**  
+   - `Start` 버튼을 클릭하여 서버를 시작합니다.
+   - 서버 구동이 시작되면 상태 표시등이 **붉은색 → 녹색**으로 변경됩니다.
 
-<br/><br/>
+3. **서버 상태 확인**  
+   - 구동이 완료되면 `Status` 버튼을 클릭하여 응답 상태를 확인합니다.
+   - 필요시 `log` 버튼을 클릭하여 서버 구동 로그를 확인할 수 있습니다.
 
+4. **Admin 접속 확인**  
+   - `Settings` 버튼을 클릭하면 Wallet 서버의 어드민 페이지로 이동합니다.
 
-## 5.10. Step 10: 데모 서버 설치
-
-blah blah
-<br/><br/>
-
-## 5.11. App 설치
-
-blah blah
-
-### 5.11.1. Android App 설치
-
-blah blah
-<br/><br/>
-
-### 5.11.2. iOS App 설치
-
-blah blah
-<br/><br/>
-
-
-## 6. 어드민 설정
-
-blah blah
-
-### 6.1. TA 어드민 설정
-
-blah blah
-<br/><br/>
-
-### 6.2. Issuer 어드민 설정
-
-blah blah
-<br/><br/>
-
-### 6.3. Verifier 어드민 설정 
-
-blah blah
-<br/><br/>
-
-## 7. 테스트
-
-blah blah
-
-### 7.1. 사용자 등록 테스트
-
-### 7.1. VC 발급 테스트
-
-- VC 발급 (Issuer, User)
-- ZKP 발급 (Issuer)
+5. **Swagger 접속 확인**  
+   - `Swagger` 버튼을 클릭하면 Wallet 서버의 Swagger 페이지로 이동합니다.
 
 <br/><br/>
 
-### 7.2. VP 발급 테스트
+#### 5.6.4.2. Wallet Server 등록
 
-- VP 제출 
-- ZKP 제출
+Wallet 서버가 구동된 이후에는, OpenDID 시스템 내에서 **신뢰 주체(Entity)**로 등록해야 합니다.  
+Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 기반 등록 절차**를 따릅니다.
+
+운영 환경에서의 등록 흐름은 다음과 같습니다:
+
+1. **Wallet 관리자**가 Wallet Admin Console에서 DID Document를 생성합니다.
+2. 생성된 DID Document를 **TA 관리자에게 전송하여 등록을 요청**합니다.
+3. **TA 관리자**가 TA Admin Console에서 해당 요청을 승인하고, 블록체인에 DID Document를 등록합니다.
+4. **Wallet 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Wallet Admin 운영 가이드 - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/admin/OpenDID_WalletAdmin_Operation_Guide_ko.md#31-wallet-service-registration)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
+
+<br/><br/>
+
+## 5.7. Step 10: Demo Server 설치
+
+Demo 서버는 웹 서버로, OpenDID의 주요 기능인 **VC 발급과 VP 제출** 기능을 테스트할 수 있는 화면을 제공합니다.  
+사용자는 Demo를 통해 실제 환경과 유사한 조건에서 주요 기능을 직접 검증할 수 있습니다.
+
+Demo 서버는 다음과 같은 기능을 제공합니다:
+
+- **VC 발급 시나리오 테스트**: Issuer Admin Console에서 설정한 VC 발급 정책(VC Plan)을 불러와 사용자가 직접 선택하고 VC를 발급받을 수 있습니다.
+- **VP 제출 시나리오 테스트**: Verifier Admin Console에서 설정한 VP 검증 정책을 기반으로, 사용자가 VP를 제출하고 검증 결과를 확인할 수 있습니다.
+
+<br/>
+
+### 5.7.1. Demo Server 설치 후 구동
+
+아래 절차에 따라 Demo 서버를 설치하고 구동합니다:
+
+1. **Demo 항목 확인**  
+   - Orchestrator 대시보드의 **Demo** 영역에서 `DEMO (8099)` 항목을 찾습니다.
+
+2. **Demo 서버 시작**  
+   - `Start` 버튼을 클릭하여 서버를 시작합니다.
+   - 서버 구동이 시작되면 상태 표시등이 **붉은색 → 녹색**으로 변경됩니다.
+
+3. **서버 상태 확인**  
+   - 구동이 완료되면 `Status` 버튼을 클릭하여 응답 상태를 확인합니다.
+   - 필요시 `log` 버튼을 클릭하여 서버 구동 로그를 확인할 수 있습니다.
+
+4. **Demo Site 접속 확인**  
+   - `Demo Site` 버튼을 클릭하면 Demo 테스트 페이지로 이동합니다.
+   - 해당 페이지는 Orchestrator를 통해 모든 서버(PostgreSQL, 블록체인, TA, Issuer, Verifier, CA, Wallet)가 모두 구동된 상태에서만 정상적으로 표시됩니다.
+
+> **참고**  
+> - Orchestrator에서 Demo 영역은 모든 서버가 구동된 상태에서만 정상적으로 표시됩니다.  
+> - Demo에서 사용할 **VC 발급 및 VP 제출 정책 설정 방법은 [6장 어드민 설정](#6-어드민-설정)**에서 안내합니다.
+> - Demo를 통해 실제 테스트를 수행하는 방법은 **[7장 OpenDID 테스트 가이드](#7-opendid-테스트-가이드)**에서 안내합니다.
+
+<br/><br/>
+
+## 5.8. Step 11: App 설치
+
+CA(Client Agent) 앱은 사용자가 OpenDID 시스템에 참여하기 위해 사용하는 클라이언트 애플리케이션입니다.  
+CA 앱은 사용자의 DID를 생성하고, VC(Verifiable Credential)를 저장하거나 제출하는 등 사용자가 직접 관리하는 신원 관련 작업을 수행하는 역할을 합니다.
+
+OpenDID 앱은 Android와 iOS 플랫폼에서 동작하도록 개발되어 있으며, 각 플랫폼별로 개발 환경을 설정한 후 소스 코드를 빌드하여 설치할 수 있습니다.  
+앱 설치는 Orchestrator를 통해 자동화되지 않으며, **각 플랫폼의 가이드 문서를 참고하여 수동으로 설치**해야 합니다.
+
+### 5.8.1. Android App 설치
+
+Android 앱은 Android Studio를 기반으로 개발되었으며, 아래 GitHub 저장소의 가이드를 참고하여 설치할 수 있습니다.
+
+> **참고 링크**
+> - [Open DID Android CA 가이드](https://github.com/OmniOneID/did-ca-aos/blob/develop/README_ko.md)
+
+<br/>
+
+### 5.8.2. iOS App 설치
+
+iOS 앱은 Swift 및 Xcode를 기반으로 개발되었으며, 아래 저장소의 가이드를 참고하여 설치할 수 있습니다.
+
+> **참고 링크**
+> - [Open DID iOS CA 가이드](https://github.com/OmniOneID/did-ca-ios/blob/develop/README_ko.md)
 
 <br/><br/>
 
 
+# 6. 어드민 설정
+
+Demo 서버를 통해 VC 발급 및 VP 제출 테스트를 진행하려면, 각 서버의 Admin Console에서 사전 설정이 필요합니다.
+이 장에서는 TA, Issuer, Verifier Admin Console에서 수행해야 할 설정 항목을 예시와 함께 안내합니다.
+
+> - 이 문서에서는 Demo 테스트를 바로 실행할 수 있도록, 실제 설정 화면과 동일한 예시 값을 기준으로 설명합니다.
+> - IP 주소 등 환경에 따라 달라지는 항목만 실제 환경에 맞게 수정하고, 나머지는 그대로 입력해도 테스트가 정상적으로 진행됩니다.
+
+각 설정은 반드시 Demo 테스트 이전에 완료되어야 합니다.
+
+## 6.1. TA 어드민 설정
+
+TA 어드민에서는 사용자 등록을 처리하기 위한 기본 설정을 수행합니다.  
+
+### 6.1.1. KYC 설정
+
+KYC Settings 메뉴는 사용자의 DID 발급 시 필요한 신원 정보(PII: Personally Identifiable Information)를 사전에 연동된 KYC 서버로부터 조회하기 위한 설정 기능입니다. OpenDID 시스템은 자체적으로 KYC 서버 기능을 제공하지 않으며,   **CA 서버가 KYC 서버의 역할을 겸임**하고 있으므로, 이 설정에서는 CA 서버의 정보를 입력해야 합니다.
+
+Demo 테스트에서는 사용자 등록을 위한 KYC 서버 설정을 위해 다음과 같이 설정합니다.
+
+<img src="./images/kyc-settings.png" width="500"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [TA Admin 운영 가이드 - 3.3 KYC Settings](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#33-kyc-settings)
+
+<br/>
+
+## 6.2. Issuer 어드민 설정
+
+Issuer 서버에서는 일반 VC 발급 및 ZKP 기반 Credential 발급 기능을 위해 다음과 같은 설정을 사전에 구성해야 합니다.
+설정은 Issuer Admin Console의 VC Management 및 ZKP Management 메뉴를 통해 수행되며, 각 항목은 VC 발급 및 ZKP 기반 검증 기능과 직접적으로 연결됩니다.
+
+> **참고**
+> - 설정 순서는 **ZKP 관련 항목을 먼저 구성**한 뒤, 일반 VC 관련 항목을 설정해야 합니다.  
+> - 이는 VC 발급 시 ZKP Credential을 동시에 발급하는 구조이며, VC 발급 프로파일(Issue Profile)에서 사용할 **ZKP Credential Definition을 사전에 지정**해야 하기 때문입니다.
+
+<br/>
+
+### 6.2.1. ZKP Namespace 등록
+
+ZKP Credential 발급을 위해서는 먼저 **ZKP Namespace**를 등록해야 합니다.  
+ZKP Namespace는 ZKP Credential에 포함될 속성을 정의하는 단위로, 이후 **ZKP Credential Schema**의 기반이 됩니다.
+
+특히, 일반 VC 발급과 동시에 ZKP Credential도 함께 발급하는 구조이므로,  
+VC Issue Profile에서 사용할 ZKP Profile을 미리 구성하기 위해 ZKP Namespace 설정부터 등록해야 합니다.
+
+Demo 테스트에서는 **신분증 정보를 위한 ZKP Credential**을 구성하기 위해 아래와 같은 ZKP Namespace를 등록합니다.
+
+<br/>
+
+**[신분증 Namespace 등록]**
+
+<img src="./images/issuerAdmin_zkp_namespace.png" width="500"/>
+
+사용자의 신분증 정보를 표현하는 네임스페이스입니다.
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Issuer 어드민 운영 가이드 작성 필요](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#321-namespace-management)
+
+<br/><br/>
+
+### 6.2.2. ZKP Credential Schema 등록
+
+
+ZKP Credential을 정의하려면, ZKP Namespace를 기반으로 속성을 구성한 **Credential Schema**를 먼저 등록해야 합니다.  
+Credential Schema는 이후 생성할 Credential Definition의 구조를 결정하며, ZKP Profile에서 참조됩니다.
+
+Demo 테스트에서는 앞서 등록한 `zkp.idcard` 네임스페이스를 기반으로 신분증 ZKP Credential Schema를 아래와 같이 등록합니다.
+
+<br/>
+
+**[신분증 ZKP Credential Schema 등록]**
+
+<img src="./images/issuerAdmin_zkp_credentialSchema.png" width="500"/>
+
+`zkp.idcard` 네임스페이스에서 정의한 속성들을 기반으로 구성한 ZKP Credential Schema입니다.
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Issuer 어드민 운영 가이드 작성 필요](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#321-namespace-management)
+
+<br/><br/>
+
+
+### 6.2.3. ZKP Credential Definition 등록
+
+Credential Definition은 **ZKP Credential을 실제 발급할 수 있도록 준비하는 단계**로, 이전에 생성한 Credential Schema를 기반으로  
+**발급 키 쌍(공개키/비공개키)**, **속성-네임스페이스 매핑 정보**, **서명 알고리즘 구성** 등을 포함하는 내부 데이터를 생성합니다.  
+
+Demo 테스트에서는 신분증 Credential Definition을 아래와 같이 등록합니다.
+
+<br/>
+
+**[신분증 ZKP Credential Definition 등록]**
+
+<img src="./images/issuerAdmin_zkp_credentialDefinition.png" width="500"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Issuer 어드민 운영 가이드 작성 필요](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#321-namespace-management)
+> 
+<br/><br/>
+
+### 6.2.4. VC Namespace 등록
+
+VC 발급을 위해서는 먼저 **VC Namespace**를 등록해야 합니다.  
+VC Namespace는 VC에 포함될 클레임을 **논리적 그룹 단위로 정의**하는 역할을 하며, 이후 **VC 스키마 등록 시 참조**됩니다.
+
+Demo 테스트를 정상적으로 수행하기 위해서는 아래와 같이 두 개의 VC 네임스페이스를 모두 등록해야 합니다.
+
+<br/>
+
+**[신분증 네임스페이스 등록]**
+
+<img src="./images/issuerAdmin_vc_namespace1.png" width="500"/>
+
+사용자의 신분증 정보를 표현하는 네임스페이스입니다.
+
+<br/>
+
+**[운전면허증 네임스페이스 등록]**
+
+<img src="./images/issuerAdmin_vc_namespace2.png" width="500"/>
+
+운전면허증 정보를 포함하는 네임스페이스입니다.
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Issuer Admin 운영 가이드 - Namespace 등록](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-namespace-%EB%93%B1%EB%A1%9D)
+
+<br/><br/>
+
+### 6.2.5. VC 스키마 등록
+
+**VC Schema Management** 메뉴에서는 실제 발급될 Verifiable Credential의 데이터 구조를 정의하는 스키마를 등록할 수 있습니다.  
+스키마는 앞서 정의한 네임스페이스를 참조하여 구성되며, **Issue Profile**에서 해당 스키마를 기반으로 VC 발급 정책을 설정하게 됩니다.
+
+Demo 테스트를 위해서는 **신분증 VC 스키마**와 **운전면허증 VC 스키마**를 각각 등록해야 합니다.
+
+Demo 테스트를 정상적으로 수행하기 위해서는 아래와 같이 두 개의 VC 스키마를 모두 등록해야 합니다.
+
+**[신분증 VC 스키마 등록]**
+
+<img src="./images/issuerAdmin_vc_schema1.png" width="500"/>
+
+사용자의 이름, 성별, 생년월일 정보를 포함한 기본 신원 VC입니다.
+
+<br/>
+
+**[운전면허증 VC 스키마 등록]**
+
+<img src="./images/issuerAdmin_vc_schema2.png" width="500"/>
+
+운전면허번호와 발급일자 등의 정보를 포함한 운전 자격 VC입니다.
+
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Issuer Admin 운영 가이드 - VC Schema 등록](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-vc-schema-%EB%93%B1%EB%A1%9D)
+
+<br/><br/>
+
+### 6.2.6. VC 프로파일 등록
+
+**Issue Profile Management**는 VC 발급 시 사용할 프로파일(Issue Profile)을 정의하고 관리하는 메뉴입니다.  
+Issue Profile은 VC Schema와 발급 정책 정보를 하나의 발급 플랜으로 구성하여, 실제 VC 발급 시 참조됩니다.
+
+> ⚠️ ZKP Credential을 함께 발급하려면, 해당 Issue Profile에서 **ZKP 발급 여부를 활성화하고**, Credential Definition을 선택해야 합니다.  
+> 따라서 ZKP 관련 설정이 먼저 완료되어 있어야 Issue Profile 구성이 가능합니다.
+
+Demo 테스트에서는 신분증 VC 발급을 위한 Issue Profile을 아래와 같이 구성합니다:
+
+<br/>
+
+**[신분증 VC Issue Profile 등록]**
+
+<img src="./images/issuerAdmin_vc_profile1.png" width="500"/>
+
+<br/>
+
+- **특징**
+  - 일반 VC와 함께 ZKP Credential도 동시에 발급됩니다.
+  - Demo 웹사이트를 통해 발급할 수 있습니다.
+
+<br/>
+
+**[운전면허증 VC Issue Profile 등록]**
+
+<img src="./images/issuerAdmin_vc_profile2.png" width="500"/>
+
+<br/>
+
+- **특징**
+  - 일반 VC만 발급되며, ZKP Credential은 포함되지 않습니다.
+  - OpenDID 클라이언트 앱을 통해 사용자가 직접 발급을 요청합니다
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Issuer Admin 운영 가이드 - Issue Profile 등록](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-issue-profile-%EB%93%B1%EB%A1%9D)
+
+<br/><br/>
+
+## 6.3. Verifier 어드민 설정 
+
+Verifier 어드민에서는 사용자로부터 제출받은 VP를 검증하기 위한 정책을 사전에 구성해야 합니다.
+일반 VC 기반의 VP 제출과 ZKP Credential 기반의 제출을 모두 지원하므로, 각 방식에 맞는 정책을 설정해 두어야 Demo 테스트를 원활하게 수행할 수 있습니다.
+
+### 6.3.1. 서비스 등록
+
+**Service Configuration**은 사용자의 VP 제출 요청을 검증할 **서비스 단위 설정**을 등록하는 항목입니다.  
+
+Verifier는 어떤 서비스에서, 어떤 기기(Device)로, 어떤 제출 방식(Submission Mode)을 통해 들어온 VP를, 어떤 방식(Verification Type, 예: 일반,ZKP)으로 검증할지 사전에 정의해야 합니다.
+
+Demo 테스트에서는 다음과 같은 서비스 등록이 필요합니다:
+
+- **신분증 VC를 검증하는 서비스** (일반 VC 검증)
+- **신분증 ZKP Credential을 검증하는 서비스** (ZKP 기반 VP 검증)
+- **운전면허증 VC를 검증하는 서비스** (일반 VC 검증)
+
+<br/>
+
+**[신분증 VC를 제출 받는 서비스 등록]**
+
+<img src="./images/verifierAdmin_service1.png" width="400"/>
+
+<br/>
+
+**[신분증 ZKP Credential을 제출 받는 서비스 등록]**
+
+<img src="./images/verifierAdmin_service2.png" width="400"/>
+
+<br/>
+
+**[운전면허증 VC를 제출 받는 서비스 등록]**
+
+<img src="./images/verifierAdmin_service3.png" width="400"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 3.2.1.1. Service Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3211-service-register)
+
+<br/><br/>
+
+### 6.3.2. VP Filter 등록
+
+**Filter Management** 메뉴에서는 제출된 VP가 특정 조건을 만족하는지 확인하기 위한 **필터 정책**을 정의할 수 있습니다.  
+각 필터는 요구되는 클레임(Required Claims), 표시할 클레임(Display Claims), 허용된 발급자(Allowed Issuers) 등을 설정하며, Profile에서 재사용됩니다.
+
+
+Demo 테스트에서는 다음과 같은 VP Filter 등록이 필요합니다:
+
+<br/>
+
+**[신분증 VP Filer 등록]**
+
+<img src="./images/verifierAdmin_vc_filter1.png" width="400"/>
+
+<br/>
+
+**[운전면허증 VP Filer 등록]**
+
+<img src="./images/verifierAdmin_vc_filter2.png" width="400"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 3.2.2.1. Filter Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3221-filter-register)
+
+<br/><br/>
+
+
+### 6.3.3. VP Process 등록
+
+**Process Management** 메뉴에서는 VP 검증 시 사용할 **처리 방식(E2E 암호화, 인증 방식 등)** 을 정의할 수 있습니다.  
+정의된 Process는 Filter와 함께 **VP Policy 구성 시 재사용** 됩니다.
+
+Demo 테스트에서는 아래와 같은 프로세스를 1건 등록해두고, 모든 VP 검증 정책에서 재사용할 수 있습니다.
+
+**[기본 Process 등록]**
+
+<img src="./images/verifierAdmin_vp_process.png" width="400"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 3.2.3.1. Process Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3231-process-register)
+
+<br/><br/>
+
+### 6.3.4. VP Profile 등록
+
+Profile Management 메뉴에서는 VP 프로파일 정보를 관리할 수 있습니다.  
+프로파일은 앞서 구성한 Filter 및 Process 정보를 참조하여, 특정 검증 목적에 맞는 VP 처리 정책을 구성합니다.
+
+Demo 테스트에서는 아래 두 가지 프로파일을 등록합니다:
+
+<br/>
+
+**[신분증 VP Profile 등록]**
+
+<img src="./images/verifierAdmin_vp_profile1.png" width="600"/>
+
+<br/>
+
+**[운전면허증 VP Profile 등록]**
+
+<img src="./images/verifierAdmin_vp_profile2.png" width="500"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 3.2.4.1 Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+
+<br/><br/>
+
+### 6.3.5. VP Policy 등록
+
+Policy Management 메뉴에서는 전체 VP 정책을 통합 관리할 수 있습니다.  
+VP 제출 시 적용할 프로파일과 서비스 설정을 연결하여, 실질적인 검증 정책으로 구성합니다.
+
+Demo 테스트에서는 신분증과 운전면허증 제출을 위한 다음 두 가지 정책을 등록해야 합니다:
+
+<br/>
+
+**[신분증 VP Policy 등록]**
+
+<img src="./images/verifierAdmin_vp_policy1.png" width="700"/>
+
+<br/>
+
+**[운전면허증 VP Policy 등록]**
+
+<img src="./images/verifierAdmin_vp_policy2.png" width="700"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 3.2.5.1 Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#325-policy-management)
+
+<br/><br/>
+
+### 6.3.6. ZKP Proof Requeset 등록
+
+Proof Request는 검증자가 증명자(사용자)에게 요구하는 증명 조건을 정의하는 항목입니다.  
+ZKP Credential의 속성(Attributes)이나 조건(Predicates)에 기반하여 필요한 증명을 요청할 수 있습니다.
+
+Demo 테스트에서는 신분증 ZKP Credential을 검증하기 위한 Proof Request를 아래와 같이 등록해야 합니다:
+
+<br/>
+
+**[신분증 ZKP Credential Proof Request 등록]**
+
+<img src="./images/verifierAdmin_zkp_proofrequest.png" width="500"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 작성필요](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+
+<br/><br/>
+
+### 6.3.7. ZKP Profile 등록
+
+ZKP Profile은 Verifier가 ZKP 기반 증명을 검증할 때 사용할 **검증 프로파일**입니다.  
+해당 프로파일에는 사용할 Proof Request와 출력 형식(언어, 인코딩 등)에 대한 정보가 포함되며,  
+ZKP 기반의 VP 제출 시 이 프로파일을 참조하여 검증을 수행합니다.
+
+Demo 테스트에서는 신분증 ZKP Profile을 아래와 같이 등록해야 합니다:
+
+<br/>
+
+**[신분증 ZKP Profile 등록]**
+
+<img src="./images/verifierAdmin_zkp_profile.png" width="400"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 작성필요](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+
+<br/><br/>
+
+
+### 6.3.8. ZKP Policy 등록 등록
+
+**ZKP Policy Management** 메뉴에서는 ZKP 기반 VP 제출에 대한 최종 검증 정책을 등록할 수 있습니다.  
+ZKP Policy는 하나의 ZKP 프로파일과, 해당 증명을 적용할 서비스(Payload)를 연결하여 구성됩니다.  
+Demo 테스트에서는 ZKP 방식으로 제출되는 신분증 Credential의 검증을 위한 정책을 등록해야 합니다.
+
+Demo 테스트에서는 신분증 ZKP Profile을 아래와 같이 등록해야 합니다:
+
+<br/>
+
+**[신분증 ZKP Policy 등록]**
+
+<img src="./images/verifierAdmin_zkp_policy.png" width="400"/>
+
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Verifier Admin 운영 가이드 - 작성필요](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+
+<br/><br/>
+
+# 7. OpenDID 테스트 가이드
+
+<br/>
+
+## 7.1. 사용자 등록 테스트
+
+작성 중
+
+## 7.1. VC 발급 테스트
+
+작성 중
+
+<br/><br/>
+
+## 7.2. VP 발급 테스트
+
+작성 중
+
+<br/><br/>
