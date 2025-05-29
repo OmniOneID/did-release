@@ -26,8 +26,6 @@ Open DID Installation Guide with Orchestrator
 
 <!-- TOC tocDepth:2..3 chapterDepth:2..6 -->
 
-- [Open DID Installation Guide with Orchestrator](#open-did-installation-guide-with-orchestrator)
-- [목차](#목차)
 - [1. OpenDID 소개](#1-opendid-소개)
 - [2. 설치 개요](#2-설치-개요)
 - [3. 시스템 요구사항](#3-시스템-요구사항)
@@ -79,11 +77,20 @@ Open DID Installation Guide with Orchestrator
     - [6.3.5. VP Policy 등록](#635-vp-policy-등록)
     - [6.3.6. ZKP Proof Requeset 등록](#636-zkp-proof-requeset-등록)
     - [6.3.7. ZKP Profile 등록](#637-zkp-profile-등록)
-    - [6.3.8. ZKP Policy 등록 등록](#638-zkp-policy-등록-등록)
+    - [6.3.8. ZKP Policy 등록](#638-zkp-policy-등록)
 - [7. OpenDID 테스트 가이드](#7-opendid-테스트-가이드)
-  - [7.1. 사용자 등록 테스트](#71-사용자-등록-테스트)
-  - [7.1. VC 발급 테스트](#71-vc-발급-테스트)
-  - [7.2. VP 발급 테스트](#72-vp-발급-테스트)
+  - [7.1. 데모 환경 설정](#71-데모-환경-설정)
+    - [7.1.1. 서버 정보 설정](#711-서버-정보-설정)
+    - [7.1.2. 사용자 정보 입력](#712-사용자-정보-입력)
+  - [7.2. 사용자 등록 테스트](#72-사용자-등록-테스트)
+    - [7.2.1. 테스트 방법](#721-테스트-방법)
+  - [7.2. VC 발급 테스트](#72-vc-발급-테스트)
+    - [7.2.1. 운전면허증 VC 발급 테스트](#721-운전면허증-vc-발급-테스트)
+    - [7.2.2. 신분증 VC 발급 테스트](#722-신분증-vc-발급-테스트)
+  - [7.3. VP 제출 테스트](#73-vp-제출-테스트)
+    - [7.3.1. 신분증 ZKP Credential 제출](#731-신분증-zkp-credential-제출)
+    - [7.3.2. 신분증 VP 제출](#732-신분증-vp-제출)
+    - [7.3.3. 운전면허증 VP 제출](#733-운전면허증-vp-제출)
 
 <!-- /TOC -->
 
@@ -141,9 +148,9 @@ Open DID 플랫폼을 설치한 후에는 어떤 기능을 확인할 수 있을�
 
 # 2. 설치 개요
 
-> ⚠️ 주의  
-> 본 설치 가이드는 **Orchestrator 기반 설치 절차만을 다룹니다.**  
-> 설치는 반드시 Orchestrator 서버 설치부터 시작해야 하며, 이후 모든 구성요소는 Orchestrator 웹 콘솔을 통해 자동으로 설치 및 등록됩니다.
+> **주의사항**    
+> - 본 설치 가이드는 **Orchestrator 기반 설치 절차만을 다룹니다.**  
+> - 설치는 반드시 Orchestrator 서버 설치부터 시작해야 하며, 이후 모든 구성요소는 Orchestrator 웹 콘솔을 통해 자동으로 설치 및 등록됩니다.
 
 이 장에서는 OpenDID 프로젝트의 구성 요소와 설치 순서를 안내합니다.
 
@@ -354,7 +361,7 @@ OpenDID 2.0부터는 Orchestrator를 통해 대부분의 설치 절차를 자동
 Orchestrator 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 후, 서버를 구동하는 과정입니다.  
 보다 더 자세한 설치 방법은 아래 링크를 참고해 주세요.
 
-> [Orchestrator 설치 가이드](https://github.com/OmniOneID/did-orchestrator-server/tree/feature/develop/docs/installation)
+> [Orchestrator 설치 가이드](https://github.com/OmniOneID/did-orchestrator-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_orchestrator_InstallationAndOperation_Guide_ko.md)
 
 <br/>
 
@@ -503,8 +510,8 @@ TA 등록은 Orchestrator에서 직접 수행되지 않으며, **TA Admin Consol
 - 고유 DID Document를 생성한 후, 이를 블록체인에 등록합니다.  
 - 등록된 DID를 기반으로, TA 스스로에게 가입 증명서(VC)를 발급합니다.
 
-> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.** 
-> [OpenDID TA Admin 운영 가이드 - 3.1.1 TA 등록](https://github.com/OmniOneID/did-ta-server/blob/feature/admin-phase2/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#311-ta-%EB%93%B1%EB%A1%9D)
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**   
+> [OpenDID TA Admin 운영 가이드 - 3.1.1 TA 등록](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#311-ta-%EB%93%B1%EB%A1%9D)
 
 등록이 완료되면 Admin Console의 메인 페이지로 이동할 수 있으며, 이후 Issuer, Verifier 등의 서버 등록 절차를 계속 진행할 수 있습니다.
 
@@ -594,9 +601,8 @@ Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 �
 4. **Issuer 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer Admin 운영 가이드 - 3.1. Issuer Registration](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#31-issuer-registration)
-> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
-> 
+> - [Issuer Admin 운영 가이드 - 3.1. Issuer Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#31-issuer-registration)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8) 
 <br/><br/>
 
 
@@ -645,8 +651,8 @@ Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 �
 4. **Verifier 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#311-verifier-%EB%93%B1%EB%A1%9D)
-> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
+> - [Verifier Admin 운영 가이드 - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#311-verifier-%EB%93%B1%EB%A1%9D)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>
 
@@ -692,8 +698,8 @@ Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 �
 4. **CA 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [CA Admin 운영 가이드 - 3.1. CA 등록](https://github.com/OmniOneID/did-ca-server/blob/develop/docs/admin/OpenDID_CAAdmin_Operation_Guide_ko.md#311-ca-%EB%93%B1%EB%A1%9D)
-> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
+> - [CA Admin 운영 가이드 - 3.1. CA 등록](https://github.com/OmniOneID/did-ca-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_CAAdmin_Operation_Guide_ko.md#311-ca-%EB%93%B1%EB%A1%9D)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>
 
@@ -742,7 +748,7 @@ Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 �
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
 > - [Wallet Admin 운영 가이드 - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/admin/OpenDID_WalletAdmin_Operation_Guide_ko.md#31-wallet-service-registration)
-> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8)
+> - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>
 
@@ -777,7 +783,7 @@ Demo 서버는 다음과 같은 기능을 제공합니다:
    - `Demo Site` 버튼을 클릭하면 Demo 테스트 페이지로 이동합니다.
    - 해당 페이지는 Orchestrator를 통해 모든 서버(PostgreSQL, 블록체인, TA, Issuer, Verifier, CA, Wallet)가 모두 구동된 상태에서만 정상적으로 표시됩니다.
 
-> **참고**  
+> **참고사항**  
 > - Orchestrator에서 Demo 영역은 모든 서버가 구동된 상태에서만 정상적으로 표시됩니다.  
 > - Demo에서 사용할 **VC 발급 및 VP 제출 정책 설정 방법은 [6장 어드민 설정](#6-어드민-설정)**에서 안내합니다.
 > - Demo를 통해 실제 테스트를 수행하는 방법은 **[7장 OpenDID 테스트 가이드](#7-opendid-테스트-가이드)**에서 안내합니다.
@@ -796,8 +802,10 @@ OpenDID 앱은 Android와 iOS 플랫폼에서 동작하도록 개발되어 있�
 
 Android 앱은 Android Studio를 기반으로 개발되었으며, 아래 GitHub 저장소의 가이드를 참고하여 설치할 수 있습니다.
 
-> **참고 링크**
-> - [Open DID Android CA 가이드](https://github.com/OmniOneID/did-ca-aos/blob/develop/README_ko.md)
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Open DID Android CA 가이드](https://github.com/OmniOneID/did-ca-aos/blob/release/QA-v2.0.0/README_ko.md)
 
 <br/>
 
@@ -805,8 +813,10 @@ Android 앱은 Android Studio를 기반으로 개발되었으며, 아래 GitHub 
 
 iOS 앱은 Swift 및 Xcode를 기반으로 개발되었으며, 아래 저장소의 가이드를 참고하여 설치할 수 있습니다.
 
-> **참고 링크**
-> - [Open DID iOS CA 가이드](https://github.com/OmniOneID/did-ca-ios/blob/develop/README_ko.md)
+<br/>
+
+> **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
+> - [Open DID iOS CA 가이드](https://github.com/OmniOneID/did-ca-ios/blob/release/QA-v2.0.0/README_ko.md)
 
 <br/><br/>
 
@@ -836,7 +846,7 @@ Demo 테스트에서는 사용자 등록을 위한 KYC 서버 설정을 위해 �
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [TA Admin 운영 가이드 - 3.3 KYC Settings](https://github.com/OmniOneID/did-ta-server/blob/develop/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#33-kyc-settings)
+> - [TA Admin 운영 가이드 - 3.3 KYC Settings](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#33-kyc-settings)
 
 <br/>
 
@@ -845,7 +855,7 @@ Demo 테스트에서는 사용자 등록을 위한 KYC 서버 설정을 위해 �
 Issuer 서버에서는 일반 VC 발급 및 ZKP 기반 Credential 발급 기능을 위해 다음과 같은 설정을 사전에 구성해야 합니다.
 설정은 Issuer Admin Console의 VC Management 및 ZKP Management 메뉴를 통해 수행되며, 각 항목은 VC 발급 및 ZKP 기반 검증 기능과 직접적으로 연결됩니다.
 
-> **참고**
+> **참고사항**
 > - 설정 순서는 **ZKP 관련 항목을 먼저 구성**한 뒤, 일반 VC 관련 항목을 설정해야 합니다.  
 > - 이는 VC 발급 시 ZKP Credential을 동시에 발급하는 구조이며, VC 발급 프로파일(Issue Profile)에서 사용할 **ZKP Credential Definition을 사전에 지정**해야 하기 때문입니다.
 
@@ -872,7 +882,7 @@ Demo 테스트에서는 **신분증 정보를 위한 ZKP Credential**을 구성�
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer 어드민 운영 가이드 작성 필요](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#321-namespace-management)
+> - [Issuer Admin 운영 가이드 - ZKP Namespace 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-namespace-%EB%93%B1%EB%A1%9D-1)
 
 <br/><br/>
 
@@ -895,7 +905,7 @@ Demo 테스트에서는 앞서 등록한 `zkp.idcard` 네임스페이스를 기�
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer 어드민 운영 가이드 작성 필요](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#321-namespace-management)
+> - [Issuer Admin 운영 가이드 - Credential Schema 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-credential-schema-%EB%93%B1%EB%A1%9D)
 
 <br/><br/>
 
@@ -916,8 +926,8 @@ Demo 테스트에서는 신분증 Credential Definition을 아래와 같이 등�
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer 어드민 운영 가이드 작성 필요](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#321-namespace-management)
-> 
+> - [Issuer Admin 운영 가이드 - Credential Definition 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-credential-definition-%EB%93%B1%EB%A1%9DD)
+ 
 <br/><br/>
 
 ### 6.2.4. VC Namespace 등록
@@ -946,7 +956,7 @@ Demo 테스트를 정상적으로 수행하기 위해서는 아래와 같이 두
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer Admin 운영 가이드 - Namespace 등록](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-namespace-%EB%93%B1%EB%A1%9D)
+> - [Issuer Admin 운영 가이드 - Namespace 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-namespace-%EB%93%B1%EB%A1%9D)
 
 <br/><br/>
 
@@ -973,9 +983,10 @@ Demo 테스트를 정상적으로 수행하기 위해서는 아래와 같이 두
 
 운전면허번호와 발급일자 등의 정보를 포함한 운전 자격 VC입니다.
 
+<br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer Admin 운영 가이드 - VC Schema 등록](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-vc-schema-%EB%93%B1%EB%A1%9D)
+> - [Issuer Admin 운영 가이드 - VC Schema 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-vc-schema-%EB%93%B1%EB%A1%9D)
 
 <br/><br/>
 
@@ -984,7 +995,8 @@ Demo 테스트를 정상적으로 수행하기 위해서는 아래와 같이 두
 **Issue Profile Management**는 VC 발급 시 사용할 프로파일(Issue Profile)을 정의하고 관리하는 메뉴입니다.  
 Issue Profile은 VC Schema와 발급 정책 정보를 하나의 발급 플랜으로 구성하여, 실제 VC 발급 시 참조됩니다.
 
-> ⚠️ ZKP Credential을 함께 발급하려면, 해당 Issue Profile에서 **ZKP 발급 여부를 활성화하고**, Credential Definition을 선택해야 합니다.  
+> **주의사항**   
+> ZKP Credential을 함께 발급하려면, 해당 Issue Profile에서 **ZKP 발급 여부를 활성화하고**, Credential Definition을 선택해야 합니다.  
 > 따라서 ZKP 관련 설정이 먼저 완료되어 있어야 Issue Profile 구성이 가능합니다.
 
 Demo 테스트에서는 신분증 VC 발급을 위한 Issue Profile을 아래와 같이 구성합니다:
@@ -1013,8 +1025,10 @@ Demo 테스트에서는 신분증 VC 발급을 위한 Issue Profile을 아래와
   - 일반 VC만 발급되며, ZKP Credential은 포함되지 않습니다.
   - OpenDID 클라이언트 앱을 통해 사용자가 직접 발급을 요청합니다
 
+<br/>
+
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer Admin 운영 가이드 - Issue Profile 등록](https://github.com/OmniOneID/did-issuer-server/blob/develop/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-issue-profile-%EB%93%B1%EB%A1%9D)
+> - [Issuer Admin 운영 가이드 - Issue Profile 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-issue-profile-%EB%93%B1%EB%A1%9D)
 
 <br/><br/>
 
@@ -1056,7 +1070,7 @@ Demo 테스트에서는 다음과 같은 서비스 등록이 필요합니다:
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.1.1. Service Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3211-service-register)
+> - [Verifier Admin 운영 가이드 - 3.2.1.1. Service Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3211-service-register)
 
 <br/><br/>
 
@@ -1064,7 +1078,6 @@ Demo 테스트에서는 다음과 같은 서비스 등록이 필요합니다:
 
 **Filter Management** 메뉴에서는 제출된 VP가 특정 조건을 만족하는지 확인하기 위한 **필터 정책**을 정의할 수 있습니다.  
 각 필터는 요구되는 클레임(Required Claims), 표시할 클레임(Display Claims), 허용된 발급자(Allowed Issuers) 등을 설정하며, Profile에서 재사용됩니다.
-
 
 Demo 테스트에서는 다음과 같은 VP Filter 등록이 필요합니다:
 
@@ -1083,7 +1096,7 @@ Demo 테스트에서는 다음과 같은 VP Filter 등록이 필요합니다:
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.2.1. Filter Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3221-filter-register)
+> - [Verifier Admin 운영 가이드 - 3.2.2.1. Filter Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3221-filter-register)
 
 <br/><br/>
 
@@ -1102,7 +1115,7 @@ Demo 테스트에서는 아래와 같은 프로세스를 1건 등록해두고, �
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.3.1. Process Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3231-process-register)
+> - [Verifier Admin 운영 가이드 - 3.2.3.1. Process Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3231-process-register)
 
 <br/><br/>
 
@@ -1128,7 +1141,7 @@ Demo 테스트에서는 아래 두 가지 프로파일을 등록합니다:
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.4.1 Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+> - [Verifier Admin 운영 가이드 - 3.2.4.1 Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3241-profile-register)
 
 <br/><br/>
 
@@ -1154,7 +1167,7 @@ Demo 테스트에서는 신분증과 운전면허증 제출을 위한 다음 두
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.5.1 Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#325-policy-management)
+> - [Verifier Admin 운영 가이드 - 3.2.5.1 Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3251-policy-register)
 
 <br/><br/>
 
@@ -1174,7 +1187,8 @@ Demo 테스트에서는 신분증 ZKP Credential을 검증하기 위한 Proof Re
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 작성필요](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+> - [Verifier Admin 운영 가이드 - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3311-proof-request-register)
+
 
 <br/><br/>
 
@@ -1195,12 +1209,12 @@ Demo 테스트에서는 신분증 ZKP Profile을 아래와 같이 등록해야 �
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 작성필요](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+> - [Verifier Admin 운영 가이드 - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3321-zkp-profile-register)
 
 <br/><br/>
 
 
-### 6.3.8. ZKP Policy 등록 등록
+### 6.3.8. ZKP Policy 등록
 
 **ZKP Policy Management** 메뉴에서는 ZKP 기반 VP 제출에 대한 최종 검증 정책을 등록할 수 있습니다.  
 ZKP Policy는 하나의 ZKP 프로파일과, 해당 증명을 적용할 서비스(Payload)를 연결하여 구성됩니다.  
@@ -1217,26 +1231,444 @@ Demo 테스트에서는 신분증 ZKP Profile을 아래와 같이 등록해야 �
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 작성필요](https://github.com/OmniOneID/did-verifier-server/blob/develop/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#324-profile-management)
+> - [Verifier Admin 운영 가이드 - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3331-zkp-policy-register)
 
 <br/><br/>
 
 # 7. OpenDID 테스트 가이드
 
+이 장에서는 OpenDID의 주요 기능인 사용자 등록, VC 발급, VP 제출 과정을 Demo 환경에서 테스트하는 방법을 안내합니다.  
+테스트는 Web 기반의 **OpenDID Demo 페이지**와 모바일 **OpenDID App**을 함께 사용하여 진행됩니다.
+
+Demo 페이지를 통해 다양한 VC 발급 시나리오와 VP 제출 흐름을 직접 확인할 수 있으며,  
+이를 통해 OpenDID 시스템의 전체 동작 과정을 직관적으로 이해할 수 있습니다.
+
+> **주의**   
+> 본 장의 테스트는 **6장의 Admin 설정이 모두 완료된 상태**를 전제로 합니다.  
+> Admin 설정이 미완료되었거나 일부 VC Plan/Policy가 누락되었을 경우, 테스트가 정상적으로 진행되지 않을 수 있습니다.
+
+아래는 Demo 메인 화면입니다.
+
+<img src="./images/demo-main.png" width="700"/>
+
 <br/>
 
-## 7.1. 사용자 등록 테스트
+## 7.1. 데모 환경 설정
 
-작성 중
+Demo 페이지를 통해 VC 발급 및 VP 제출 기능을 테스트하기 위해서는, 
+해당 페이지에서 **서버 정보** 및 **사용자 정보**를 먼저 설정해야 합니다.  
 
-## 7.1. VC 발급 테스트
+이 장에서는 Demo 테스트를 위한 기본 환경 구성 절차를 안내합니다.  
+설정 저장 후에는 Demo 서버를 반드시 재시작해야 정상적으로 동작합니다.
 
-작성 중
+### 7.1.1. 서버 정보 설정
+
+Demo 환경에서 VC 발급 및 VP 제출을 정상적으로 테스트하려면, **TAS / Issuer / CA / Verifier 서버의 주소를 정확히 입력**해야 합니다.  
+해당 정보는 Demo 페이지의 **Server Settings** 탭에서 설정할 수 있습니다.
+
+> **주의사항**  
+> - 서버 정보를 저장한 후에는 Demo 서버를 **재구동**해야 설정이 적용됩니다.  
+>   (향후에는 재구동 없이 적용될 수 있도록 개선 예정입니다.)
+
+아래는 모든 서버 정보를 입력한 화면입니다.
+
+<img src="./images/demo_serverSettings.png" width="700"/>
 
 <br/><br/>
 
-## 7.2. VP 발급 테스트
+### 7.1.2. 사용자 정보 입력  
 
-작성 중
+VC 및 ZKP Credential 발급을 위해 Demo 페이지에서는 사용자 정보를 먼저 입력해야 합니다.  
+이 정보는 이전에 Issuer Admin Console에서 설정한 **VC 스키마** 및 **ZKP Credential 스키마**의 구조를 기반으로 구성되며,  
+각 클레임에 해당하는 값을 사용자가 직접 입력합니다.
+
+아래는 모든 사용자 정보 및 클레임을 입력한 화면입니다:
+
+<img src="./images/demo-enterInformation.png" width="700"/>
+
+<br/><br/>
+
+## 7.2. 사용자 등록 테스트
+
+사용자 등록은 DID CA 앱을 처음 실행할 때 자동으로 수행되는 과정입니다. 이 과정에서는 두 가지 등록이 순차적으로 이루어집니다:
+
+1. 월렛 등록: 사용자가 사용할 디지털 월렛의 DID Document를 OpenDID 시스템에 등록
+2. 사용자 등록: 사용자의 DID Document를 OpenDID 시스템에 등록
+
+각각의 등록 과정에서 해당하는 DID Document가 생성되어 Open DID 시스템에 등록됩니다.
+
+
+### 7.2.1. 테스트 방법
+
+1. `DID CA` 앱을 실행합니다.
+   
+2. ‘setting up your wallet’ 문구가 표시되며, 앱이 자동으로 월렛을 생성하고 OpenDID 시스템에 등록하는 과정이 시작됩니다.  
+   이 과정은 사용자 입력 없이 자동으로 완료됩니다.
+
+<img src="./images/user_register_1.png" width="200" height="400" />
+
+<br/>
+
+3. 'Open DID Wallet' 화면이 나타나며, 사용자의 등록 과정을 단계별로 안내해 줍니다. 현재 Step 1을 진행 중임을 확인하고, `Next` 버튼을 클릭합니다.
+
+<img src="./images/user_register_2.png" width="200" height="400"/>
+
+<br/>
+
+4. ‘User Information’ 화면에서 사용자의 정보를 입력합니다.  
+   이때, [7.1.2. 사용자 정보 입력](#712-사용자-정보-입력)에서 설정한 이름과 동일하게 입력해야 합니다.
+
+<img src="./images/user_register_3.png" width="200" height="400"/>
+
+<br/>
+
+5. 사용자의 정보를 입력하고 `Save` 버튼을 클릭합니다.
+
+6. 'Would you like to set the Wallet for lock type?' 라는 문구의 팝업이 화면에 나타나며, 월렛을 잠금 모드로 설정할지 물어봅니다. 여기에서는 `YES` 버튼을 클릭합니다.
+
+<img src="./images/user_register_4.png" width="200" height="400"/>
+
+<br/>
+
+7. 'Please register a Lock/Unlock PIN' 문구가 표시되며 월렛 잠금 비밀번호를 입력하는 화면이 나타납니다. 6자리의 숫자를 입력하며, 확인을 위해 한 번 더 동일한 6자리 숫자를 입력합니다.
+
+8. 'Open DID Wallet' 화면이 나타나며 현재 Step 2가 진행 중임을 확인합니다. `Next` 버튼을 클릭합니다.
+
+<img src="./images/user_register_6.png" width="200" height="400"/>
+
+<br/>
+
+9. 'Please input a PIN' 문구가 표시되며 PIN을 등록하는 화면이 나타납니다. 6자리의 숫자를 입력하며, 확인을 위해 한 번 더 동일한 6자리 숫자를 입력합니다.
+
+<img src="./images/user_register_7.png" width="200" height="400"/>
+
+<br/>
+
+10.  'Would you like to additionally register biometric authentication?' 문구의 팝업이 화면에 나타나며, 추가로 생체인증을 등록할지 물어보니다. 여기에서는 `YES` 버튼을 클릭합니다.
+
+<img src="./images/user_register_8.png" width="200" height="400"/>
+
+<br/>
+
+11. 앱 OS에서 지문을 입력하는 팝업이 나타납니다. 지문을 입력하여 등록합니다.
+
+12. 'Open DID Wallet' 화면이 나타나며 현재 Step 3가 진행 중임을 확인합니다. `Next` 버튼을 클릭합니다.
+
+<img src="./images/user_register_10.png" width="200" height="400"/>
+
+<br/>
+
+13. 'Please input a PIN' 문구가 표시되며 PIN 키를 입력하는 화면이 나타납니다. 6자리의 숫자를 입력합니다.
+
+<img src="./images/user_register_11.png" width="200" height="400"/>
+
+15. 앱 OS에서 지문을 입력하는 팝업이 나타납니다. 지문을 입력합니다.
+    
+16. 메인 페이지로 이동한 후, 아직 등록된 VC가 없음을 확인합니다. 화면에는 'No certificate has been issued.'라는 문구가 출력됩니다.
+   
+<img src="./images/user_register_12.png" width="200" height="400"/>
+
+<br/><br/>
+
+## 7.2. VC 발급 테스트
+
+OpenDID 시스템에서는 Verifiable Credential(VC)을 발급받는 방식이 두 가지로 나뉩니다.
+
+- **Issuer 시작 방식**: VC 발급이 Issuer 측에서 시작되며, 사용자는 App으로 Issuer가 제공하는 QR 코드를 스캔하여 VC 발급을 시작합니다.
+- **User 시작 방식**: VC 발급이 사용자 측에서 시작되며, 사용자가 앱에서 직접 VC 발급을 시작합니다.
+
+이번 장에서는 데모 환경에서 사용되는 대표 VC 두 가지를 각각 다른 방식으로 발급받는 과정을 테스트합니다.
+
+- **신분증 VC**는 **Issuer 시작 방식**으로 발급됩니다. 데모에서는 관리자가 Admin Console에서 발급용 QR을 생성하여 사용자에게 제공합니다.
+- **운전면허증 VC**는 **User 시작 방식**으로 발급됩니다. 사용자는 앱에서 운전면허증 VC를 선택하고 직접 발급을 요청합니다.
+
+> 참고: 신분증 VC를 발급받는 과정에서는 해당 VC를 기반으로 하는 **ZKP Credential**도 함께 발급되며, 이는 이후 ZKP 기반 검증에 사용됩니다.
+
+이제 각각의 VC에 대한 발급 절차를 테스트해보겠습니다.
+
+<br/>
+
+### 7.2.1. 운전면허증 VC 발급 테스트
+
+1. `DID CA` 앱을 실행합니다. 월렛이 잠금모드로 설정되어 있는 경우, PIN 입력 화면이 나타납니다. 잠금을 해제하기 위해 6자리의 숫자를 입력합니다.
+
+2. 화면 하단의 `ADD VC` 버튼을 클릭합니다.
+
+<img src="./images/user_register_12.png" width="200" height="400"/>
+
+<br/>
+
+3. 'Add Verifiable Credentials' 화면이 나타나며, 발급 가능한 VC를 선택할 수 있습니다. 'Drivier License VC plan'를 선택합니다.
+
+<img src="./images/demo_vc_driver2.png" width="200" height="400" />
+
+<br/>
+
+4. 'Issuance certificate Information' 화면이 나타나며 발급받을 VC에 대한 정보가 출력됩니다. `OK` 버튼을 클릭합니다.</br>
+
+<img src="./images/demo_vc_driver3.png" width="200" height="400" />
+
+<br/>
+
+5. 'Driver License VC' 화면이 나타나며 클레임을 직접 입력할 수 있습니다. 모든 클레임을 입력한 후 `Save` 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_driver4.png" width="200" height="400" />
+
+<br/>
+
+6. 지문 인증 또는 'Please input a PIN' 문구가 표시되며 PIN 키를 입력하는 화면이 나타나며, 사용자 인증을 진행합니다.
+
+7. 'Success" 문구가 표시되며 VC가 발급 성공했음을 확인합니다. `OK` 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_driver5.png" width="200" height="400" />
+
+<br/>
+
+8. 메인 페이지로 이동한 후, 등록한 Driver License ID VC가 화면에 표시된 것을 확인합니다.
+
+<img src="./images/demo_vc_driver6.png" width="200" height="400" />
+
+<br/>
+
+9. 해당 운전면허증 VC를 클릭하여 상세 클레임 정보를 확인할 수 있습니다.
+
+<img src="./images/demo_vc_driver7.png" width="200" height="400" />
+
+<br/><br/>
+
+### 7.2.2. 신분증 VC 발급 테스트
+
+1. 웹 브라우저에서 데모 서버의 메인 페이지에 접속하고, `VC Issuance` 탭 메뉴를 선택합니다.
+
+<img src="./images/demo_vc_idcard1.png" width="800"/>
+
+<br/>
+
+2. `Search` 버튼을 클릭하고 Select VC Plan 팝업에서 `ID Card VC plan`을 서택한 후 `Select` 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_idcard2.png" width="800"/>
+
+<br/>
+
+3. `Issuance of ID card` 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_idcard3.png" width="800"/>
+
+<br/>
+
+4. `Issue with QR` 팝업이 나타난 것을 확인합니다.
+
+<img src="./images/demo_vc_idcard4.png" width="400"/>
+
+<br/>
+
+5. `DID CA` 앱을 실행합니다. 월렛이 잠금모드로 설정되어 있는 경우, PIN 입력 화면이 나타납니다. 잠금을 해제하기 위해 6자리의 숫자를 입력합니다.
+
+6. 화면 하단의 SCAN QR 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_driver6.png" width="200" height="400" />
+
+<br/>
+
+7. 휴대폰의 카메라 화면이 활성화되면, QR 코드를 스캔합니다.
+
+8. 'Issuance certificate Information' 화면이 나타나며 발급받을 VC에 대한 정보가 출력됩니다. `OK` 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_idcard6.png" width="200" height="400" />
+
+<br/>
+
+9. 지문 인증 또는 'Please input a PIN' 문구가 표시되며 PIN 키를 입력하는 화면이 나타나며, 사용자 인증을 진행합니다.
+
+10. 'Success" 문구가 표시되며 VC가 발급 성공했음을 확인합니다. `OK` 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_idcard7.png" width="200" height="400" />
+
+<br/>
+
+11.  메인 페이지로 이동한 후, 등록한 신분증 VC가 화면에 표시된 것을 확인합니다. `ZKP included`라는 문구가 함께 표시되며, ZKP Credential도 같이 발급된 것을 확인할 수 있습니다.
+
+<img src="./images/demo_vc_idcard8.png" width="200" height="400" />
+
+<br/>
+
+12. 해당 신분증 VC를 클릭으로 상세 클레임 정보를 확인할 수 있습니다.
+
+<img src="./images/demo_vc_idcard9.png" width="200" height="400" />
+
+<br/>
+
+13. 데모 서버의 'Issue with QR' 팝업에서 Check issuance 버튼을 클릭합니다.
+
+14. 발급이 완료되었다는 팝업이 나타납니다. `확인` 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_idcard10.png" width="400"/>
+
+<br/><br/>
+
+
+## 7.3. VP 제출 테스트
+
+Verifiable Presentation(VP)은 사용자가 소지하고 있는 Verifiable Credential(VC)을 제3자에게 제출하는 방식으로, 인증이나 검증 등의 상황에서 사용됩니다.
+
+이 장에서는 앞서 발급받은 세 종류의 VC를 사용하여 VP를 제출하는 과정을 테스트합니다:
+
+- 신분증 VC
+- 신분증 ZKP Credential
+- 운전면허증 VC
+
+현재 데모 환경에서는 **데모에서 제공한 QR 코드를 앱에서 스캔하는 방식으로만 VP 제출이 가능합니다**.  
+따라서, 사용자는 앱에서 QR을 스캔한 후, 요구된 VC나 ZKP Credential을 선택하여 VP를 생성하고 제출하게 됩니다.
+
+<br/>
+
+### 7.3.1. 신분증 ZKP Credential 제출
+
+1. 웹 브라우저에서 데모 서버의 메인 페이지에 접속하고, `VP Submission` 탭 메뉴를 선택합니다.
+
+<img src="./images/vp_idcard_zkp1.png" width="800"/>
+
+<br/>
+
+2. `Search` 버튼을 클릭하고 Select VC Plan 팝업에서 `IDCard ZKP Policy`을 서택한 후 `Select` 버튼을 클릭합니다.
+
+<img src="./images/vp_idcard_zkp2.png" width="400"/>
+
+<br/>
+
+3. `Submit your ID` 버튼을 클릭합니다.
+
+<img src="./images/vp_idcard_zkp3.png" width="800"/>
+
+<br/>
+
+4. `Submit a certificate` 팝업이 나타난 것을 확인합니다.
+
+<img src="./images/vp_idcard_zkp4.png" width="400"/>
+
+<br/>
+
+5. `DID CA` 앱을 실행합니다. 월렛이 잠금모드로 설정되어 있는 경우, PIN 입력 화면이 나타납니다. 잠금을 해제하기 위해 6자리의 숫자를 입력합니다.
+
+6. 화면 하단의 SCAN QR 버튼을 클릭합니다.
+
+<img src="./images/demo_vc_idcard8.png" width="200" height="400" />
+
+<br/>
+
+7. 휴대폰의 카메라 화면이 활성화되면, QR 코드를 스캔합니다
+
+8. 'Certificate submission guide' 화면이 나타나며 발급받은 VC에 대한 정보가 출력되고 하단에는 요구받은 Claim에 대한 목록이 노출됩니다. `OK` 버튼을 클릭합니다.
+
+<img src="./images/vp_idcard_zkp5.png" width="200" height="400"/>
+
+<br/>
+
+9. 각 클레임을 선택하여 제출 여부를 설정합니다. `눈` 아이콘을 클릭하면 해당 항목을 숨길 수 있습니다. 
+
+<img src="./images/vp_idcard_zkp6.png" width="200" height="400"/>
+
+<br/>
+
+10. 제출할 클레임을 선택하면 해당 항목의 실제 값을 확인할 수 있는 선택 창이 나타납니다.
+
+<img src="./images/vp_idcard_zkp7.png" width="200" height="400"/>
+
+<br/>
+
+11.  제출할 모든 클레임을 선택했다면, 화면 하단의 `SUBMIT` 버튼을 클릭하여 VP를 제출합니다.
+
+<img src="./images/vp_idcard_zkp8.png" width="200" height="400"/>
+
+<br/>
+
+
+12. 'Select submission verification method' 화면이 나타나고, PIN, BIO를 선택하여 방식에 맞는 인증방식에 인증을 시도합니다.
+
+13. 제출을 완료하면 `Certificate submitted` 화면이 표시됩니다.  
+
+<img src="./images/vp_idcard_zkp9.png" width="200" height="400"/>
+
+14. 데모 서버의 `Submittion a certificate` 팝업에서 `Submittion Complete` 버튼을 클릭합니다.
+
+15. 제출이 완료되었다는 팝업이 나타납니다. `Confirm` 버튼을 클릭합니다.
+
+<img src="./images/vp_idcard_zkp10.png" width="500"/>
+
+<br/><br/>
+
+### 7.3.2. 신분증 VP 제출
+
+1. 웹 브라우저에서 데모 서버의 메인 페이지에 접속하고, `VP Submission` 탭 메뉴를 선택합니다.
+
+2. `Search` 버튼을 클릭하고 Select VC Plan 팝업에서 `IDCard VC Policy`을 서택한 후 `Select` 버튼을 클릭합니다.
+
+3. `Submit your ID` 버튼을 클릭합니다.
+
+4. `Submit a certificate` 팝업이 나타난 것을 확인합니다.
+
+5. `DID CA` 앱을 실행합니다. 월렛이 잠금모드로 설정되어 있는 경우, PIN 입력 화면이 나타납니다. 잠금을 해제하기 위해 6자리의 숫자를 입력합니다.
+
+6. 화면 하단의 SCAN QR 버튼을 클릭합니다.
+
+7. 휴대폰의 카메라 화면이 활성화되면, QR 코드를 스캔합니다
+
+7. 휴대폰의 카메라 화면이 활성화되면, QR 코드를 스캔합니다
+
+8. `Certificate submission guide` 화면이 나타나며 발급받은 VC에 대한 정보가 출력되고 하단에는 요구받은 Claim에 대한 목록이 노출됩니다. `OK` 버튼을 클릭합니다.
+
+<img src="./images/vp_idcard1.png" width="200" height="400"/>
+
+<br/>
+
+9. `Select submission verification method` 화면이 나타나고, PIN, BIO를 선택하여 방식에 맞는 인증방식에 인증을 시도합니다.
+
+10. 제출을 완료하면 `Certificate submitted` 화면이 표시됩니다.  
+
+<img src="./images/vp_driver2.png" width="200" height="400"/>
+
+11. 데모 서버의 `Submittion a certificate` 팝업에서 `Submittion Complete` 버튼을 클릭합니다.
+
+15. 제출이 완료되었다는 팝업이 나타납니다. `Confirm` 버튼을 클릭합니다.
+
+<img src="./images/vp_driver3.png" width="400" />
+
+<br/><br/>
+
+### 7.3.3. 운전면허증 VP 제출
+
+1. 웹 브라우저에서 데모 서버의 메인 페이지에 접속하고, `VP Submission` 탭 메뉴를 선택합니다.
+
+2. `Search` 버튼을 클릭하고 Select VC Plan 팝업에서 `DriverLicense VC Policy`을 서택한 후 `Select` 버튼을 클릭합니다.
+
+3. `Submit your ID` 버튼을 클릭합니다.
+
+4. `Submit a certificate` 팝업이 나타난 것을 확인합니다.
+   
+5. `DID CA` 앱을 실행합니다. 월렛이 잠금모드로 설정되어 있는 경우, PIN 입력 화면이 나타납니다. 잠금을 해제하기 위해 6자리의 숫자를 입력합니다.
+
+6. 화면 하단의 SCAN QR 버튼을 클릭합니다.
+
+7. 휴대폰의 카메라 화면이 활성화되면, QR 코드를 스캔합니다
+
+8. `Certificate submission guide` 화면이 나타나며 발급받은 VC에 대한 정보가 출력되고 하단에는 요구받은 Claim에 대한 목록이 노출됩니다. `OK` 버튼을 클릭합니다.
+
+<img src="./images/vp_driver1.png" width="200" height="400"/>
+
+<br/>
+
+9. `Select submission verification method` 화면이 나타나고, PIN, BIO를 선택하여 방식에 맞는 인증방식에 인증을 시도합니다.
+
+10. 제출을 완료하면 `Certificate submitted` 화면이 표시됩니다.  
+
+<img src="./images/vp_driver2.png" width="200" height="400"/>
+
+<br/>
+
+11. 데모 서버의 `Submittion a certificate` 팝업에서 `Submittion Complete` 버튼을 클릭합니다.
+
+15. 제출이 완료되었다는 팝업이 나타납니다. `Confirm` 버튼을 클릭합니다.
+
+<img src="./images/vp_driver3.png" width="400" />
 
 <br/><br/>
