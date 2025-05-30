@@ -15,7 +15,7 @@ puppeteer:
         fullPage: false
 ---
 
-Open DID Installation Guide with Orchestrator
+Open DID Installation Guide
 ==
 
 - Date: 2025-05-30
@@ -23,6 +23,8 @@ Open DID Installation Guide with Orchestrator
 
 Table of Contents
 ==
+
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 -->
 - [1. OpenDID Introduction](#1-opendid-introduction)
 - [2. Installation Overview](#2-installation-overview)
 - [3. System Requirements](#3-system-requirements)
@@ -34,29 +36,23 @@ Table of Contents
   - [4.3. Node.js Installation](#43-nodejs-installation)
   - [4.4. Docker Installation](#44-docker-installation)
 - [5. Installation and Registration](#5-installation-and-registration)
-  - [5.1. Step 1: Orchestrator Installation](#51-step-1-orchestrator-installation)
-    - [5.1.1. Orchestrator Installation](#511-orchestrator-installation)
-    - [5.1.2. Repository Selection](#512-repository-selection)
-    - [5.1.3. Orchestrator Menu Structure](#513-orchestrator-menu-structure)
-  - [5.2. Step 2: PostgreSQL Installation](#52-step-2-postgresql-installation)
-    - [5.2.1. PostgreSQL Installation](#521-postgresql-installation)
-  - [5.3. Step 3: Blockchain Installation](#53-step-3-blockchain-installation)
-    - [5.3.1. Hyperledger Besu Installation](#531-hyperledger-besu-installation)
-  - [5.4. Step 4: TA Installation and Registration](#54-step-4-ta-installation-and-registration)
-    - [5.4.1. TA Server Installation and Execution](#541-ta-server-installation-and-execution)
-    - [5.4.2. TA Server Registration](#542-ta-server-registration)
-  - [5.5. Step 5: API Gateway Installation](#55-step-5-api-gateway-installation)
-    - [5.5.1. API Gateway Server Installation and Execution](#551-api-gateway-server-installation-and-execution)
-  - [5.6. Entity Server Installation and Execution](#56-entity-server-installation-and-execution)
-    - [5.6.1. Step 6: Issuer Server Installation and Registration](#561-step-6-issuer-server-installation-and-registration)
-    - [5.6.2. Step 7: Verifier Server Installation and Registration](#562-step-7-verifier-server-installation-and-registration)
-    - [5.6.3. Step 8: CA Server Installation and Registration](#563-step-8-ca-server-installation-and-registration)
-    - [5.6.4. Step 9: Wallet Server Installation and Registration](#564-step-9-wallet-server-installation-and-registration)
-  - [5.7. Step 10: Demo Server Installation](#57-step-10-demo-server-installation)
-    - [5.7.1. Demo Server Installation and Execution](#571-demo-server-installation-and-execution)
-  - [5.8. Step 11: App Installation](#58-step-11-app-installation)
-    - [5.8.1. Android App Installation](#581-android-app-installation)
-    - [5.8.2. iOS App Installation](#582-ios-app-installation)
+  - [5.1. Step 1: Blockchain Installation](#51-step-1-blockchain-installation)
+    - [5.1.1. Running Hyperledger Besu Network and Deploying Contracts](#511-running-hyperledger-besu-network-and-deploying-contracts)
+  - [5.2. Step 2: TA Installation and Registration](#52-step-2-ta-installation-and-registration)
+    - [5.2.1. TA Server Installation and Operation](#521-ta-server-installation-and-operation)
+    - [5.2.2. TA Server Registration](#522-ta-server-registration)
+  - [5.3. Step 3: API Gateway Installation](#53-step-3-api-gateway-installation)
+    - [5.3.1. API Gateway Server Installation and Operation](#531-api-gateway-server-installation-and-operation)
+  - [5.4. Entity Server Installation and Operation](#54-entity-server-installation-and-operation)
+    - [5.4.1. Step 4: Issuer Server Installation and Registration](#541-step-4-issuer-server-installation-and-registration)
+    - [5.4.2. Step 5: Verifier Server Installation and Registration](#542-step-5-verifier-server-installation-and-registration)
+    - [5.4.3. Step 6: CA Server Installation and Registration](#543-step-6-ca-server-installation-and-registration)
+    - [5.4.4. Step 7: Wallet Server Installation and Registration](#544-step-7-wallet-server-installation-and-registration)
+  - [5.5. Step 8: Demo Server Installation](#55-step-8-demo-server-installation)
+    - [5.5.1. Demo Server Installation and Operation](#551-demo-server-installation-and-operation)
+  - [5.6. Step 9: App Installation](#56-step-9-app-installation)
+    - [5.6.1. Android App Installation](#561-android-app-installation)
+    - [5.6.2. iOS App Installation](#562-ios-app-installation)
 - [6. Admin Configuration](#6-admin-configuration)
   - [6.1. TA Admin Configuration](#61-ta-admin-configuration)
     - [6.1.1. KYC Settings](#611-kyc-settings)
@@ -90,7 +86,9 @@ Table of Contents
     - [7.3.2. ID Card VP Submission](#732-id-card-vp-submission)
     - [7.3.3. Driver's License VP Submission](#733-drivers-license-vp-submission)
 
-  
+<!-- /TOC -->
+
+
 # 1. OpenDID Introduction
 
 Welcome to the world of Open DID!
@@ -129,7 +127,7 @@ Below are the main contents covered in each chapter:
 
 3. **Pre-installation Checklist**: Describes the prerequisites and preparations required before starting the installation.
 
-4. **Installation & Registration**: Explains how to install each component of the OpenDID system using the Orchestrator and register the servers into the system.
+4. **Installation & Registration**: This document explains how to install each component of Open DID and register the installed servers to the Open DID system.
 
 5. **Admin Configuration**: Describes how to preconfigure the essential issuance and verification policies in the Issuer and Verifier Admin Consoles, which are required for running the OpenDID test scenarios.
 
@@ -137,36 +135,29 @@ Below are the main contents covered in each chapter:
 
 <br/><br/>
 
-
 # 2. Installation Overview
-
-> **Important Notice**    
-> - This installation guide **covers only the Orchestrator-based installation procedure.**  
-> - Installation must start with the Orchestrator server installation, and all subsequent components will be automatically installed and registered through the Orchestrator web console.
 
 This chapter guides you through the components and installation sequence of the OpenDID project.
 
 The OpenDID platform must be installed in a specific order to function properly.
 
-**First,** install the Orchestrator server. The Orchestrator is an integrated management tool that can automatically install, register, and manage all components of the OpenDID system. Administrators can easily control the installation and status of all components including blockchain, servers, demo environments, and apps through the Orchestrator web console. Starting from OpenDID 2.0, installation through Orchestrator is available, and all installation processes can be initiated through the Orchestrator.
+**First,** install the blockchain that serves as the repository for storing information about OpenDID components (servers, apps). The blockchain stores identity information and transaction records of all components in a distributed network, providing data integrity and tamper-proof functionality. This is the core infrastructure that ensures the reliability of the OpenDID platform. Currently, OpenDID supports Hyperledger Besu-based public blockchain.
 
-**Second,** install the blockchain, which serves as the storage repository for OpenDID component (server, app) information. The blockchain stores identity information and transaction records of all components in a distributed network, providing data integrity and tamper-proof functionality. This is the core infrastructure that ensures the reliability of the OpenDID platform. Currently, OpenDID supports Hyperledger Besu-based public blockchain.
+**Second,** install the TA (Trust Agent) server that plays a role in building a trust chain by registering information of each component on the blockchain. The TA server verifies data requested by components and signs verified data to register it on the blockchain. This ensures that trustworthy data is stored on the blockchain, and the TA server plays a crucial role in building such trust chains.
 
-**Third,** install the TA (Trust Agent) server, which plays a role in building trust chains by registering information of each component on the blockchain. The TA server verifies data requested by components and signs verified data to register it on the blockchain. Through this process, trustworthy data is stored on the blockchain, and the TA server plays a crucial role in building such trust chains.
-
-**Fourth,** install the API Gateway server, which acts as an intermediary between the blockchain and apps. OpenDID 2.0 currently supports Hyperledger Besu, an Ethereum-based public blockchain. Even though it's a public blockchain, a structure where apps directly communicate with the blockchain can cause various problems. For example, different blockchains may support different interfaces, have different transaction processing methods, and unnecessary exposure or excessive network costs may occur. To solve these problems, OpenDID abstracts the interaction between blockchain and apps through the API Gateway server.  
+**Third,** install the API Gateway server that serves as an intermediary between the blockchain and apps. OpenDID 2.0 currently supports Hyperledger Besu, an Ethereum-based public blockchain. Even though it's a public blockchain, a structure where apps directly communicate with the blockchain can cause various issues. For example, each blockchain may support different interfaces, have different transaction processing methods, and may cause unnecessary exposure or excessive network costs. To solve these problems, OpenDID abstracts the interaction between blockchain and apps through the API Gateway server.  
 The API Gateway standardizes access to the blockchain, provides consistent interfaces needed for various blockchain integrations, and ensures scalability and efficiency of internal systems.
 
-**Fifth,** install Entity servers. Entity servers refer to components that perform core roles among OpenDID components, including Issuer, Verifier, CA, and Wallet servers.
+**Fourth,** install Entity servers. Entity servers refer to components that perform core roles among OpenDID components, including Issuer, Verifier, CA, and Wallet servers.
 
-- The Issuer server issues identity certificates (Verifiable Credentials) and provides users with trustworthy digital identification.
-- The Verifier server verifies submitted identity certificates (Verifiable Presentations) to confirm the authenticity of information and provide reliable authentication.
-- The CA (Certificate App) server ensures the trustworthiness of apps. Apps must obtain tokens before requesting major functions, and the CA server ensures trustworthiness so that apps can obtain these tokens.
-- The Wallet server ensures the trustworthiness of wallets held by apps. Wallets used by apps must also be registered on the blockchain, and the Wallet server ensures the trustworthiness of wallets in this process.
+- The Issuer server issues Verifiable Credentials and provides users with trustworthy digital identity certificates.
+- The Verifier server verifies submitted Verifiable Presentations to confirm the authenticity of information and provide trustworthy authentication.
+- The CA (Certificate App) server guarantees the trustworthiness of apps. Apps must obtain tokens before requesting major functions, and the CA server ensures trustworthiness so that apps can obtain these tokens.
+- The Wallet server guarantees the trustworthiness of wallets owned by apps. Wallets used by apps must also be registered on the blockchain, and the Wallet server ensures the trustworthiness of wallets in this process.
 
-**Sixth,** install the Demo server. The Demo server is a web server that provides screens to test OpenDID's main functions: VC issuance and VP submission. Through this, users can verify functions under conditions similar to actual environments.
+**Fifth,** install the Demo server. The Demo server is a web server that provides screens for testing OpenDID's main functions: VC issuance and VP submission. This allows users to verify functions under conditions similar to actual environments.
 
-**Seventh,** install the apps. Apps are the core interface through which users interact with the OpenDID platform, supporting both Android and iOS apps. Users can perform various functions through these apps, such as identity information management, VC (Verifiable Credential) issuance and storage, and VP (Verifiable Presentation) creation and submission.
+**Sixth,** install the apps. Apps are the core interface through which users interact with the OpenDID platform, supporting both Android and iOS apps. Users can perform various functions through these apps, such as identity information management, VC (Verifiable Credential) issuance and storage, and VP (Verifiable Presentation) generation and submission.
 
 <br/>
 The above content can be summarized in the following table.
@@ -175,17 +166,16 @@ The above content can be summarized in the following table.
 
 | Component            | Component Role                                                                                                                                               | Installation Order |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| **Orchestrator Server**      | A web-based orchestration tool that comprehensively installs and manages all components of OpenDID. Installation starts with the Orchestrator.                                     | 1          |
-| **Blockchain**         | Installs Hyperledger Besu-based public blockchain and deploys DID/VC related smart contracts.<br/>All OpenDID components use this blockchain as a trust repository. | 2          |
-| **TA Server**          | Trust Agent server that plays a pivotal role in building trust relationships between servers and users within OpenDID.                                                             | 3          |
-| **API Gateway Server** | Standardizes and mediates interactions between various blockchains and apps, ensuring scalability and efficiency.                                                                       | 4          |
-| **Issuer Server**      | Issuing authority server that issues VC (Verifiable Credential) requested by users.                                                                                    | 5          |
-| **Verifier Server**    | Verification authority server that verifies VP (Verifiable Presentation) submitted by users.                                                                                  | 6          |
-| **CA Server**          | Certified App server that ensures authorized apps can be used within OpenDID.                                                                           | 7          |
-| **Wallet Server**      | Wallet server that ensures wallets can be used within OpenDID.                                                                               | 8          |
-| **Demo Server**        | Provides an environment to test VC issuance and VP submission functions.                                                                                                  | 9          |
-| **Android App**       | OpenDID's Android client app.                                                                                                                       | 10         |
-| **iOS App**           | OpenDID's iOS client app.                                                                                                                           | 11         |
+| **Blockchain**         | Install Hyperledger Besu-based public blockchain and deploy DID/VC related smart contracts.<br/>All OpenDID components use this blockchain as a trust repository. | 1          |
+| **TA Server**          | Trust Agent server that plays a pivotal role in building trust relationships between servers and users within OpenDID.                                                             | 2          |
+| **API Gateway Server** | Standardizes and mediates interactions between various blockchains and apps, ensuring scalability and efficiency.                                                                       | 3          |
+| **Issuer Server**      | Issuing authority server that issues VC (Verifiable Credential) requested by users.                                                                                    | 4          |
+| **Verifier Server**    | Verification authority server that verifies VP (Verifiable Presentation) submitted by users.                                                                                  | 5          |
+| **CA Server**          | Certified App server that guarantees authorized apps can be used within OpenDID.                                                                           | 6          |
+| **Wallet Server**      | Wallet server that guarantees wallets can be used within OpenDID.                                                                               | 7          |
+| **Demo Server**        | Provides an environment for testing VC issuance and VP submission functions.                                                                                                  | 8          |
+| **Android App**       | OpenDID's Android client app.                                                                                                                       | 9         |
+| **iOS App**           | OpenDID's iOS client app.                                                                                                                           | 10         |
 
 <br/>
 
@@ -193,15 +183,7 @@ The above process can be illustrated as follows:
 
 ```text
 +---------------------------------------------------------------+
-| 1. Install Orchestrator Server                                |
-|    +------------------------------------------------------+   |
-|    | - Orchestrator Configuration                         |   |
-|    +------------------------------------------------------+   |
-+---------------------------------------------------------------+
-                             |
-                             v
-+---------------------------------------------------------------+
-| 2. Install Blockchain and Deploy Chaincode                    |
+| 1. Install Blockchain and Deploy Chaincode                    |
 |    +------------------------------------------------------+   |
 |    | - Install Hyperledger Besu                           |   |
 |    | - Deploy Chaincode                                   |   |
@@ -210,17 +192,17 @@ The above process can be illustrated as follows:
                              |
                              v
 +---------------------------------------------------------------+
-| 3. Install and Register TA Server                             |
+| 2. Install and Register TA Server                             |
 +---------------------------------------------------------------+
                              |
                              v
 +---------------------------------------------------------------+
-| 4. Install API Gateway                                        |
+| 3. Install API Gateway                                        |
 +---------------------------------------------------------------+
                              |
                              v
 +---------------------------------------------------------------+
-| 5. Install and Register Entity Server                         |
+| 4. Install and Register Entity Server                         |
 |    +-----------------------------+                            |
 |    | - Issuer Server              |                           |
 |    | - Verifier Server            |                           |
@@ -231,12 +213,12 @@ The above process can be illustrated as follows:
                              |
                              v
 +---------------------------------------------------------------+
-| 6. Install Demo Server                                        |
+| 5. Install Demo Server                                        |
 +---------------------------------------------------------------+
                              |
                              v
 +---------------------------------------------------------------+
-| 7. Install Apps                                               |
+| 6. Install Apps                                               |
 |    +-----------------------------+                            |
 |    | - Android App                |                           |
 |    | - iOS App                    |                           |
@@ -245,7 +227,6 @@ The above process can be illustrated as follows:
 ```
 
 <br/><br/>
-
 
 # 3. System Requirements
 This chapter describes the requirements needed to install the Open DID platform. To run servers and apps, you must meet the environment requirements for each item.
@@ -273,6 +254,7 @@ This chapter describes the requirements needed to install the Open DID platform.
 - Build and Dependency Management Tool: Xcode 15.4 or higher, CocoaPods
 
 <br /><br />
+
 
 # 4. Prerequisites
 
@@ -346,9 +328,9 @@ docker compose version
 
 # 5. Installation and Registration
 
-This chapter explains how to install each component of Open DID through the Orchestrator and register the installed servers in the Open DID system.
+This chapter explains how to install each component of Open DID and register the installed servers to the Open DID system.
 
-'Open DID system registration' refers to the process of creating a DID Document for the installed server, registering it on the blockchain, and then obtaining a membership certificate through the TA server. This process is essential to ensure the reliability of servers within the Open DID system and for secure communication and authentication. The membership certificate is issued as a VC (Verifiable Credential) signed by the TA, indicating that the server is a trustworthy Entity guaranteed by the TA server within the Open DID system.
+'Open DID system registration' refers to the process of creating a DID Document for the installed server, registering it on the blockchain, and then obtaining a membership certificate through the TA server. This process is essential for ensuring the trustworthiness of servers within the Open DID system and for secure communication and authentication. The membership certificate is issued as a VC (Verifiable Credential) signed by the TA, indicating that the server is a trustworthy Entity guaranteed by the TA server within the Open DID system.
 
 The list of servers that require 'Open DID system registration' is as follows:
 
@@ -362,163 +344,55 @@ The list of servers that require 'Open DID system registration' is as follows:
 | **API Gateway Server** | X                                     |
 | **Demo Server**        | X                                     |
 
-## 5.1. Step 1: Orchestrator Installation
+## 5.1. Step 1: Blockchain Installation
 
-The Orchestrator is a web-based management tool that can comprehensively control the installation, execution, status checking, and system registration processes of OpenDID components.  
-Starting from OpenDID 2.0, most installation procedures can be automated through the Orchestrator, and the status of blockchain and each server can be checked at a glance.
+OpenDID 2.0 currently supports only **Hyperledger Besu** for blockchain integration.
+Besu is an Ethereum-compatible EVM blockchain that allows you to configure a private network in a local environment and deploy smart contracts for OpenDID.
 
-### 5.1.1. Orchestrator Installation
+> **For installation and deployment methods, please refer to the document below**  
+> [OpenDID Besu Contract - README](https://github.com/OmniOneID/did-besu-contract/blob/develop/README.md)
 
-> This document assumes the user's IP address as `10.48.17.123` for explanation purposes.  
+<br/>
 
-This is the process of copying the Orchestrator server repository to the user's local computer and then running the server.  
+### 5.1.1. Running Hyperledger Besu Network and Deploying Contracts
+
+The `did-besu-contract` repository guides you through the following procedures:
+
+1. Run a local Besu network using Docker Compose.  
+2. Execute the `deploy.sh` script to deploy smart contracts for OpenDID.  
+3. Apply the contract addresses output from the deployment result to OpenDID server configurations.
+
+<br/><br/>
+
+## 5.2. Step 2: TA Installation and Registration
+
+The TA server is a Trust Agent server that plays a core role in **building trust chains** within Open DID.  
+The TA server verifies DID Documents submitted by Open DID system components, registers them on the blockchain, and is responsible for issuing **membership certificates**.
+
+Therefore, the TA server **must be installed and registered first**, and subsequently, other servers can be registered as trusted entities in the OpenDID system through the TA server.
+
+### 5.2.1. TA Server Installation and Operation
+
+This is the process of copying the TA server repository to the user's local computer, completing the necessary configurations for server operation, and running the server.
 For more detailed installation methods, please refer to the link below.
 
-> [Orchestrator Installation Guide](https://github.com/OmniOneID/did-orchestrator-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_orchestrator_InstallationAndOperation_Guide.md)
+> **For detailed installation procedures, please refer to the installation guide below.**   
+> - [Open DID TA Server Installation Guide](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_TAServer_Installation_Guide.md)
 
 <br/>
 
-### 5.1.2. Repository Selection
+### 5.2.2. TA Server Registration
 
-Once installation is complete, access the Orchestrator web page:
+Once the TA server is running normally, you must proceed with the process of registering the TA server as an **official trusted entity** in the OpenDID system.  
+This process is called **OpenDID system registration**, which means creating a DID Document for the installed server, registering it on the blockchain, and then obtaining a membership certificate through the TA server.
 
-```bash
-http://10.48.17.123:9001
-```
+Upon completion of registration, the server is considered a trustworthy entity within the OpenDID system, and **prerequisites for secure communication and authentication** are fulfilled.  
+In particular, the membership certificate is a **Verifiable Credential** issued with TA's signature, serving as digital credential that proves the trustworthiness of the server.
 
-When first accessed, the following **Repository Selection Popup** is displayed, starting the step to select the trust repository to be used in OpenDID.
-
-<img src="./images/orchestrator_select_repository_popup.png" width="800"/>
-
-- `Hyperledger Besu`  
- - This is the public blockchain currently officially supported in OpenDID 2.0.  
- - **You must select this option.**
-
-- `Ledger Service Server`  
- - This is an internal development DB-based repository, used only in test environments. 
- - It will be supported in the future and cannot currently be selected.
-
-Below is the **Dashboard screen** that is displayed by default after Repository selection.
-
-<img src="./images/orchestrator_after_select_repository.png" width="500"/>
-
-<br/>
-
-### 5.1.3. Orchestrator Menu Structure
-
-The left side menu of the Orchestrator includes the following items:
-
-| Menu | Description |
-|------|------|
-| **Dashboard** | The main screen where you can check the overall server, blockchain, and app status and perform start/stop/registration operations. |
-| **Configuration** | A menu where you can modify configuration file paths, environment variables, etc. for each component. Proceed with default settings. |
-
-<br/>
-
-## 5.2. Step 2: PostgreSQL Installation
-
-Each server in OpenDID requires a database to store internal data. In typical installation environments, it's recommended to install individual DBMS for each server, but in Orchestrator-based installations, one PostgreSQL instance is commonly used for efficiency. In this case, each server is configured to use separate unique DATABASEs within the same PostgreSQL instance.
-
-### 5.2.1. PostgreSQL Installation
-
-You can install and run the PostgreSQL database in the Repositories area of the Orchestrator dashboard. PostgreSQL is the database instance commonly used by all OpenDID servers and is the first component that must be installed.
-
-Follow the procedure below to install and run PostgreSQL:
-
-1. **Check PostgreSQL Item**  
-  - Find the `PostgreSQL` item in the **Repositories** area of the dashboard. 
-  - In the initial state, the status indicator is displayed in gray.
-
-2. **Start PostgreSQL**  
-  - Click the `Start` button in the PostgreSQL row.
-
-3. **Confirm Installation Completion**  
-  - As installation proceeds, the status indicator changes **from gray to green**.  
-  - The green indicator means PostgreSQL is running normally.
-
-> **Notes**
-> - PostgreSQL installation and initialization may take a few minutes.
-> - If the status doesn't change to green after some time, click the `Status` button to check the current status.
-> - If problems occur during installation, you can click the `log` button to check the logs.
-
-Below is the dashboard screen after PostgreSQL has been successfully executed:
-
-<img src="./images/orchestrator_after_install_postgresql.png" width="500"/>
-
-<br/><br/>
-
-
-## 5.3. Step 3: Blockchain Installation
-
-OpenDID 2.0 uses Hyperledger Besu based on public blockchain. Using the Orchestrator, all processes from blockchain installation to deploying smart contracts (chaincode) used in OpenDID are performed automatically, allowing users to complete blockchain configuration with just one click without complex settings.
-
-### 5.3.1. Hyperledger Besu Installation
-
-Follow the procedure below to install Hyperledger Besu:
-
-1. **Check Hyperledger Besu Item**  
-  - Find the `Hyperledger Besu` item in the **Repositories** area of the dashboard.  
-  - In the initial state, the status indicator is displayed in gray.
-
-2. **Start Besu**  
-  - Click the `Start` button in the Hyperledger Besu row.
-
-3. **Confirm Installation Completion**  
-  - As blockchain network configuration and smart contract deployment proceed, the status indicator changes **from gray to green**.  
-  - The green indicator means Hyperledger Besu is running normally and OpenDID smart contracts have been successfully deployed.
-
-> **Notes**
-> - Blockchain network initialization and smart contract deployment may take a few minutes.
-> - If the status doesn't change to green after some time, click the `Status` button to check the current status.
-> - If problems occur during the installation process, you can click the `Reset` button to initialize and try again.
-> - Detailed logs can be checked by clicking the `log` button.
-
-<br/><br/>
-
-## 5.4. Step 4: TA Installation and Registration
-
-The TA server is the Trust Agent server that plays a core role in **building trust chains** within Open DID.  
-The TA server is responsible for verifying DID Documents submitted by Open DID system components, registering them on the blockchain, and issuing **membership certificates**.
-
-Therefore, the TA server **must be installed and registered first**, and subsequently other servers can be registered as trusted entities in the OpenDID system through the TA server.
-
-Installation can be performed simply through the Orchestrator dashboard, and the subsequent system registration procedure is also conducted in the same console.
-
-### 5.4.1. TA Server Installation and Execution
-
-Follow the procedure below to install and run the TA server:
-
-1. **Check TA Item**  
-  - Find the `TA (8090)` item in the **Servers** area of the Orchestrator dashboard.
-
-2. **Start TA Server**  
-  - Click the `Start` button.
-  - Server execution begins, and the status indicator changes **from red → green**.
-
-3. **Check Server Status**  
-  - Once execution is complete, you can click the status button (`Status`) to check the response status.
-  - If necessary, you can click the `log` button to check the execution logs.
-
-4. **Check Admin Access**  
-  - Clicking the `Settings` button will navigate to the TA server's admin page.
-   
-5. **Check Swagger Access**  
-  - Clicking the `Swagger` button will navigate to the TA server's Swagger page.
-
-<br/>
-
-### 5.4.2. TA Server Registration
-
-Once the TA server is running normally, you must now proceed with the process of registering the TA server as an **official trusted entity** in the OpenDID system.  
-This process is called **OpenDID system registration**, which involves creating a DID Document for the installed server, registering it on the blockchain, and then obtaining a membership certificate through the TA server.
-
-Once registration is complete, the server is considered a trusted entity within the OpenDID system, and **prerequisites for secure communication and authentication** are met.  
-In particular, the membership certificate is a **Verifiable Credential** issued with TA's signature, serving as digital qualification proof of the server's trustworthiness.
-
-TA registration is not performed directly in the Orchestrator, but is conducted through the **TA Admin Console**.  
+TA registration is conducted through the **TA Admin Console**.  
 The registration procedure follows the operation guide below, and the main steps are as follows:
 
-- Start registration by entering the registration password. This password must be predefined in the TA server configuration file.  
+- Enter the registration password to start registration. This password must be predefined in the TA server configuration file.  
 - Enter meta information such as TA server name, description, and administrator information.  
 - Generate a unique DID Document and register it on the blockchain.  
 - Based on the registered DID, the TA issues a membership certificate (VC) to itself.
@@ -526,50 +400,33 @@ The registration procedure follows the operation guide below, and the main steps
 > **For detailed registration procedures, please refer to the operation guide below.**   
 > [OpenDID TA Admin Operation Guide - 3.1.1 TA Registration](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide.md#311-ta-%EB%93%B1%EB%A1%9D)
 
-Once registration is complete, you can navigate to the main page of the Admin Console and continue with the registration procedures for servers like Issuer, Verifier, etc.
+Once registration is complete, you can navigate to the main page of the Admin Console and continue with the registration procedures for servers such as Issuer and Verifier.
 
 <br/><br/>
 
-## 5.5. Step 5: API Gateway Installation
+## 5.3. Step 3: API Gateway Installation
 
-The API Gateway Server serves as an intermediary to allow Apps to query specific data from blockchain servers and does not need to be registered in the Open DID system. The installation method for the API Gateway Server is as follows.
+The API Gateway Server serves as an intermediary that allows Apps to query specific data from blockchain servers, and does not need to be registered in the Open DID system. 
 
-Installation can be performed simply through the Orchestrator dashboard, and the subsequent system registration procedure is also conducted in the same console.
+<br/>
 
-### 5.5.1. API Gateway Server Installation and Execution
+### 5.3.1. API Gateway Server Installation and Operation
 
-Follow the procedure below to install and run the API Gateway server:
+This is the process of copying the API Gateway Server repository to the user's local computer, completing the necessary configurations for server operation, and running the server.
+For more detailed installation methods, please refer to the link below.
 
-1. **Check API Gateway Item**  
-  - Find the `API (8093)` item in the **Servers** area of the Orchestrator dashboard.
-
-2. **Start API Gateway Server**  
-  - Click the `Start` button to start the server.
-  - When server execution begins, the status indicator changes **from red → green**.
-
-3. **Check Server Status**  
-  - Once execution is complete, click the `Status` button to check the response status.
-  - If necessary, you can click the `log` button to check the server execution logs.
-
-4. **Check Admin Access**  
-  - Clicking the `Settings` button will navigate to the API Gateway server's admin page.
-   
-5. **Check Swagger Access**  
-  - Clicking the `Swagger` button will navigate to the API Gateway server's Swagger page.
-
-> **Note**  
-> - Unlike TA, Issuer, and Verifier servers, the API Gateway server **does not require OpenDID system registration procedures.**  
-> - However, the blockchain server that the server depends on must be registered for normal operation.
+> **For detailed installation procedures, please refer to the installation guide below.**   
+> - [Open API Gateway Server Installation and Operation Guide](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_IssuerServer_Installation_Guide.md)
 
 <br/><br/>
 
 
-## 5.6. Entity Server Installation and Execution
+## 5.4. Entity Server Installation and Operation
 
-In the OpenDID system, Issuer, Verifier, CA, and Wallet servers are all Entity servers registered through the TA server.  
+In the OpenDID system, Issuer, Verifier, CA, and Wallet servers are all Entity servers that are registered through the TA server.  
 Each server must be registered in the OpenDID system after installation, and the registration procedure includes a collaborative process between TA and Entity.
 
-### 5.6.1. Step 6: Issuer Server Installation and Registration
+### 5.4.1. Step 4: Issuer Server Installation and Registration
 
 The Issuer server is an issuing authority server that performs the following roles:
 
@@ -578,48 +435,38 @@ The Issuer server is an issuing authority server that performs the following rol
 
 The installation and Open DID system registration method for the Issuer server is as follows.
 
-#### 5.6.1.1. Issuer Server Installation and Execution
+<br/>
 
-Follow the procedure below to install and run the Issuer server:
+#### 5.4.1.1. Issuer Server Installation and Operation
 
-1. **Check Issuer Item**  
-  - Find the `Issuer (8091)` item in the **Servers** area of the Orchestrator dashboard.
+This is the process of copying the Issuer server repository to the user's local computer, completing the necessary configurations for server operation, and running the server.
+For more detailed installation methods, please refer to the link below.
 
-2. **Start Issuer Server**  
-  - Click the `Start` button to start the server.
-  - When server execution begins, the status indicator changes **from red → green**.
+> **For detailed installation procedures, please refer to the installation guide below.**   
+> - [Open DID Issuer Server Installation Guide](https://github.com/OmniOneID/did-issuer-server/blob/main/docs/installation/OpenDID_IssuerServer_InstallationAndOperation_Guide.md)
 
-3. **Check Server Status**  
-  - Once execution is complete, click the `Status` button to check the response status.
-  - If necessary, you can click the `log` button to check the server execution logs.
+<br/>
 
-4. **Check Admin Access**  
-  - Clicking the `Settings` button will navigate to the Issuer server's admin page.
-   
-5. **Check Swagger Access**  
-  - Clicking the `Swagger` button will navigate to the Issuer server's Swagger page.
-
-<br/><br/>
-
-#### 5.6.1.2. Issuer Server Registration
+#### 5.4.1.2. Issuer Server Registration
 
 After the Issuer server is running, it must be registered as a **trusted entity** within the OpenDID system.  
-Entity registration is accomplished in cooperation with the TA server and follows **administrator approval-based registration procedures**.
+Entity registration is done in collaboration with the TA server and follows an **administrator approval-based registration procedure**.
 
-The registration flow in the operating environment is as follows:
+The registration flow in the operational environment is as follows:
 
-1. The **Issuer administrator** creates a DID Document in the Issuer Admin Console.
+1. **Issuer administrator** creates a DID Document in the Issuer Admin Console.
 2. **Sends the created DID Document to the TA administrator to request registration**.
-3. The **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
-4. The **Issuer administrator** requests membership certificate (VC) issuance to finally complete OpenDID system registration.
+3. **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
+4. **Issuer administrator** requests issuance of a membership certificate (VC) to finalize OpenDID system registration.
 
 > **For detailed registration procedures, please refer to the operation guides below.**
 > - [Issuer Admin Operation Guide - 3.1. Issuer Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#31-issuer-registration)
 > - [TA Admin Operation Guide - 3.2.2. Entity Details](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide.md#322-entity-%EC%83%81%EC%84%B8) 
+
 <br/><br/>
 
 
-### 5.6.2. Step 7: Verifier Server Installation and Registration
+### 5.4.2. Step 5: Verifier Server Installation and Registration
 
 The Verifier server is a verification authority server that performs the following roles:
 
@@ -628,40 +475,29 @@ The Verifier server is a verification authority server that performs the followi
 
 The installation and OpenDID system registration method for the Verifier server is as follows.
 
-#### 5.6.2.1. Verifier Server Installation and Execution
+<br/>
 
-Follow the procedure below to install and run the Verifier server:
+#### 5.4.2.1. Verifier Server Installation and Operation
 
-1. **Check Verifier Item**  
-  - Find the `Verifier (8092)` item in the **Servers** area of the Orchestrator dashboard.
+This is the process of copying the Verifier server repository to the user's local computer, completing the necessary configurations for server operation, and running the server.
+For more detailed installation methods, please refer to the link below.
 
-2. **Start Verifier Server**  
-  - Click the `Start` button to start the server.
-  - When server execution begins, the status indicator changes **from red → green**.
+> **For detailed installation procedures, please refer to the installation guide below.**   
+> - [Open DID Verifier Server Installation Guide](https://github.com/OmniOneID/did-verifier-server/blob/feature/yklee0911/QA-v2.0.0/fix-server-url-description/docs/installation/OpenDID_VerifierServer_Installation_Guide.md)
 
-3. **Check Server Status**  
-  - Once execution is complete, click the `Status` button to check the response status.
-  - If necessary, you can click the `log` button to check the server execution logs.
+<br/>
 
-4. **Check Admin Access**  
-  - Clicking the `Settings` button will navigate to the Verifier server's admin page.
-
-5. **Check Swagger Access**  
-  - Clicking the `Swagger` button will navigate to the Verifier server's Swagger page.
-
-<br/><br/>
-
-#### 5.6.2.2. Verifier Server Registration
+#### 5.4.2.2. Verifier Server Registration
 
 After the Verifier server is running, it must be registered as a **trusted entity** within the OpenDID system.  
-Entity registration is accomplished in cooperation with the TA server and follows **administrator approval-based registration procedures**.
+Entity registration is done in collaboration with the TA server and follows an **administrator approval-based registration procedure**.
 
-The registration flow in the operating environment is as follows:
+The registration flow in the operational environment is as follows:
 
-1. The **Verifier administrator** creates a DID Document in the Verifier Admin Console.
+1. **Verifier administrator** creates a DID Document in the Verifier Admin Console.
 2. **Sends the created DID Document to the TA administrator to request registration**.
-3. The **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
-4. The **Verifier administrator** requests membership certificate (VC) issuance to finally complete OpenDID system registration.
+3. **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
+4. **Verifier administrator** requests issuance of a membership certificate (VC) to finalize OpenDID system registration.
 
 > **For detailed registration procedures, please refer to the operation guides below.**
 > - [Verifier Admin Operation Guide - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#311-verifier-%EB%93%B1%EB%A1%9D)
@@ -669,46 +505,35 @@ The registration flow in the operating environment is as follows:
 
 <br/><br/>
 
-### 5.6.3. Step 8: CA Server Installation and Registration
+### 5.4.3. Step 6: CA Server Installation and Registration
 
-The CA server is a certified app server that ensures authorized apps can be used within Open DID.
+The CA server is a certified app server that guarantees authorized apps can be used within Open DID.
 
 The installation and OpenDID system registration method for the CA server is as follows.
 
-#### 5.6.3.1. CA Server Installation and Execution
+<br/>
 
-Follow the procedure below to install and run the CA server:
+#### 5.4.3.1. CA Server Installation and Operation
 
-1. **Check CA Item**  
-  - Find the `CA (8094)` item in the **Servers** area of the Orchestrator dashboard.
+This is the process of copying the CA server repository to the user's local computer, completing the necessary configurations for server operation, and running the server.
+For more detailed installation methods, please refer to the link below.
 
-2. **Start CA Server**  
-  - Click the `Start` button to start the server.
-  - When server execution begins, the status indicator changes **from red → green**.
+> **For detailed installation procedures, please refer to the installation guide below.**   
+> - [Open DID CA Server Installation Guide](https://github.com/OmniOneID/did-ca-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_CAServer_Installation_Guide.md)
 
-3. **Check Server Status**  
-  - Once execution is complete, click the `Status` button to check the response status.
-  - If necessary, you can click the `log` button to check the server execution logs.
+<br/>
 
-4. **Check Admin Access**  
-  - Clicking the `Settings` button will navigate to the CA server's admin page.
-
-5. **Check Swagger Access**  
-  - Clicking the `Swagger` button will navigate to the CA server's Swagger page.
-
-<br/><br/>
-
-#### 5.6.3.2. CA Server Registration
+#### 5.4.3.2. CA Server Registration
 
 After the CA server is running, it must be registered as a **trusted entity** within the OpenDID system.  
-Entity registration is accomplished in cooperation with the TA server and follows **administrator approval-based registration procedures**.
+Entity registration is done in collaboration with the TA server and follows an **administrator approval-based registration procedure**.
 
-The registration flow in the operating environment is as follows:
+The registration flow in the operational environment is as follows:
 
-1. The **CA administrator** creates a DID Document in the CA Admin Console.
+1. **CA administrator** creates a DID Document in the CA Admin Console.
 2. **Sends the created DID Document to the TA administrator to request registration**.
-3. The **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
-4. The **CA administrator** requests membership certificate (VC) issuance to finally complete OpenDID system registration.
+3. **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
+4. **CA administrator** requests issuance of a membership certificate (VC) to finalize OpenDID system registration.
 
 > **For detailed registration procedures, please refer to the operation guides below.**
 > - [CA Admin Operation Guide - 3.1. CA Registration](https://github.com/OmniOneID/did-ca-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_CAAdmin_Operation_Guide.md#311-ca-%EB%93%B1%EB%A1%9D)
@@ -717,47 +542,36 @@ The registration flow in the operating environment is as follows:
 <br/><br/>
 
 
-### 5.6.4. Step 9: Wallet Server Installation and Registration 
+### 5.4.4. Step 7: Wallet Server Installation and Registration 
 
-The Wallet server plays a role in **guaranteeing trust** so that users' Wallets can be used within OpenDID.  
-The Wallet server **signs and guarantees** the DID Documents of Wallets used in apps, enabling those Wallets to be registered on the blockchain as trustworthy entities.
+The Wallet server plays a role in **guaranteeing trust** so that user's Wallets can be used within OpenDID.  
+The Wallet server **signs and guarantees** the DID Document of Wallets used by apps, thereby supporting the registration of those Wallets as trustworthy entities on the blockchain.
 
 The installation and OpenDID system registration method for the Wallet server is as follows.
 
-#### 5.6.4.1. Wallet Server Installation and Execution
+<br/>
 
-Follow the procedure below to install and run the Wallet server:
+#### 5.4.4.1. Wallet Server Installation and Operation
 
-1. **Check Wallet Item**  
-  - Find the `Wallet (8095)` item in the **Servers** area of the Orchestrator dashboard.
+This is the process of copying the Wallet server repository to the user's local computer, completing the necessary configurations for server operation, and running the server.
+For more detailed installation methods, please refer to the link below.
 
-2. **Start Wallet Server**  
-  - Click the `Start` button to start the server.
-  - When server execution begins, the status indicator changes **from red → green**.
+> **For detailed installation procedures, please refer to the installation guide below.**   
+> - [Open DID Wallet Server Installation Guide](https://github.com/OmniOneID/did-wallet-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_WalletServer_Installation_Guide.md)
 
-3. **Check Server Status**  
-  - Once execution is complete, click the `Status` button to check the response status.
-  - If necessary, you can click the `log` button to check the server execution logs.
+<br/>
 
-4. **Check Admin Access**  
-  - Clicking the `Settings` button will navigate to the Wallet server's admin page.
-
-5. **Check Swagger Access**  
-  - Clicking the `Swagger` button will navigate to the Wallet server's Swagger page.
-
-<br/><br/>
-
-#### 5.6.4.2. Wallet Server Registration
+#### 5.4.4.2. Wallet Server Registration
 
 After the Wallet server is running, it must be registered as a **trusted entity** within the OpenDID system.  
-Entity registration is accomplished in cooperation with the TA server and follows **administrator approval-based registration procedures**.
+Entity registration is done in collaboration with the TA server and follows an **administrator approval-based registration procedure**.
 
-The registration flow in the operating environment is as follows:
+The registration flow in the operational environment is as follows:
 
-1. The **Wallet administrator** creates a DID Document in the Wallet Admin Console.
+1. **Wallet administrator** creates a DID Document in the Wallet Admin Console.
 2. **Sends the created DID Document to the TA administrator to request registration**.
-3. The **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
-4. The **Wallet administrator** requests membership certificate (VC) issuance to finally complete OpenDID system registration.
+3. **TA administrator** approves the request in the TA Admin Console and registers the DID Document on the blockchain.
+4. **Wallet administrator** requests issuance of a membership certificate (VC) to finalize OpenDID system registration.
 
 > **For detailed registration procedures, please refer to the operation guides below.**
 > - [Wallet Admin Operation Guide - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/admin/OpenDID_WalletAdmin_Operation_Guide.md#31-wallet-service-registration)
@@ -765,53 +579,36 @@ The registration flow in the operating environment is as follows:
 
 <br/><br/>
 
-## 5.7. Step 10: Demo Server Installation
+## 5.5. Step 8: Demo Server Installation
 
-The Demo server is a web server that provides screens to test OpenDID's main functions: **VC issuance and VP submission**.  
-Users can directly verify main functions under conditions similar to actual environments through the Demo.
+The Demo server is a web server that provides screens for testing OpenDID's main functions: **VC issuance and VP submission**.  
+Users can directly verify key functions under conditions similar to actual environments through the Demo.
 
 The Demo server provides the following functions:
 
-- **VC Issuance Scenario Testing**: Users can load VC issuance policies (VC Plan) set in the Issuer Admin Console, directly select them, and receive VC issuance.
-- **VP Submission Scenario Testing**: Based on VP verification policies set in the Verifier Admin Console, users can submit VP and check verification results.
+- **VC Issuance Scenario Testing**: Users can load VC issuance policies (VC Plan) configured in the Issuer Admin Console, select them directly, and receive VCs.
+- **VP Submission Scenario Testing**: Based on VP verification policies configured in the Verifier Admin Console, users can submit VPs and verify the verification results.
 
 <br/>
 
-### 5.7.1. Demo Server Installation and Execution
+### 5.5.1. Demo Server Installation and Operation
 
-Follow the procedure below to install and run the Demo server:
+This is the process of copying the CA server repository to the user's local computer, completing the necessary configurations for server operation, and running the server.
+For more detailed installation methods, please refer to the link below.
 
-1. **Check Demo Item**  
-  - Find the `DEMO (8099)` item in the **Demo** area of the Orchestrator dashboard.
-
-2. **Start Demo Server**  
-  - Click the `Start` button to start the server.
-  - When server execution begins, the status indicator changes **from red → green**.
-
-3. **Check Server Status**  
-  - Once execution is complete, click the `Status` button to check the response status.
-  - If necessary, you can click the `log` button to check the server execution logs.
-
-4. **Check Demo Site Access**  
-  - Clicking the `Demo Site` button will navigate to the Demo test page.
-  - This page is displayed normally only when all servers (PostgreSQL, blockchain, TA, Issuer, Verifier, CA, Wallet) are running through the Orchestrator.
-
-> **Notes**  
-> - The Demo area in the Orchestrator is displayed normally only when all servers are running.  
-> - **The method for setting VC issuance and VP submission policies to be used in Demo is guided in [Chapter 6 Admin Configuration](#6-admin-configuration)**.
-> - The method for performing actual testing through Demo is guided in **[Chapter 7 OpenDID Test Guide](#7-opendid-test-guide)**.
+> **For detailed installation procedures, please refer to the installation guide below.**   
+> - [Open DID Demo Server Installation and Operation Guide](https://github.com/OmniOneID/did-demo-server/blob/main/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md)
 
 <br/><br/>
 
-## 5.8. Step 11: App Installation
+## 5.6. Step 9: App Installation
 
-The CA (Client Agent) app is a client application used by users to participate in the OpenDID system.  
-The CA app plays a role in performing identity-related tasks directly managed by users, such as creating user DIDs and storing or submitting VC (Verifiable Credentials).
+The CA (Client Agent) app is a client application that users use to participate in the OpenDID system.  
+The CA app plays a role in performing identity-related tasks that users directly manage, such as creating user DIDs and storing or submitting VCs (Verifiable Credentials).
 
-OpenDID apps are developed to operate on Android and iOS platforms, and can be installed by setting up the development environment for each platform and then building the source code.  
-App installation is not automated through the Orchestrator and **must be installed manually by referring to the guide documents for each platform**.
+OpenDID apps are developed to work on Android and iOS platforms, and can be installed by setting up the development environment for each platform and then building the source code.  
 
-### 5.8.1. Android App Installation
+### 5.6.1. Android App Installation
 
 The Android app is developed based on Android Studio and can be installed by referring to the guide in the GitHub repository below.
 
@@ -822,7 +619,7 @@ The Android app is developed based on Android Studio and can be installed by ref
 
 <br/>
 
-### 5.8.2. iOS App Installation
+### 5.6.2. iOS App Installation
 
 The iOS app is developed based on Swift and Xcode and can be installed by referring to the guide in the repository below.
 
@@ -832,6 +629,7 @@ The iOS app is developed based on Swift and Xcode and can be installed by referr
 > - [Open DID iOS CA Guide](https://github.com/OmniOneID/did-ca-ios/blob/release/QA-v2.0.0/README.md)
 
 <br/><br/>
+
 
 # 6. Admin Configuration
 
@@ -1672,5 +1470,3 @@ Therefore, users scan QR codes in the app, then select the required VC or ZKP Cr
 15. A popup appears indicating that submission is complete. Click the `Confirm` button.
 
 <img src="./images/vp_driver3.png" width="400" />
-
-<br/><br/>
