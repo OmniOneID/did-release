@@ -150,11 +150,11 @@ The OpenDID platform must be installed in a specific order to function properly.
 
 **First,** install the Orchestrator server. The Orchestrator is an integrated management tool that can automatically install, register, and manage all components of the OpenDID system. Administrators can easily control the installation and status of all components including blockchain, servers, demo environments, and apps through the Orchestrator web console. Starting from OpenDID 2.0, installation through Orchestrator is available, and all installation processes can be initiated through the Orchestrator.
 
-**Second,** install the blockchain, which serves as the storage repository for OpenDID component (server, app) information. The blockchain stores identity information and transaction records of all components in a distributed network, providing data integrity and tamper-proof functionality. This is the core infrastructure that ensures the reliability of the OpenDID platform. Currently, OpenDID supports Hyperledger Besu-based public blockchain.
+**Second,** install the blockchain, which serves as the storage repository for OpenDID component (server, app) information. The blockchain stores identity information and transaction records of all components in a distributed network, providing data integrity and tamper-proof functionality. This is the core infrastructure that ensures the reliability of the OpenDID platform. Currently, OpenDID supports Hyperledger Besu-based blockchain.
 
 **Third,** install the TA (Trust Agent) server, which plays a role in building trust chains by registering information of each component on the blockchain. The TA server verifies data requested by components and signs verified data to register it on the blockchain. Through this process, trustworthy data is stored on the blockchain, and the TA server plays a crucial role in building such trust chains.
 
-**Fourth,** install the API Gateway server, which acts as an intermediary between the blockchain and apps. OpenDID 2.0 currently supports Hyperledger Besu, an Ethereum-based public blockchain. Even though it's a public blockchain, a structure where apps directly communicate with the blockchain can cause various problems. For example, different blockchains may support different interfaces, have different transaction processing methods, and unnecessary exposure or excessive network costs may occur. To solve these problems, OpenDID abstracts the interaction between blockchain and apps through the API Gateway server.  
+**Fourth,** install the API Gateway server, which acts as an intermediary between the blockchain and apps. 
 The API Gateway standardizes access to the blockchain, provides consistent interfaces needed for various blockchain integrations, and ensures scalability and efficiency of internal systems.
 
 **Fifth,** install Entity servers. Entity servers refer to components that perform core roles among OpenDID components, including Issuer, Verifier, CA, and Wallet servers.
@@ -176,7 +176,7 @@ The above content can be summarized in the following table.
 | Component            | Component Role                                                                                                                                               | Installation Order |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
 | **Orchestrator Server**      | A web-based orchestration tool that comprehensively installs and manages all components of OpenDID. Installation starts with the Orchestrator.                                     | 1          |
-| **Blockchain**         | Installs Hyperledger Besu-based public blockchain and deploys DID/VC related smart contracts.<br/>All OpenDID components use this blockchain as a trust repository. | 2          |
+| **Blockchain**         | Installs Hyperledger Besu-based blockchain and deploys DID/VC related smart contracts.<br/>All OpenDID components use this blockchain as a trust repository. | 2          |
 | **TA Server**          | Trust Agent server that plays a pivotal role in building trust relationships between servers and users within OpenDID.                                                             | 3          |
 | **API Gateway Server** | Standardizes and mediates interactions between various blockchains and apps, ensuring scalability and efficiency.                                                                       | 4          |
 | **Issuer Server**      | Issuing authority server that issues VC (Verifiable Credential) requested by users.                                                                                    | 5          |
@@ -391,7 +391,7 @@ When first accessed, the following **Repository Selection Popup** is displayed, 
 <img src="./images/orchestrator_select_repository_popup.png" width="800"/>
 
 - `Hyperledger Besu`  
- - This is the public blockchain currently officially supported in OpenDID 2.0.  
+ - This is the blockchain currently officially supported in OpenDID 2.0.  
  - **You must select this option.**
 
 - `Ledger Service Server`  
@@ -450,7 +450,7 @@ Below is the dashboard screen after PostgreSQL has been successfully executed:
 
 ## 5.3. Step 3: Blockchain Installation
 
-OpenDID 2.0 uses Hyperledger Besu based on public blockchain. Using the Orchestrator, all processes from blockchain installation to deploying smart contracts (chaincode) used in OpenDID are performed automatically, allowing users to complete blockchain configuration with just one click without complex settings.
+OpenDID 2.0 uses Hyperledger Besu based on blockchain. Using the Orchestrator, all processes from blockchain installation to deploying smart contracts (chaincode) used in OpenDID are performed automatically, allowing users to complete blockchain configuration with just one click without complex settings.
 
 ### 5.3.1. Hyperledger Besu Installation
 
