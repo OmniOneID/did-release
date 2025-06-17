@@ -19,9 +19,9 @@ This document provides the minimum and recommended specifications for installing
 | **CPU**              | 4 Cores                                            | 8 Cores or higher              |
 | **Memory (RAM)**     | 8 GB                                               | 16 GB or higher                |
 | **Disk Space**       | 20 GB or higher (SSD recommended)                 | 50 GB or higher (NVMe SSD)     |
-| **Java Version**     | Java 17 or higher<br>(Orchestrator requires Java 21+) | Java 21                        |
+| **Java Version**     | Java 21 | Java 21                        |
 | **Gradle Version**   | Gradle 7.0 or higher (for Orchestrator build)     | Gradle 8.x latest version      |
-| **Node.js Version**  | Node.js 22.12.0 (for Orchestrator frontend)       | Node.js 22.12.0 or higher     |
+| **Node.js Version**  | Node.js 22.12.0       | Node.js 22.12.0    |
 | **Git**              | Git 2.30 or higher                                | Git latest version             |
 | **Shell**            | Bash 4.0+ (Linux default), zsh (macOS default)    | Bash 5.0+ or zsh              |
 | **Docker**           | Docker 20.10+ (with Docker Compose)               | Docker 24.x or higher          |
@@ -29,16 +29,6 @@ This document provides the minimum and recommended specifications for installing
 | **Hyperledger Besu** | 25.5.0                                             | Latest stable 25.x version     |
 
 > \* Windows environments require `ledger-service-server` instead of Hyperledger Besu
-
----
-
-## Network Requirements
-
-- **Ports**: The following ports must be available
- - HTTP: 8080-8090 (default ports for each server)
- - PostgreSQL: 5432
- - Hyperledger Besu: 8545, 30303
-- **Firewall**: Local communication must be allowed in development/test environments
 
 ---
 

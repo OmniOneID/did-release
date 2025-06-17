@@ -141,11 +141,11 @@ This chapter guides you through the components and installation sequence of the 
 
 The OpenDID platform must be installed in a specific order to function properly.
 
-**First,** install the blockchain that serves as the repository for storing information about OpenDID components (servers, apps). The blockchain stores identity information and transaction records of all components in a distributed network, providing data integrity and tamper-proof functionality. This is the core infrastructure that ensures the reliability of the OpenDID platform. Currently, OpenDID supports Hyperledger Besu-based public blockchain.
+**First,** install the blockchain that serves as the repository for storing information about OpenDID components (servers, apps). The blockchain stores identity information and transaction records of all components in a distributed network, providing data integrity and tamper-proof functionality. This is the core infrastructure that ensures the reliability of the OpenDID platform. Currently, OpenDID supports Hyperledger Besu-based blockchain.
 
 **Second,** install the TA (Trust Agent) server that plays a role in building a trust chain by registering information of each component on the blockchain. The TA server verifies data requested by components and signs verified data to register it on the blockchain. This ensures that trustworthy data is stored on the blockchain, and the TA server plays a crucial role in building such trust chains.
 
-**Third,** install the API Gateway server that serves as an intermediary between the blockchain and apps. OpenDID 2.0 currently supports Hyperledger Besu, an Ethereum-based public blockchain. Even though it's a public blockchain, a structure where apps directly communicate with the blockchain can cause various issues. For example, each blockchain may support different interfaces, have different transaction processing methods, and may cause unnecessary exposure or excessive network costs. To solve these problems, OpenDID abstracts the interaction between blockchain and apps through the API Gateway server.  
+**Third,** install the API Gateway server that serves as an intermediary between the blockchain and apps.
 The API Gateway standardizes access to the blockchain, provides consistent interfaces needed for various blockchain integrations, and ensures scalability and efficiency of internal systems.
 
 **Fourth,** install Entity servers. Entity servers refer to components that perform core roles among OpenDID components, including Issuer, Verifier, CA, and Wallet servers.
@@ -166,7 +166,7 @@ The above content can be summarized in the following table.
 
 | Component            | Component Role                                                                                                                                               | Installation Order |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| **Blockchain**         | Install Hyperledger Besu-based public blockchain and deploy DID/VC related smart contracts.<br/>All OpenDID components use this blockchain as a trust repository. | 1          |
+| **Blockchain**         | Install Hyperledger Besu-based blockchain and deploy DID/VC related smart contracts.<br/>All OpenDID components use this blockchain as a trust repository. | 1          |
 | **TA Server**          | Trust Agent server that plays a pivotal role in building trust relationships between servers and users within OpenDID.                                                             | 2          |
 | **API Gateway Server** | Standardizes and mediates interactions between various blockchains and apps, ensuring scalability and efficiency.                                                                       | 3          |
 | **Issuer Server**      | Issuing authority server that issues VC (Verifiable Credential) requested by users.                                                                                    | 4          |
