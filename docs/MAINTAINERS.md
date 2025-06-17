@@ -32,7 +32,6 @@ If you have any questions or require support related to a particular repository,
 | did-ca-server            | [MAINTAINERS](https://github.com/OmniOneID/did-ca-server/blob/main/MAINTAINERS.md) |
 | did-demo-server            | [MAINTAINERS](https://github.com/OmniOneID/did-demo-server/blob/main/MAINTAINERS.md) |
 | did-wallet-server            | [MAINTAINERS](https://github.com/OmniOneID/did-wallet-server/blob/main/MAINTAINERS.md) |
-| did-demo-app            | [MAINTAINERS](https://github.com/OmniOneID/did-demo-app/blob/main/MAINTAINERS.md) |
 | did-orchestrator-server            | [MAINTAINERS](https://github.com/OmniOneID/did-orchestrator-server/blob/main/MAINTAINERS.md) |
 | did-ledger-service-server            | [MAINTAINERS](https://github.com/OmniOneID/did-ledger-service-server/blob/main/MAINTAINERS.md) |
 
