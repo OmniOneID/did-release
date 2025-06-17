@@ -11,22 +11,22 @@
 
 ---
 
-## 시스템 요구사항
+## 시스템 요구사항  
 
-| 항목                 | 최소사양                                          | 권장사양                   |
-| -------------------- | ------------------------------------------------- | -------------------------- |
-| **운영체제(OS)**     | Linux 또는 macOS<br>Windows 10/11*                | Linux 또는 macOS           |
-| **CPU**              | 4 Core                                            | 8 Core 이상                |
-| **메모리(RAM)**      | 8 GB                                              | 16 GB 이상                 |
-| **디스크 용량**      | 20 GB 이상 (SSD 권장)                             | 50 GB 이상 (NVMe SSD 권장) |
-| **Java 버전**        | Java 21                                       | Java 21                    |
-| **Gradle 버전**      | Gradle 7.0 이상 (Orchestrator 빌드용)             | Gradle 8.x 최신 버전       |
-| **Node.js 버전**     | Node.js 22.12.0                                   | Node.js 22.12.0            |
-| **Git**              | Git 2.30 이상                                     | Git 최신 버전              |
-| **Bash**             | Bash 4.0 이상 (Linux 기본 제공, macOS는 zsh 기본) | Bash 5.0 이상 또는 zsh     |
-| **Docker**           | Docker 20.10 이상 (Docker Compose 포함)           | Docker 24.x 이상           |
-| **PostgreSQL**       | 16.4                                              | 16.8 이상                  |
-| **Hyperledger Besu** | 25.5.0                                            | 25.x 최신 안정 버전        |
+| 항목                 | 최소사양                                                                        | 권장사양                                                      |
+| -------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| **운영체제(OS)**     | Linux (CentOS Stream 10, Oracle Linux 8.1) <br/> macOS Sonoma<br>Windows 10/11* | Linux (CentOS Stream 10, Oracle Linux 8.1) <br/> macOS Sonoma |
+| **CPU**              | 4 Core                                                                          | 8 Core 이상                                                   |
+| **메모리(RAM)**      | 8 GB                                                                            | 16 GB 이상                                                    |
+| **디스크 용량**      | 20 GB 이상 (SSD 권장)                                                           | 50 GB 이상 (NVMe SSD 권장)                                    |
+| **Java 버전**        | Java 21                                                                         | Java 21                                                       |
+| **Gradle 버전**      | Gradle 7.0 이상 (Orchestrator 빌드용)                                           | Gradle 8.x 최신 버전                                          |
+| **Node.js 버전**     | Node.js 22.12.0                                                                 | Node.js 22.12.0                                               |
+| **Git**              | Git 2.30 이상                                                                   | Git 최신 버전                                                 |
+| **Bash**             | Bash 4.0 이상 (Linux 기본 제공, macOS는 zsh 기본)                               | Bash 5.0 이상 또는 zsh                                        |
+| **Docker**           | Docker Engine - Community Version: 27.3.1                                       | Docker Engine - Community Version: 27.3.1이상                 |
+| **PostgreSQL**       | 16.4                                                                            | 16.8 이상                                                     |
+| **Hyperledger Besu** | 25.5.0                                                                          | 25.x 최신 안정 버전                                           |
 
 > PostgreSQL 및 Hyperledger Besu 권장 버전은 각각 16.x / 25.x 계열의 최신 안정 버전을 기준으로 합니다.
 
