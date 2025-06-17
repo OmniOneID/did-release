@@ -146,7 +146,7 @@ The OpenDID platform must be installed in a specific order to function properly.
 **Second,** install the TA (Trust Agent) server that plays a role in building a trust chain by registering information of each component on the blockchain. The TA server verifies data requested by components and signs verified data to register it on the blockchain. This ensures that trustworthy data is stored on the blockchain, and the TA server plays a crucial role in building such trust chains.
 
 **Third,** install the API Gateway server that serves as an intermediary between the blockchain and apps.
-The API Gateway standardizes access to the blockchain, provides consistent interfaces needed for various blockchain integrations, and ensures scalability and efficiency of internal systems.
+The API Gateway standardizes access to the blockchain, provides consistent interfaces needed for various blockchain integrations, and ensures scalability and efficiency of internal systems. Note that while OpenDID is designed not to register the API Gateway Server as an Entity, it can also be registered as an Entity since there may be environments where apps must go through the API Gateway instead of communicating directly with the blockchain, depending on the situation.
 
 **Fourth,** install Entity servers. Entity servers refer to components that perform core roles among OpenDID components, including Issuer, Verifier, CA, and Wallet servers.
 
