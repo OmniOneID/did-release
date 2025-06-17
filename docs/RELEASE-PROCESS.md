@@ -24,7 +24,7 @@ The integrated module version follows a four-digit format "W.X.Y.Z" assigned aft
 Each module (repository) is managed independently, following these steps:
 
 1. **Change Log Review**  
-   Review the [CHANGE LOG](CHANGELOG.md) for each module to ensure all changes are recorded.
+   Review the CHANGE LOG for each module to ensure all changes are recorded.
 
 2. **Create a Release Branch**  
    If there are changes or modifications, create a branch "release/QA-VX.Y.Z" for QA validation.
