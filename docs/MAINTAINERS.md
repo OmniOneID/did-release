@@ -20,7 +20,6 @@ If you have any questions or require support related to a particular repository,
 | did-datamodel-server            | [MAINTAINERS](https://github.com/OmniOneID/did-datamodel-server/blob/main/MAINTAINERS.md) |
 | did-wallet-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-wallet-sdk-server/blob/main/MAINTAINERS.md) |
 | did-zkp-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-zkp-sdk-server/blob/main/MAINTAINERS.md) |
-| did-release            | [MAINTAINERS](https://github.com/OmniOneID/did-release/blob/main/MAINTAINERS.md) |
 | did-common-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-common-sdk-server/blob/main/MAINTAINERS.md) |
 | did-ca-aos            | [MAINTAINERS](https://github.com/OmniOneID/did-ca-aos/blob/main/MAINTAINERS.md) |
 | did-ca-ios            | [MAINTAINERS](https://github.com/OmniOneID/did-ca-ios/blob/main/MAINTAINERS.md) |
