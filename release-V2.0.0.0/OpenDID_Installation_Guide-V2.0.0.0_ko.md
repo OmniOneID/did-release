@@ -244,7 +244,7 @@ API Gateway는 블록체인에 대한 접근을 표준화하고, 다양한 블�
 ## 3.2. App
 
 **■ Android**
-- 언어: OpenJDK 17
+- 언어: OpenJDK 21
 - 프레임워크: Android 13.0 (API 33)
 - 데이터베이스: Room 2.2.5
 - 빌드 및 의존성 관리 도구: Gradle 8.2
