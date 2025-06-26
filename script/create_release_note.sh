@@ -62,7 +62,7 @@ for REPO in "${REPOS[@]}"; do
     )
 
   CHANGELOG_LINK="https://github.com/$REPO_PREFIX/$REPO/blob/main/CHANGELOG.md"
-  RELEASE_LINK="https://github.com/$REPO_PREFIX/$REPO/releases"
+  RELEASE_LINK="https://github.com/$REPO_PREFIX/$REPO/releases/tag/$TAG_NAME"
     
   echo "| $REPO            | $TAG_NAME         | [Changelog]($CHANGELOG_LINK) | [Release]($RELEASE_LINK) |" >> "$OUTPUT_FILE"
 done
