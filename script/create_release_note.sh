@@ -23,7 +23,6 @@ REPOS=(
   "did-datamodel-server"
   "did-wallet-sdk-server"
   "did-zkp-sdk-server"
-  "did-release"
   "did-common-sdk-server"
   "did-ca-aos"
   "did-ca-ios"
