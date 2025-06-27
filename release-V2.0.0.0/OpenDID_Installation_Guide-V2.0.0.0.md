@@ -416,7 +416,7 @@ This is the process of copying the API Gateway Server repository to the user's l
 For more detailed installation methods, please refer to the link below.
 
 > **For detailed installation procedures, please refer to the installation guide below.**   
-> - [Open API Gateway Server Installation and Operation Guide](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_IssuerServer_Installation_Guide.md)
+> - [Open API Gateway Server Installation and Operation Guide](https://github.com/OmniOneID/did-api-server/blob/develop/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide.md)
 
 <br/><br/>
 
@@ -500,7 +500,7 @@ The registration flow in the operational environment is as follows:
 4. **Verifier administrator** requests issuance of a membership certificate (VC) to finalize OpenDID system registration.
 
 > **For detailed registration procedures, please refer to the operation guides below.**
-> - [Verifier Admin Operation Guide - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#311-verifier-%EB%93%B1%EB%A1%9D)
+> - [Verifier Admin Operation Guide - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#311-verifier-registration-process)
 > - [TA Admin Operation Guide - 3.2.2. Entity Details](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>
@@ -692,7 +692,7 @@ This is a namespace representing user ID card information.
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Issuer Admin Operation Guide - ZKP Namespace Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-namespace-%EB%93%B1%EB%A1%9D-1)
+> - [Issuer Admin Operation Guide - ZKP Namespace Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-namespace-registration-1)
 
 <br/><br/>
 
@@ -714,7 +714,7 @@ This is a ZKP Credential Schema configured based on attributes defined in the `z
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Issuer Admin Operation Guide - Credential Schema Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-credential-schema-%EB%93%B1%EB%A1%9D)
+> - [Issuer Admin Operation Guide - Credential Schema Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-credential-schema-registration)
 
 <br/><br/>
 
@@ -734,7 +734,7 @@ For Demo testing, register the ID card Credential Definition as follows.
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Issuer Admin Operation Guide - Credential Definition Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-credential-definition-%EB%93%B1%EB%A1%9DD)
+> - [Issuer Admin Operation Guide - Credential Definition Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-credential-definition-registration)
 
 <br/><br/>
 
@@ -764,7 +764,7 @@ This is a namespace containing driver's license information.
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Issuer Admin Operation Guide - Namespace Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-namespace-%EB%93%B1%EB%A1%9D)
+> - [Issuer Admin Operation Guide - Namespace Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-namespace-registration)
 
 <br/><br/>
 
@@ -794,7 +794,7 @@ This is a driving qualification VC containing driver's license number and issuan
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Issuer Admin Operation Guide - VC Schema Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-vc-schema-%EB%93%B1%EB%A1%9D)
+> - [Issuer Admin Operation Guide - VC Schema Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-vc-schema-registration)
 
 <br/><br/>
 
@@ -836,7 +836,7 @@ For Demo testing, configure the Issue Profile for ID card VC issuance as follows
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Issuer Admin Operation Guide - Issue Profile Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-issue-profile-%EB%93%B1%EB%A1%9D)
+> - [Issuer Admin Operation Guide - Issue Profile Registration](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md#-issue-profile-registration)
 
 <br/><br/>
 
@@ -878,7 +878,7 @@ For Demo testing, the following service registrations are required:
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.2.1.1. Service Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3211-service-register)
+> - [Verifier Admin Operation Guide - 3.2.2 Service Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#322-service-registration--modification)
 
 <br/><br/>
 
@@ -904,7 +904,7 @@ For Demo testing, the following VP Filter registrations are required:
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.2.2.1. Filter Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3221-filter-register)
+> - [Verifier Admin Operation Guide - 3.3.1.2. Filter Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3312-filter-registration--modification)
 
 <br/><br/>
 
@@ -922,7 +922,7 @@ For Demo testing, you can register one process as below and reuse it in all VP v
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.2.3.1. Process Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3231-process-register)
+> - [Verifier Admin Operation Guide - 3.3.2.2. Process Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3322-process-registration--modification)
 
 <br/><br/>
 
@@ -948,7 +948,7 @@ For Demo testing, register the following two profiles:
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.2.4.1 Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3241-profile-register)
+> - [Verifier Admin Operation Guide - 3.3.3.2 Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3332-profile-registration--modification)
 
 <br/><br/>
 
@@ -974,7 +974,7 @@ For Demo testing, the following two policies for ID card and driver's license su
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.2.5.1 Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3251-policy-register)
+> - [Verifier Admin Operation Guide - 3.3.4.2 Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3342-policy-registration)
 
 <br/><br/>
 
@@ -994,7 +994,7 @@ For Demo testing, Proof Request for verifying ID card ZKP Credentials must be re
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3311-proof-request-register)
+> - [Verifier Admin Operation Guide - 3.4.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3411-proof-request-register)
 
 <br/><br/>
 
@@ -1015,7 +1015,7 @@ For Demo testing, ID card ZKP Profile must be registered as follows:
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3321-zkp-profile-register)
+> - [Verifier Admin Operation Guide - 3.4.2.1 ZKP Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3421-zkp-profile-register)
 
 <br/><br/>
 
@@ -1036,7 +1036,7 @@ For Demo testing, ID card ZKP Profile must be registered as follows:
 <br/>
 
 > **For detailed registration procedures, please refer to the operation guide below.**
-> - [Verifier Admin Operation Guide - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3331-zkp-policy-register)
+> - [Verifier Admin Operation Guide - 3.4.3.1 ZKP Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md#3431-zkp-policy-register)
 
 <br/><br/>
 

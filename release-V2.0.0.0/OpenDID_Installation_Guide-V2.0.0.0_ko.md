@@ -417,7 +417,7 @@ API Gateway Server의 리포지토리를 사용자의 로컬 컴퓨터로 복사
 보다 더 자세한 설치 방법은 아래 링크를 참고해 주세요.
 
 > **상세한 설치 절차는 아래 설치 가이드를 참고하세요.**   
-> - [Open API Gateway Server 설치 및 운영 가이드](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/installation/OpenDID_IssuerServer_Installation_Guide_ko.md)
+> - [Open API Gateway Server 설치 및 운영 가이드](https://github.com/OmniOneID/did-api-server/blob/main/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide_ko.md)
 
 <br/><br/>
 
@@ -444,7 +444,7 @@ Issuer 서버의 리포지토리를 사용자의 로컬 컴퓨터로 복사한 �
 보다 더 자세한 설치 방법은 아래 링크를 참고해 주세요.
 
 > **상세한 설치 절차는 아래 설치 가이드를 참고하세요.**   
-> - [Open DID Issuer Server 설치 가이드](https://github.com/OmniOneID/did-issuer-server/blob/main/docs/installation/OpenDID_IssuerServer_InstallationAndOperation_Guide.md)
+> - [Open DID Issuer Server 설치 가이드](https://github.com/OmniOneID/did-issuer-server/blob/main/docs/installation/OpenDID_IssuerServer_Installation_Guide_ko.md)
 
 <br/>
 
@@ -501,7 +501,7 @@ Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 �
 4. **Verifier 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#311-verifier-%EB%93%B1%EB%A1%9D)
+> - [Verifier Admin 운영 가이드 - 3.1.1. Verifier Registration](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#311-verifier-%EB%93%B1%EB%A1%9D-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4)
 > - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>
@@ -737,7 +737,7 @@ Demo 테스트에서는 신분증 Credential Definition을 아래와 같이 등�
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Issuer Admin 운영 가이드 - Credential Definition 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-credential-definition-%EB%93%B1%EB%A1%9DD)
+> - [Issuer Admin 운영 가이드 - Credential Definition 등록](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md#-credential-definition-%EB%93%B1%EB%A1%9D)
  
 <br/><br/>
 
@@ -881,7 +881,7 @@ Demo 테스트에서는 다음과 같은 서비스 등록이 필요합니다:
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.1.1. Service Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3211-service-register)
+> - [Verifier Admin 운영 가이드 - 3.2. Service Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#32-service-configuration)
 
 <br/><br/>
 
@@ -907,7 +907,7 @@ Demo 테스트에서는 다음과 같은 VP Filter 등록이 필요합니다:
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.2.1. Filter Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3221-filter-register)
+> - [Verifier Admin 운영 가이드 - 3.3.1 Filter Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#331-filter-management)
 
 <br/><br/>
 
@@ -926,7 +926,7 @@ Demo 테스트에서는 아래와 같은 프로세스를 1건 등록해두고, �
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.3.1. Process Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3231-process-register)
+> - [Verifier Admin 운영 가이드 - 3.3.2 Process Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#332-process-management)
 
 <br/><br/>
 
@@ -952,7 +952,7 @@ Demo 테스트에서는 아래 두 가지 프로파일을 등록합니다:
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.4.1 Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3241-profile-register)
+> - [Verifier Admin 운영 가이드 - 3.3.3 Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#333-profile-management)
 
 <br/><br/>
 
@@ -978,7 +978,7 @@ Demo 테스트에서는 신분증과 운전면허증 제출을 위한 다음 두
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.2.5.1 Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3251-policy-register)
+> - [Verifier Admin 운영 가이드 - 3.3.4.2 Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3342-policy-%EB%93%B1%EB%A1%9D)
 
 <br/><br/>
 
@@ -998,7 +998,7 @@ Demo 테스트에서는 신분증 ZKP Credential을 검증하기 위한 Proof Re
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3311-proof-request-register)
+> - [Verifier Admin 운영 가이드 - 3.4.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3411-proof-request-register)
 
 
 <br/><br/>
@@ -1020,7 +1020,7 @@ Demo 테스트에서는 신분증 ZKP Profile을 아래와 같이 등록해야 �
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3321-zkp-profile-register)
+> - [Verifier Admin 운영 가이드 - 3.4.2.1 ZKP Profile Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3421-zkp-profile-register)
 
 <br/><br/>
 
@@ -1042,7 +1042,7 @@ Demo 테스트에서는 신분증 ZKP Profile을 아래와 같이 등록해야 �
 <br/>
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Verifier Admin 운영 가이드 - 3.3.1.1 Proof Request Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3331-zkp-policy-register)
+> - [Verifier Admin 운영 가이드 - 3.4.3.1 ZKP Policy Register](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md#3431-zkp-policy-register)
 
 <br/><br/>
 
