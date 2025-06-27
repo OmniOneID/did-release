@@ -760,7 +760,7 @@ The registration flow in the operating environment is as follows:
 4. The **Wallet administrator** requests membership certificate (VC) issuance to finally complete OpenDID system registration.
 
 > **For detailed registration procedures, please refer to the operation guides below.**
-> - [Wallet Admin Operation Guide - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/admin/OpenDID_WalletAdmin_Operation_Guide.md#31-wallet-service-registration)
+> - [Wallet Admin Operation Guide - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/main/docs/admin/OpenDID_WalletAdmin_Operation_Guide.md#31-wallet-service-registration)
 > - [TA Admin Operation Guide - 3.2.2. Entity Details](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>

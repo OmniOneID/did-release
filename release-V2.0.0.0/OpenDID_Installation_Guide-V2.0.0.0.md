@@ -350,7 +350,7 @@ OpenDID 2.0 currently supports only **Hyperledger Besu** for blockchain integrat
 Besu is an Ethereum-compatible EVM blockchain that allows you to configure a private network in a local environment and deploy smart contracts for OpenDID.
 
 > **For installation and deployment methods, please refer to the document below**  
-> [OpenDID Besu Contract - README](https://github.com/OmniOneID/did-besu-contract/blob/develop/README.md)
+> [OpenDID Besu Contract - README](https://github.com/OmniOneID/did-besu-contract/blob/main/README.md)
 
 <br/>
 
@@ -416,7 +416,7 @@ This is the process of copying the API Gateway Server repository to the user's l
 For more detailed installation methods, please refer to the link below.
 
 > **For detailed installation procedures, please refer to the installation guide below.**   
-> - [Open API Gateway Server Installation and Operation Guide](https://github.com/OmniOneID/did-api-server/blob/develop/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide.md)
+> - [Open API Gateway Server Installation and Operation Guide](https://github.com/OmniOneID/did-api-server/blob/main/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide.md)
 
 <br/><br/>
 
@@ -574,7 +574,7 @@ The registration flow in the operational environment is as follows:
 4. **Wallet administrator** requests issuance of a membership certificate (VC) to finalize OpenDID system registration.
 
 > **For detailed registration procedures, please refer to the operation guides below.**
-> - [Wallet Admin Operation Guide - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/admin/OpenDID_WalletAdmin_Operation_Guide.md#31-wallet-service-registration)
+> - [Wallet Admin Operation Guide - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/main/docs/admin/OpenDID_WalletAdmin_Operation_Guide.md#31-wallet-service-registration)
 > - [TA Admin Operation Guide - 3.2.2. Entity Details](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>

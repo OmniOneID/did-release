@@ -351,7 +351,7 @@ OpenDID 2.0은 블록체인 연동을 위해 현재 **Hyperledger Besu**만을 �
 Besu는 Ethereum 호환 EVM 블록체인으로, 로컬 환경에서 프라이빗 네트워크를 구성하고 OpenDID용 스마트 컨트랙트를 배포할 수 있습니다.
 
 > **설치 및 배포 방법은 아래 문서를 참고하세요**  
-> [OpenDID Besu Contract - README](https://github.com/OmniOneID/did-besu-contract/blob/develop/README_ko.md)
+> [OpenDID Besu Contract - README](https://github.com/OmniOneID/did-besu-contract/blob/main/README_ko.md)
 
 <br/>
 
@@ -575,7 +575,7 @@ Entity 등록은 TA 서버와 협력하여 이루어지며, **관리자 승인 �
 4. **Wallet 관리자**는 가입 증명서(VC) 발급을 요청하여 OpenDID 시스템 등록을 최종 완료합니다.
 
 > **상세한 등록 절차는 아래 운영 가이드를 참고하세요.**
-> - [Wallet Admin 운영 가이드 - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/develop/docs/admin/OpenDID_WalletAdmin_Operation_Guide_ko.md#31-wallet-service-registration)
+> - [Wallet Admin 운영 가이드 - 3.1. Wallet Registration](https://github.com/OmniOneID/did-wallet-server/blob/main/docs/admin/OpenDID_WalletAdmin_Operation_Guide_ko.md#31-wallet-service-registration)
 > - [TA Admin 운영 가이드 - 3.2.2. Entity 상세](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v2.0.0/docs/admin/OpenDID_TAAdmin_Operation_Guide_ko.md#322-entity-%EC%83%81%EC%84%B8) 
 
 <br/><br/>
