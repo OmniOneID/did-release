@@ -7,9 +7,9 @@
 
 ## Documentation
 - **OpenDID Installation Guide**
-  - [`OpenDID_Installation_Guide-Orchestrator-v2.0.0.0.md`](./OpenDID_Installation_Guide-Orchestrator-v2.0.0.0.md)  
+  - [`OpenDID_Installation_Guide-Orchestrator-v2.0.0.0.md`](./OpenDID_Installation_Guide-Orchestrator-V2.0.0.0.md)  
     → Recommended for users who want to quickly install and test the system using the Orchestrator.
-  - [`OpenDID_Installation_Guide-v2.0.0.0.md`](./OpenDID_Installation_Guide-v2.0.0.0.md)  
+  - [`OpenDID_Installation_Guide-v2.0.0.0.md`](./OpenDID_Installation_Guide-V2.0.0.0.md)  
     → Refer to this guide if you prefer to build and configure each component manually.
 
 ## Notes
