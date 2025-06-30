@@ -1,8 +1,5 @@
 # Change Note - OpenDID v2.0.0.0
 
-## Release Date
-2025-06-30
-
 ## New Features
 - ZKP Credential 발급 기능을 추가하였습니다.
 - Entity 등록 기능을 Admin Console에 정식으로 구현하였습니다.
