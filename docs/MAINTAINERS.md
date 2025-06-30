@@ -1,5 +1,4 @@
-
-# Maintainers
+## Maintainers
 
 ## Overview
 
@@ -8,67 +7,33 @@ If you have any questions or require support related to a particular repository,
 
 ## Maintainers
 
-| Repository                 | Maintainer         |
-| -------------------------- | ------------------ |
-| did-client-sdk-aos         | k3255              |
-| did-client-sdk-ios         | woosang-raon       |
-|                            | JoshuaLeeshock     |
-|                            | djpark0402         |
-| did-blockchain-sdk-server  | black-billed-magpie|
-|                            | jhkim5981          |
-| did-cli-tool-server        | crham              |
-|                            | ejlee8796          |
-|                            | sjyeo98            |
-| did-core-sdk-server        | crham              |
-|                            | ejlee8796          |
-|                            | sjyeo98            |
-| did-crypto-sdk-server      | crham              |
-|                            | ejlee8796          |
-|                            | sjyeo98            |
-| did-datamodel-server       | crham              |
-|                            | ejlee8796          |
-|                            | sjyeo98            |
-| did-wallet-sdk-server      | crham              |
-|                            | ejlee8796          |
-|                            | sjyeo98            |
-| did-doc-architecture       | k3255              |
-|                            | djpark0402         |
-|                            | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-release                | k3255              |
-|                            | djpark0402         |
-|                            | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-common-sdk-server      | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-ca-aos                 | k3255              |
-| did-ca-ios                 | djpark0402         |
-| did-fabric-contract        | black-billed-magpie|
-|                            | jhkim5981          |
-| did-issuer-server          | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-ta-server              | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-verifier-server        | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-api-server             | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-ca-server              | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-demo-server            | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
-| did-wallet-server          | yoongyu-lee        |
-|                            | jinhwankim6557     |
-|                            | gw-nam             |
+| Repository         | Maintainer      |
+| ------------------ | --------------- |
+| did-doc-architecture            | [MAINTAINERS](https://github.com/OmniOneID/did-doc-architecture/blob/main/MAINTAINERS.md) |
+| did-client-sdk-aos            | [MAINTAINERS](https://github.com/OmniOneID/did-client-sdk-aos/blob/main/MAINTAINERS.md) |
+| did-client-sdk-aos-kotlin            | [MAINTAINERS](https://github.com/OmniOneID/did-client-sdk-aos-kotlin/blob/main/MAINTAINERS.md) |
+| did-client-sdk-ios            | [MAINTAINERS](https://github.com/OmniOneID/did-client-sdk-ios/blob/main/MAINTAINERS.md) |
+| did-blockchain-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-blockchain-sdk-server/blob/main/MAINTAINERS.md) |
+| did-cli-tool-server            | [MAINTAINERS](https://github.com/OmniOneID/did-cli-tool-server/blob/main/MAINTAINERS.md) |
+| did-core-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-core-sdk-server/blob/main/MAINTAINERS.md) |
+| did-crypto-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-crypto-sdk-server/blob/main/MAINTAINERS.md) |
+| did-datamodel-server            | [MAINTAINERS](https://github.com/OmniOneID/did-datamodel-server/blob/main/MAINTAINERS.md) |
+| did-wallet-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-wallet-sdk-server/blob/main/MAINTAINERS.md) |
+| did-zkp-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-zkp-sdk-server/blob/main/MAINTAINERS.md) |
+| did-common-sdk-server            | [MAINTAINERS](https://github.com/OmniOneID/did-common-sdk-server/blob/main/MAINTAINERS.md) |
+| did-ca-aos            | [MAINTAINERS](https://github.com/OmniOneID/did-ca-aos/blob/main/MAINTAINERS.md) |
+| did-ca-ios            | [MAINTAINERS](https://github.com/OmniOneID/did-ca-ios/blob/main/MAINTAINERS.md) |
+| did-besu-contract            | [MAINTAINERS](https://github.com/OmniOneID/did-besu-contract/blob/main/MAINTAINERS.md) |
+| did-fabric-contract            | [MAINTAINERS](https://github.com/OmniOneID/did-fabric-contract/blob/main/MAINTAINERS.md) |
+| did-issuer-server            | [MAINTAINERS](https://github.com/OmniOneID/did-issuer-server/blob/main/MAINTAINERS.md) |
+| did-ta-server            | [MAINTAINERS](https://github.com/OmniOneID/did-ta-server/blob/main/MAINTAINERS.md) |
+| did-verifier-server            | [MAINTAINERS](https://github.com/OmniOneID/did-verifier-server/blob/main/MAINTAINERS.md) |
+| did-api-server            | [MAINTAINERS](https://github.com/OmniOneID/did-api-server/blob/main/MAINTAINERS.md) |
+| did-ca-server            | [MAINTAINERS](https://github.com/OmniOneID/did-ca-server/blob/main/MAINTAINERS.md) |
+| did-demo-server            | [MAINTAINERS](https://github.com/OmniOneID/did-demo-server/blob/main/MAINTAINERS.md) |
+| did-wallet-server            | [MAINTAINERS](https://github.com/OmniOneID/did-wallet-server/blob/main/MAINTAINERS.md) |
+| did-orchestrator-server            | [MAINTAINERS](https://github.com/OmniOneID/did-orchestrator-server/blob/main/MAINTAINERS.md) |
+| did-ledger-service-server            | [MAINTAINERS](https://github.com/OmniOneID/did-ledger-service-server/blob/main/MAINTAINERS.md) |
 
 ### Contact Information
 

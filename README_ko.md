@@ -8,6 +8,7 @@ did-release
 ├── README.md
 ├── docs
 │   ├── CI_CD_PIPELINE.md
+│   ├── MAINTAINERS.md
 │   └── RELEASE-PROCESS.md
 └── release-VW.X.Y.X
     ├── OepnDID_Installation_Guide-VW.X.Y.X.md
@@ -19,6 +20,7 @@ did-release
 | ----------------------- | ----------------------------------------------- |
 | docs                    | 문서                                             |
 | ┖ CI_CD_PIPELINE.md     | CI/CD 파이프라인 가이드                              |
+| ┖ MAINTAINERS.md        | 프로젝트 유지 관리자 지침                              |
 | ┖ RELEASE-PROCESS.md    | 릴리즈 프로세스 가이드                               |
 | release-VW.X.Y.X        | 릴리즈 버전 관리                                      |
 | ┖ OepnDID_Installation_Guide-VW.X.Y.X.md | 해당 버전 설치 가이드                                 |

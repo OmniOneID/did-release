@@ -8,6 +8,7 @@ did-release
 ├── README.md
 ├── docs
 │   ├── CI_CD_PIPELINE.md
+│   ├── MAINTAINERS.md
 │   └── RELEASE-PROCESS.md
 └── release-VW.X.Y.X
     ├── OepnDID_Installation_Guide-VW.X.Y.X.md
@@ -19,6 +20,7 @@ did-release
 | ----------------------- | ----------------------------------------------- |
 | docs                    | Documentation                                   |
 | ┖ CI_CD_PIPELINE.md                   | CI/CD Pipeline Guide                        |
+| ┖ MAINTAINERS.md                | Guidelines for project maintainers                         |
 | ┖ RELEASE-PROCESS.md                | Release Process Guide                         |
 | release-VW.X.Y.X                  | Release version management                             |
 | ┖ OepnDID_Installation_Guide-VW.X.Y.X.md                   | Installation guide for the version                       |
