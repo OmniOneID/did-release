@@ -7,9 +7,9 @@
 
 ## Documentation
 - **OpenDID Installation Guide**
-  - [`OpenDID_Installation_Guide-Orchestrator-v2.0.0.0.md`](./OpenDID_Installation_Guide-Orchestrator-v2.0.0.0.md)  
+  - [`OpenDID_Installation_Guide-Orchestrator-v2.0.0.0.md`](./OpenDID_Installation_Guide-Orchestrator-V2.0.0.0_ko.md)  
     → 빠르게 설치하고 테스트하려는 경우 Orchestrator 기반 설치 가이드를 권장합니다.
-  - [`OpenDID_Installation_Guide-v2.0.0.0.md`](./OpenDID_Installation_Guide-v2.0.0.0.md)  
+  - [`OpenDID_Installation_Guide-v2.0.0.0.md`](./OpenDID_Installation_Guide-V2.0.0.0_ko.md)  
     → 구성 요소별로 직접 빌드 및 설정하려는 경우 일반 설치 가이드를 참고하세요.
 
 ## Notes
