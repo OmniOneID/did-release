@@ -23,5 +23,5 @@
 | did-demo-server            | V2.0.0         | [Changelog](https://github.com/OmniOneID/did-demo-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-demo-server/releases/tag/V2.0.0) |   | 
 | did-wallet-server            | V2.0.0         | [Changelog](https://github.com/OmniOneID/did-wallet-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-wallet-server/releases/tag/V2.0.0) |   | 
 | did-demo-app            | V2.0.0         | [Changelog](https://github.com/OmniOneID/did-demo-app/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-demo-app/releases/tag/V2.0.0) |   | 
-| did-orchestrator-server            | V2.0.0         | [Changelog](https://github.com/OmniOneID/did-orchestrator-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-orchestrator-server/releases/tag/V2.0.0) |   | 
+| did-orchestrator-server            | V2.0.1         | [Changelog](https://github.com/OmniOneID/did-orchestrator-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-orchestrator-server/releases/tag/V2.0.1) | Hotfix |  
 | did-ledger-service-server            | V2.0.0         | [Changelog](https://github.com/OmniOneID/did-ledger-service-server/blob/main/CHANGELOG.md) | [Release](https://github.com/OmniOneID/did-ledger-service-server/releases/tag/V2.0.0) |   | 
