@@ -48,8 +48,8 @@ If you have any questions or require support related to a particular repository,
 | Seungjae Yeo | sjyeo@raoncorp.com  | sjyeo98              |
 | Mikyung Lee  | mklee@raoncorp.com  | mikyung-lee          |
 | Sangjun Kim  | sjkim@raoncorp.com  | k3255                |
-| Dongjun Park | djpark0402@raoncorp.com | djpark0402       |
 | Yoongyu Lee  | yklee0911@raoncorp.com | yoongyu-lee       |
 | Jinhwan Kim  | jhkim6557@raoncorp.com | jinhwankim6557   |
 | Gilwoo Nam   | gwnam@raoncorp.com  | gw-nam               |
 | Suhyeon Lee  | shlee1223@raoncorp.com | shlee1223         |
+| EunJeong Kim | ejkim4619@raoncorp.com | ejkim4619         |
