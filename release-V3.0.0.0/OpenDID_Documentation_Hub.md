@@ -6,9 +6,6 @@
 - [Orchestrator installation and integration guide](./OpenDID_Installation_Guide-Orchestrator-V3.0.0.0.md)
 - [Manual installation and integration guide](./OpenDID_Installation_Guide-V3.0.0.0.md)
 - [Change note](./CHANGE-NOTE-V3.0.0.0.md)
-- [Release note and artifact status](./RELEASE-NOTE-V3.0.0.0.md)
-- [QA plan](./QA-PLAN-V3.0.0.0.md)
-- [Screenshot environment QA result](./QA-RESULT-V3.0.0.0-CAPTURE.md)
 
 ## Server Documentation
 

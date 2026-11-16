@@ -6,9 +6,6 @@
 - [Orchestrator 설치·통합 가이드](./OpenDID_Installation_Guide-Orchestrator-V3.0.0.0_ko.md)
 - [수동 설치·통합 가이드](./OpenDID_Installation_Guide-V3.0.0.0_ko.md)
 - [변경 노트](./CHANGE-NOTE-V3.0.0.0_ko.md)
-- [릴리스 노트 및 아티팩트 상태](./RELEASE-NOTE-V3.0.0.0.md)
-- [QA 계획서](./QA-PLAN-V3.0.0.0.md)
-- [캡처 환경 테스트 결과](./QA-RESULT-V3.0.0.0-CAPTURE.md)
 
 ## 서버 문서
 
