@@ -26,4 +26,4 @@ The CPU, memory, and disk figures carry forward the v2 integration baseline; the
 
 ## Network Ports
 
-The [Orchestrator configuration](https://github.com/OmniOneID/did-orchestrator-server/blob/develop/source/did-orchestrator-server/configs/application.yml) currently assigns 9001 to Orchestrator; 8090–8095 to TA, Issuer, Verifier, API, CA, and Wallet; 8097 to Proxy; 8098 to Ledger Service; and 8099 to Demo. PostgreSQL is configured on 5430. Check local configuration before deployment.
+The [Orchestrator configuration](https://github.com/OmniOneID/did-orchestrator-server/blob/release/QA-v3.0.0/source/did-orchestrator-server/configs/application.yml) currently assigns 9001 to Orchestrator; 8090–8095 to TA, Issuer, Verifier, API, CA, and Wallet; 8097 to Proxy; 8098 to Ledger Service; and 8099 to Demo. PostgreSQL is configured on 5430. Check local configuration before deployment.

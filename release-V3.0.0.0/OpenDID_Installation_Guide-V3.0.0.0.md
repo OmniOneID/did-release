@@ -14,15 +14,15 @@ See [System Requirements](./OpenDID_System_Requirements.md). The default Orchest
 
 ## 4. Prerequisites
 
-Install Java 21, Git, Docker, and PostgreSQL tooling needed by your deployment. Use each repository's Gradle wrapper. Check out `feature/opendid3.0` for participating server repositories where available; Proxy currently uses its `develop` branch. At this stage, build 3.0.0 JARs from source because the matching GitHub Release assets are not yet confirmed.
+Install Java 21, Git, Docker, and PostgreSQL tooling needed by your deployment. Use each repository's Gradle wrapper. Check out `release/QA-v3.0.0` for the participating server repositories, including Proxy. At this stage, build 3.0.0 JARs from source because the matching GitHub Release assets are not yet confirmed.
 
 ### 4.1. Source and version
 
-Use the 3.0 development branches listed in the [documentation hub](./OpenDID_Documentation_Hub.md). The participating servers currently use `feature/opendid3.0`; Proxy uses `develop`. Check `version = '3.0.0'` in each `build.gradle`. Build from source until matching 3.0 release artifacts are published and verified.
+Use the `release/QA-v3.0.0` branches listed in the [documentation hub](./OpenDID_Documentation_Hub.md). Check `version = '3.0.0'` in each `build.gradle`. Build from source until matching 3.0 release artifacts are published and verified.
 
 ```bash
-git clone --branch feature/opendid3.0 https://github.com/OmniOneID/did-ta-server.git
-git clone --branch develop https://github.com/OmniOneID/did-proxy-server.git
+git clone --branch release/QA-v3.0.0 https://github.com/OmniOneID/did-ta-server.git
+git clone --branch release/QA-v3.0.0 https://github.com/OmniOneID/did-proxy-server.git
 ```
 
 For existing clones, check local changes before updating the selected branch to its latest commit.
@@ -31,7 +31,7 @@ For existing clones, check local changes before updating the selected branch to 
 
 Create a database and account for each database-backed server. Set its connection in `src/main/resources/config/application-database*.yml`; TA uses `application-databases*.yml`. Follow the server-specific guide for database names and migrations.
 
-Choose either the Besu network and contracts in the [Besu Contract guide](https://github.com/OmniOneID/did-besu-contract/blob/main/README.md), or [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/feature/opendid3.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide.md). When using LSS, set `lss.url` in supported servers' `application-lss.yml` and use the `dev,lss` profiles. The `sample` profile is for sample configuration; select a profile with actual database and ledger integration for system tests.
+Choose either the Besu network and contracts in the [Besu Contract guide](https://github.com/OmniOneID/did-besu-contract/blob/main/README.md), or [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide.md). When using LSS, set `lss.url` in supported servers' `application-lss.yml` and use the `dev,lss` profiles. The `sample` profile is for sample configuration; select a profile with actual database and ledger integration for system tests.
 
 Set the port, TA URL, ledger URL, peer service URLs, and wallet paths in each server's `application.yml` and related configuration. Inside a container, `localhost` refers to that container. The Proxy source currently has a private IP in `issuer.url`; change it to the reachable Issuer URL before starting Proxy.
 
@@ -52,15 +52,15 @@ Replace the placeholders with the project below and the JAR actually produced. F
 
 | Repository | Gradle project | Detailed installation guide |
 | --- | --- | --- |
-| `did-ledger-service-server` | `source/did-ledger-service-server` | [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/feature/opendid3.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide.md) |
-| `did-ta-server` | `source/did-ta-server` | [TA](https://github.com/OmniOneID/did-ta-server/blob/feature/opendid3.0/docs/installation/OpenDID_TAServer_Installation_Guide.md) |
-| `did-api-server` | `source/did-api-server` | [API Gateway](https://github.com/OmniOneID/did-api-server/blob/feature/opendid3.0/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide.md) |
-| `did-issuer-server` | `source/did-issuer-server` | [Issuer](https://github.com/OmniOneID/did-issuer-server/blob/feature/opendid3.0/docs/installation/OpenDID_IssuerServer_Installation_Guide.md) |
-| `did-verifier-server` | `source/did-verifier-server` | [Verifier](https://github.com/OmniOneID/did-verifier-server/blob/feature/opendid3.0/docs/installation/OpenDID_VerifierServer_Installation_Guide.md) |
-| `did-ca-server` | `source/did-ca-server` | [CA](https://github.com/OmniOneID/did-ca-server/blob/feature/opendid3.0/docs/installation/OpenDID_CAServer_Installation_Guide.md) |
-| `did-wallet-server` | `source/did-wallet-server` | [Wallet](https://github.com/OmniOneID/did-wallet-server/blob/feature/opendid3.0/docs/installation/OpenDID_WalletServer_Installation_Guide.md) |
-| `did-proxy-server` | `source/did-proxy-server` | [Proxy API](https://github.com/OmniOneID/did-proxy-server/blob/develop/docs/api/Proxy_API.md) |
-| `did-demo-server` | `source/did-demo-server` | [Demo](https://github.com/OmniOneID/did-demo-server/blob/feature/opendid3.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md) |
+| `did-ledger-service-server` | `source/did-ledger-service-server` | [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide.md) |
+| `did-ta-server` | `source/did-ta-server` | [TA](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_TAServer_Installation_Guide.md) |
+| `did-api-server` | `source/did-api-server` | [API Gateway](https://github.com/OmniOneID/did-api-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide.md) |
+| `did-issuer-server` | `source/did-issuer-server` | [Issuer](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_IssuerServer_Installation_Guide.md) |
+| `did-verifier-server` | `source/did-verifier-server` | [Verifier](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_VerifierServer_Installation_Guide.md) |
+| `did-ca-server` | `source/did-ca-server` | [CA](https://github.com/OmniOneID/did-ca-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_CAServer_Installation_Guide.md) |
+| `did-wallet-server` | `source/did-wallet-server` | [Wallet](https://github.com/OmniOneID/did-wallet-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_WalletServer_Installation_Guide.md) |
+| `did-proxy-server` | `source/did-proxy-server` | [Proxy API](https://github.com/OmniOneID/did-proxy-server/blob/release/QA-v3.0.0/docs/api/Proxy_API.md) |
+| `did-demo-server` | `source/did-demo-server` | [Demo](https://github.com/OmniOneID/did-demo-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md) |
 
 ### 5.2. Entity registration sequence
 

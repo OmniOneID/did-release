@@ -20,7 +20,7 @@ See [System Requirements](./OpenDID_System_Requirements.md). Confirm ports 9001,
 
 ## 4. Prerequisites
 
-Install Git, Java 21, Node.js 22.12.0, and Docker. For the current development setup, check out the `feature/opendid3.0` branch of each participating server repository where it exists. Proxy and Orchestrator currently use their `develop` source for the 3.0 changes. Check each repository's own installation guide for its database, configuration, and credential prerequisites.
+Install Git, Java 21, Node.js 22.12.0, and Docker. Check out `release/QA-v3.0.0` in Orchestrator and every participating server repository, including Proxy. Check each repository's own installation guide for its database, configuration, and credential prerequisites.
 
 ## 5. Installation and Registration
 
@@ -40,7 +40,7 @@ Start PostgreSQL using the Orchestrator control or the supplied Docker scripts. 
 
 ### 5.3. Start Orchestrator
 
-Run the built Orchestrator JAR or the Gradle `bootRun` task from the source directory, then open `http://localhost:9001`. Confirm the configuration shows 3.0.0 JAR names and Proxy on port 8097. Refer to the [Orchestrator manual](https://github.com/OmniOneID/did-orchestrator-server/blob/develop/docs/manual/orchestrator_manual.md) for UI controls.
+Run the built Orchestrator JAR or the Gradle `bootRun` task from the source directory, then open `http://localhost:9001`. Confirm the configuration shows 3.0.0 JAR names and Proxy on port 8097. Refer to the [Orchestrator manual](https://github.com/OmniOneID/did-orchestrator-server/blob/release/QA-v3.0.0/docs/manual/orchestrator_manual.md) for UI controls.
 
 ![Orchestrator dashboard with Proxy running](./images/orchestrator-proxy-running-v3.jpg)
 
@@ -103,7 +103,7 @@ Register an issuer to trust for mdoc verification and select its allowed documen
 
 ### 6.2. Issuer Admin — OID4VCI issuance
 
-After Issuer entity registration, check Metadata → Credential Configurations → Client Settings → List Provider in order. For the VC schema and issue profile used by actual issuance, follow the [Issuer Admin guide](https://github.com/OmniOneID/did-issuer-server/blob/feature/opendid3.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md).
+After Issuer entity registration, check Metadata → Credential Configurations → Client Settings → List Provider in order. For the VC schema and issue profile used by actual issuance, follow the [Issuer Admin guide](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v3.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide.md).
 
 #### 6.2.1. Issuer Metadata
 
@@ -211,7 +211,7 @@ Submit the issuer information used for user-initiated Webview issuance to TA's L
 
 ### 6.3. Verifier Admin — OID4VP verification
 
-After Verifier entity registration, configure Configuration → DCQL Scope Management → Policy Management. For baseline OpenDID VP policies, follow the [Verifier Admin guide](https://github.com/OmniOneID/did-verifier-server/blob/feature/opendid3.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md).
+After Verifier entity registration, configure Configuration → DCQL Scope Management → Policy Management. For baseline OpenDID VP policies, follow the [Verifier Admin guide](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v3.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide.md).
 
 #### 6.3.1. Configuration
 
@@ -302,13 +302,13 @@ An OID4VP Policy links to one previously registered DCQL Scope. When verificatio
 
 - Policy detail showing its title and linked DCQL scope.
 
-Configure Demo URLs and test data using the [Demo guide](https://github.com/OmniOneID/did-demo-server/blob/feature/opendid3.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md). Record actual credential issuance and presentation results separately against the [QA plan](./QA-PLAN-V3.0.0.0.md).
+Configure Demo URLs and test data using the [Demo guide](https://github.com/OmniOneID/did-demo-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md). Record actual credential issuance and presentation results separately against the [QA plan](./QA-PLAN-V3.0.0.0.md).
 
 ## 7. OpenDID Test Guide
 
 1. Verify all selected services are healthy in Orchestrator and that Proxy has no wallet/DID generation controls.
 2. Complete Holder registration, then run an OpenDID VC issuance through **Holder app → Proxy → Issuer**. Verify the offer/profile, issuance, and completion responses. Confirm TA is not the relay for this issuance path.
-3. Run an OID4VCI issuance from Issuer: read Issuer Metadata, obtain a Credential Offer, complete either Pre-Authorized Code or Authorization Code, submit Holder proof, and retrieve the credential. Use a compatible OID4VCI wallet and the [Demo guide](https://github.com/OmniOneID/did-demo-server/blob/feature/opendid3.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md).
+3. Run an OID4VCI issuance from Issuer: read Issuer Metadata, obtain a Credential Offer, complete either Pre-Authorized Code or Authorization Code, submit Holder proof, and retrieve the credential. Use a compatible OID4VCI wallet and the [Demo guide](https://github.com/OmniOneID/did-demo-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide.md).
 4. Check the Credential Status List and, where configured, the OpenDID Holder-signed revocation extension. Verify invalid or reused nonce/proof requests are rejected.
 5. Submit an OpenDID VP and, separately, an OID4VP presentation to Verifier. Check supported SD-JWT VC and mdoc paths.
 

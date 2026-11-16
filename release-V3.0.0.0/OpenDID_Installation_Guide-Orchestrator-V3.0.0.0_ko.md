@@ -20,7 +20,7 @@ Proxy는 OpenDID VC 발급·폐기 시 Holder 앱과 Issuer 사이에서 TA 대�
 
 ## 4. 사전 준비
 
-Git, Java 21, Node.js 22.12.0, Docker를 설치합니다. 현재 개발 환경에서는 사용 가능한 서버 저장소의 `feature/opendid3.0` 브랜치를 사용합니다. Proxy와 Orchestrator의 3.0 변경은 현재 `develop` 소스에 있습니다. DB, 구성 파일, 인증 정보 준비 사항은 각 서버 설치 가이드를 따릅니다.
+Git, Java 21, Node.js 22.12.0, Docker를 설치합니다. Orchestrator와 Proxy를 포함한 참여 서버 저장소의 `release/QA-v3.0.0` 브랜치를 사용합니다. DB, 구성 파일, 인증 정보 준비 사항은 각 서버 설치 가이드를 따릅니다.
 
 ## 5. 설치 및 등록
 
@@ -40,7 +40,7 @@ Orchestrator 화면이나 제공된 Docker 스크립트로 PostgreSQL을 시작�
 
 ### 5.3. Orchestrator 시작
 
-빌드한 Orchestrator JAR 또는 Gradle `bootRun`으로 서버를 시작하고 `http://localhost:9001`에 접속합니다. 설정에 3.0.0 JAR 파일명과 Proxy 포트 8097이 보이는지 확인합니다. UI 사용법은 [Orchestrator 설명서](https://github.com/OmniOneID/did-orchestrator-server/blob/develop/docs/manual/orchestrator_manual_ko.md)를 참고하세요.
+빌드한 Orchestrator JAR 또는 Gradle `bootRun`으로 서버를 시작하고 `http://localhost:9001`에 접속합니다. 설정에 3.0.0 JAR 파일명과 Proxy 포트 8097이 보이는지 확인합니다. UI 사용법은 [Orchestrator 설명서](https://github.com/OmniOneID/did-orchestrator-server/blob/release/QA-v3.0.0/docs/manual/orchestrator_manual_ko.md)를 참고하세요.
 
 ![Proxy가 실행 중인 Orchestrator 대시보드](./images/orchestrator-proxy-running-v3.jpg)
 
@@ -103,7 +103,7 @@ mdoc 검증에 사용할 신뢰 발급자와 허용할 문서 유형을 등록�
 
 ### 6.2. Issuer Admin — OID4VCI 발급
 
-Issuer 엔티티 등록 후 Metadata → Credential Configurations → Client Settings → List Provider 순서로 확인합니다. 실제 VC 발급에 필요한 Schema와 Issue Profile은 [Issuer Admin 가이드](https://github.com/OmniOneID/did-issuer-server/blob/feature/opendid3.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md)를 따릅니다.
+Issuer 엔티티 등록 후 Metadata → Credential Configurations → Client Settings → List Provider 순서로 확인합니다. 실제 VC 발급에 필요한 Schema와 Issue Profile은 [Issuer Admin 가이드](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v3.0.0/docs/admin/OpenDID_IssuerAdmin_Operation_Guide_ko.md)를 따릅니다.
 
 #### 6.2.1. Issuer Metadata
 
@@ -211,7 +211,7 @@ OID4VCI 인가에 사용할 공통 및 플랫폼별 Client 값을 확인합니�
 
 ### 6.3. Verifier Admin — OID4VP 검증
 
-Verifier 엔티티 등록 후 Configuration → DCQL Scope Management → Policy Management 순서로 설정합니다. 기존 OpenDID VP 정책은 [Verifier Admin 가이드](https://github.com/OmniOneID/did-verifier-server/blob/feature/opendid3.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md)를 따릅니다.
+Verifier 엔티티 등록 후 Configuration → DCQL Scope Management → Policy Management 순서로 설정합니다. 기존 OpenDID VP 정책은 [Verifier Admin 가이드](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v3.0.0/docs/admin/OpenDID_VerifierAdmin_Operation_Guide_ko.md)를 따릅니다.
 
 #### 6.3.1. Configuration
 
@@ -302,13 +302,13 @@ OID4VP Policy는 앞서 등록한 DCQL Scope 하나와 연결됩니다. 검증 �
 
 - Policy 상세입니다. 제목과 연결된 DCQL Scope를 확인합니다.
 
-Demo의 서버 URL과 테스트 데이터는 [Demo 가이드](https://github.com/OmniOneID/did-demo-server/blob/feature/opendid3.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md)를 따릅니다. 실제 Credential 발급·Presentation 제출 결과는 [QA 계획서](./QA-PLAN-V3.0.0.0.md)에 별도로 기록합니다.
+Demo의 서버 URL과 테스트 데이터는 [Demo 가이드](https://github.com/OmniOneID/did-demo-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md)를 따릅니다. 실제 Credential 발급·Presentation 제출 결과는 [QA 계획서](./QA-PLAN-V3.0.0.0.md)에 별도로 기록합니다.
 
 ## 7. OpenDID 테스트 가이드
 
 1. 선택한 서비스의 상태를 확인하고 Proxy에 지갑·DID 생성 버튼이 없는지 확인합니다.
 2. Holder 등록 후 **Holder 앱 → Proxy → Issuer** 경로로 OpenDID VC를 발급합니다. 제안·프로파일·발급·완료 응답을 확인하고 이 발급 경로에서 TA가 중계하지 않는지 확인합니다.
-3. Issuer의 OID4VCI 경로를 별도로 테스트합니다. Issuer Metadata와 Credential Offer를 조회하고, Pre-Authorized Code 또는 Authorization Code 흐름, Holder Proof, Credential 수령을 확인합니다. 호환 지갑과 [Demo 가이드](https://github.com/OmniOneID/did-demo-server/blob/feature/opendid3.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md)를 사용합니다.
+3. Issuer의 OID4VCI 경로를 별도로 테스트합니다. Issuer Metadata와 Credential Offer를 조회하고, Pre-Authorized Code 또는 Authorization Code 흐름, Holder Proof, Credential 수령을 확인합니다. 호환 지갑과 [Demo 가이드](https://github.com/OmniOneID/did-demo-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md)를 사용합니다.
 4. Status List와 설정된 경우 OpenDID Holder 서명 기반 폐기 확장을 확인합니다. 잘못되거나 재사용한 Nonce·Proof 요청은 거절돼야 합니다.
 5. Verifier에 OpenDID VP와 OID4VP Presentation을 각각 제출하고 SD-JWT VC·mdoc 지원 경로를 확인합니다.
 

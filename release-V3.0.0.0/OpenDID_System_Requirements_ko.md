@@ -26,4 +26,4 @@ CPU·메모리·디스크 수치는 V2 통합 환경 기준을 이어받은 것�
 
 ## 네트워크 포트
 
-현재 [Orchestrator 설정](https://github.com/OmniOneID/did-orchestrator-server/blob/develop/source/did-orchestrator-server/configs/application.yml)은 Orchestrator 9001, TA·Issuer·Verifier·API·CA·Wallet 8090–8095, Proxy 8097, Ledger Service 8098, Demo 8099, PostgreSQL 5430을 사용합니다. 배포 전 현지 설정을 확인하세요.
+현재 [Orchestrator 설정](https://github.com/OmniOneID/did-orchestrator-server/blob/release/QA-v3.0.0/source/did-orchestrator-server/configs/application.yml)은 Orchestrator 9001, TA·Issuer·Verifier·API·CA·Wallet 8090–8095, Proxy 8097, Ledger Service 8098, Demo 8099, PostgreSQL 5430을 사용합니다. 배포 전 현지 설정을 확인하세요.

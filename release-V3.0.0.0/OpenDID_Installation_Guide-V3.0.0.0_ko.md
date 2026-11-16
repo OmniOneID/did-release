@@ -14,15 +14,15 @@ DB와 선택한 원장 백엔드를 준비한 뒤 TA와 API Gateway를 설치합
 
 ## 4. 사전 준비
 
-Java 21, Git, Docker와 배포 방식에 필요한 PostgreSQL 도구를 설치합니다. 각 저장소의 Gradle wrapper를 사용합니다. 해당 서버에 `feature/opendid3.0` 브랜치가 있으면 이를 체크아웃하고, Proxy는 현재 `develop` 브랜치를 사용합니다. 대응하는 GitHub Release 아티팩트가 아직 확인되지 않았으므로 현재 3.0 통합 테스트에서는 소스에서 3.0.0 JAR를 빌드합니다.
+Java 21, Git, Docker와 배포 방식에 필요한 PostgreSQL 도구를 설치합니다. 각 저장소의 Gradle wrapper를 사용합니다. Proxy를 포함한 참여 서버 저장소에서 `release/QA-v3.0.0` 브랜치를 체크아웃합니다. 대응하는 GitHub Release 아티팩트가 아직 확인되지 않았으므로 현재 3.0 통합 테스트에서는 소스에서 3.0.0 JAR를 빌드합니다.
 
 ### 4.1. 소스와 버전 확인
 
-[문서 허브](./OpenDID_Documentation_Hub_ko.md)의 저장소별 3.0 개발 브랜치를 사용합니다. 현재 Proxy는 `develop`, 나머지 참여 서버는 `feature/opendid3.0` 브랜치를 사용합니다. 각 `build.gradle`의 `version = '3.0.0'`을 확인하세요. 게시된 3.0 릴리스 아티팩트가 확인되기 전에는 소스에서 직접 빌드합니다.
+[문서 허브](./OpenDID_Documentation_Hub_ko.md)의 저장소별 `release/QA-v3.0.0` 브랜치를 사용합니다. 각 `build.gradle`의 `version = '3.0.0'`을 확인하세요. 게시된 3.0 릴리스 아티팩트가 확인되기 전에는 소스에서 직접 빌드합니다.
 
 ```bash
-git clone --branch feature/opendid3.0 https://github.com/OmniOneID/did-ta-server.git
-git clone --branch develop https://github.com/OmniOneID/did-proxy-server.git
+git clone --branch release/QA-v3.0.0 https://github.com/OmniOneID/did-ta-server.git
+git clone --branch release/QA-v3.0.0 https://github.com/OmniOneID/did-proxy-server.git
 ```
 
 이미 clone한 소스는 로컬 변경을 확인한 뒤 해당 브랜치를 최신 커밋으로 갱신합니다.
@@ -31,7 +31,7 @@ git clone --branch develop https://github.com/OmniOneID/did-proxy-server.git
 
 DB를 사용하는 서버마다 별도 데이터베이스와 계정을 준비하고, 서버의 `src/main/resources/config/application-database*.yml`에 연결 정보를 입력합니다. TA는 `application-databases*.yml`을 사용합니다. 마이그레이션과 DB 이름은 서버별 설치 문서를 따릅니다.
 
-원장은 [Besu Contract](https://github.com/OmniOneID/did-besu-contract/blob/main/README_ko.md)의 Besu 네트워크·컨트랙트 또는 [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/feature/opendid3.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide_ko.md) 중 하나를 준비합니다. LSS 사용 시 지원 서버의 `application-lss.yml`에서 `lss.url`을 맞추고 `dev,lss` 프로파일로 실행합니다. `sample`은 예제용 프로파일이므로 실제 DB·원장 통합에는 알맞은 프로파일을 명시하세요.
+원장은 [Besu Contract](https://github.com/OmniOneID/did-besu-contract/blob/main/README_ko.md)의 Besu 네트워크·컨트랙트 또는 [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide_ko.md) 중 하나를 준비합니다. LSS 사용 시 지원 서버의 `application-lss.yml`에서 `lss.url`을 맞추고 `dev,lss` 프로파일로 실행합니다. `sample`은 예제용 프로파일이므로 실제 DB·원장 통합에는 알맞은 프로파일을 명시하세요.
 
 각 서버의 `application.yml` 및 관련 설정에서 포트, TA URL, 원장 URL, 다른 서버 URL, 지갑 경로를 실제 환경에 맞춥니다. 컨테이너에서 `localhost`는 컨테이너 자신을 가리킵니다. 특히 Proxy의 기본 `issuer.url`은 소스에 특정 사설 IP로 지정되어 있으므로 실행 중인 Issuer 주소로 반드시 변경하세요.
 
@@ -52,15 +52,15 @@ java -jar build/libs/<서버명>-3.0.0.jar --spring.profiles.active=dev
 
 | 서버 저장소 | Gradle 프로젝트 | 상세 설치 문서 |
 | --- | --- | --- |
-| `did-ledger-service-server` | `source/did-ledger-service-server` | [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/feature/opendid3.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide_ko.md) |
-| `did-ta-server` | `source/did-ta-server` | [TA](https://github.com/OmniOneID/did-ta-server/blob/feature/opendid3.0/docs/installation/OpenDID_TAServer_Installation_Guide_ko.md) |
-| `did-api-server` | `source/did-api-server` | [API Gateway](https://github.com/OmniOneID/did-api-server/blob/feature/opendid3.0/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide_ko.md) |
-| `did-issuer-server` | `source/did-issuer-server` | [Issuer](https://github.com/OmniOneID/did-issuer-server/blob/feature/opendid3.0/docs/installation/OpenDID_IssuerServer_Installation_Guide_ko.md) |
-| `did-verifier-server` | `source/did-verifier-server` | [Verifier](https://github.com/OmniOneID/did-verifier-server/blob/feature/opendid3.0/docs/installation/OpenDID_VerifierServer_Installation_Guide_ko.md) |
-| `did-ca-server` | `source/did-ca-server` | [CA](https://github.com/OmniOneID/did-ca-server/blob/feature/opendid3.0/docs/installation/OpenDID_CAServer_Installation_Guide_ko.md) |
-| `did-wallet-server` | `source/did-wallet-server` | [Wallet](https://github.com/OmniOneID/did-wallet-server/blob/feature/opendid3.0/docs/installation/OpenDID_WalletServer_Installation_Guide_ko.md) |
-| `did-proxy-server` | `source/did-proxy-server` | [Proxy API](https://github.com/OmniOneID/did-proxy-server/blob/develop/docs/api/Proxy_API_ko.md) |
-| `did-demo-server` | `source/did-demo-server` | [Demo](https://github.com/OmniOneID/did-demo-server/blob/feature/opendid3.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md) |
+| `did-ledger-service-server` | `source/did-ledger-service-server` | [Ledger Service](https://github.com/OmniOneID/did-ledger-service-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_LedgerService_InstallationAndOperation_Guide_ko.md) |
+| `did-ta-server` | `source/did-ta-server` | [TA](https://github.com/OmniOneID/did-ta-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_TAServer_Installation_Guide_ko.md) |
+| `did-api-server` | `source/did-api-server` | [API Gateway](https://github.com/OmniOneID/did-api-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_APIGatewayServer_InstallationAndOperation_Guide_ko.md) |
+| `did-issuer-server` | `source/did-issuer-server` | [Issuer](https://github.com/OmniOneID/did-issuer-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_IssuerServer_Installation_Guide_ko.md) |
+| `did-verifier-server` | `source/did-verifier-server` | [Verifier](https://github.com/OmniOneID/did-verifier-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_VerifierServer_Installation_Guide_ko.md) |
+| `did-ca-server` | `source/did-ca-server` | [CA](https://github.com/OmniOneID/did-ca-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_CAServer_Installation_Guide_ko.md) |
+| `did-wallet-server` | `source/did-wallet-server` | [Wallet](https://github.com/OmniOneID/did-wallet-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_WalletServer_Installation_Guide_ko.md) |
+| `did-proxy-server` | `source/did-proxy-server` | [Proxy API](https://github.com/OmniOneID/did-proxy-server/blob/release/QA-v3.0.0/docs/api/Proxy_API_ko.md) |
+| `did-demo-server` | `source/did-demo-server` | [Demo](https://github.com/OmniOneID/did-demo-server/blob/release/QA-v3.0.0/docs/installation/OpenDID_DemoServer_InstallationAndOperation_Guide_ko.md) |
 
 ### 5.2. 엔티티 등록 순서
 
